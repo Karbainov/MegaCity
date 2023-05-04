@@ -40,5 +40,25 @@ namespace MegaCity.API.Controllers
 
             return Ok(products);
         }
+
+        [HttpGet("spoiled-products")]
+        public IActionResult GetSpoiledResult()
+        {
+            List<ProductOutputModel> SpoiledProducts = new List<ProductOutputModel>()
+            {
+                new ProductOutputModel()
+                {
+                    Name = "ProductOne",
+                    Count = 11
+                },
+
+                new ProductOutputModel()
+                {
+                    Name = "ProductTwo",
+                    Count = 17
+                }
+            };
+            return Ok(SpoiledProducts);
+        }
     }
 }
