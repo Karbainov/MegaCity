@@ -8,7 +8,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        [HttpGet("All-product")]
+        [HttpGet("All-Products")]
         public IActionResult GetAllProducts()
         {
             List<ProductOutputModel> products = new List<ProductOutputModel>()
@@ -52,6 +52,26 @@ namespace MegaCity.API.Controllers
                 Count=70
             };
             return Ok(product);
+        }
+
+        [HttpGet("Sppiled-Products")]
+        public IActionResult GetSpoiledProducts()
+        {
+            List<ProductOutputModel> SpoiledProducts = new List<ProductOutputModel>()
+            {
+                new ProductOutputModel()
+                {
+                    Name = "productOne",
+                    Count = 11
+                },
+
+                new ProductOutputModel()
+                {
+                    Name = "productTwo",
+                    Count = 17
+                }
+            };
+            return Ok(SpoiledProducts);
         }
     }
 }
