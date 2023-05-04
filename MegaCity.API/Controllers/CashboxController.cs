@@ -8,7 +8,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class CashboxController : ControllerBase
     {
-        [HttpGet("cashbox")]
+        [HttpGet()]
         public IActionResult GetCashbox()
         {
             CashboxOutputModel cashbox = new CashboxOutputModel()

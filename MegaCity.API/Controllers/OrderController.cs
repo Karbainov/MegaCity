@@ -8,9 +8,8 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class OrderListController : Controller
     {
-        [HttpGet("order")]
-       
-        public IActionResult GetOrder()
+        [HttpGet()]
+        public IActionResult GetAllOrders()
         {
             List<OrderOutputModel> order = new List<OrderOutputModel>()
             {
