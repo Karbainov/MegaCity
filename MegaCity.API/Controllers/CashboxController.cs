@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MegaCity.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CashboxController : ControllerBase
     {
