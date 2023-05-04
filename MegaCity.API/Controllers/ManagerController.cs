@@ -45,7 +45,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetProductById(int id)
+        public IActionResult GetManagerById(int id)
         {
             ManagerOutputModel manager = new ManagerOutputModel()
             {
