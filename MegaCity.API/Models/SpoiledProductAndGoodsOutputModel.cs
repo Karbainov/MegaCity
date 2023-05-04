@@ -1,6 +1,6 @@
 ﻿namespace MegaCity.API.Models
 {
-    public class SpoiledProductAndGoods
+    public class SpoiledProductAndGoodsOutputModel
     {
         public int Id { get; set; }
 
