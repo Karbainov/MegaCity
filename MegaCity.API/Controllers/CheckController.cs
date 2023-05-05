@@ -8,7 +8,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class CheckController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetAllChecks()
         {
             List<CheckOutputModel> check_models = new List<CheckOutputModel>()

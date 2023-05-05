@@ -8,7 +8,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class GoodsController : ControllerBase
     {
-        [HttpGet()]
+        [HttpGet("{id}")]
         public IActionResult GetAllGoods()
         {
             List<GoodsOutputModel> allGoods = new List<GoodsOutputModel>
