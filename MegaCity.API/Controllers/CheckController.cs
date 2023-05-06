@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MegaCity.API.Models;
+using MegaCity.API.Models.OutputModel;
 
 namespace MegaCity.API.Controllers
 {

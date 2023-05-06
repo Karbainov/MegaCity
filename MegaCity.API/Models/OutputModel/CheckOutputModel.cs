@@ -1,4 +1,4 @@
-﻿namespace MegaCity.API.Models
+﻿namespace MegaCity.API.Models.OutputModel
 {
     public class CheckOutputModel
     {

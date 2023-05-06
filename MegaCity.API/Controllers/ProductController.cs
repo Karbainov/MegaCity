@@ -1,4 +1,5 @@
-﻿using MegaCity.API.Models;
+﻿using MegaCity.API.Models.InputModel;
+using MegaCity.API.Models.OutputModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,9 +48,9 @@ namespace MegaCity.API.Controllers
             ProductOutputModel product = new ProductOutputModel()
             {
                 Id = 20000,
-                Name="product",
-                Price=20,
-                Count=70
+                Name = "product",
+                Price = 20,
+                Count = 70
             };
 
             return Ok(product);
@@ -75,8 +76,49 @@ namespace MegaCity.API.Controllers
 
             return Ok(SpoiledProducts);
         }
+
+
+
+        [HttpPost()]
+        public IActionResult AddProduct(ProductInputModel product)
+        {
+            ProductInputModel newProduct = new ProductInputModel()
+            {
+                Id = 1,
+                Name = product.Name,
+                DataInput = product.DataInput,
+                Count = product.Count,
+                Price = product.Price,
+
+            };
+
+            return Created("product", "product");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProductById(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateProduct(int id, ProductInputModel product)
+        {
+            ProductInputModel productOutput = new ProductInputModel()
+            {
+                Id = id,
+                Name = product.Name,
+                DataInput = product.DataInput,
+                Count = product.Count,
+                Price = product.Price,
+
+            };
+
+            return Ok(productOutput);
+        }
     }
 }
+
 
                 
 

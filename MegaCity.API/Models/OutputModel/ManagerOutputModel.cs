@@ -1,4 +1,4 @@
-﻿namespace MegaCity.API.Models
+﻿namespace MegaCity.API.Models.OutputModel
 {
     public class ManagerOutputModel
     {
@@ -8,12 +8,12 @@
         public string LastName { get; set; }
 
         public int Age { get; set; }
-        
-        public int PhoneNumber { get; set; }   
+
+        public int PhoneNumber { get; set; }
 
     }
 }
 
 
-                
+
 

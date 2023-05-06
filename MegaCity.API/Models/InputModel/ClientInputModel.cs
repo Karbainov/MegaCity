@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MegaCity.API.Models
+namespace MegaCity.API.Models.InputModel
 {
     public class ClientInputModel
     {
