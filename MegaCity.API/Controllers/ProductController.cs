@@ -92,7 +92,7 @@ namespace MegaCity.API.Controllers
 
             };
 
-            return Created("product", "product");
+            return Created("Product", "product");
         }
 
         [HttpDelete("{id}")]
