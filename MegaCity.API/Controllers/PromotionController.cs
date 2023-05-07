@@ -30,7 +30,7 @@ namespace MegaCity.API.Controllers
             return Ok(allPromotions);
         }
 
-        [HttpGet()]
+        [HttpGet("{id}")]
         public IActionResult GetPromotion()
         {
             PromotionOutputModel promotion = new PromotionOutputModel()
@@ -62,7 +62,7 @@ namespace MegaCity.API.Controllers
             return NoContent();
         }
 
-        [HttpPut()]
+        [HttpPut("{id}")]
         public IActionResult UpdatePromotion(int id, PromotionInputModel promotion)
         {
             PromotionOutputModel promotionOutput = new PromotionOutputModel()

@@ -9,7 +9,7 @@ namespace MegaCity.API.Controllers
     public class AdminController : ControllerBase
     {
 
-        [HttpGet()]
+        [HttpGet("All-Admins")]
         public IActionResult GetAllAdmins()
         {
             List<AdminOutputModel> admins = new List<AdminOutputModel>()
@@ -58,6 +58,38 @@ namespace MegaCity.API.Controllers
             };
 
             return Ok(admin);
+        }
+
+        [HttpPost()]
+        public IActionResult AddAdmin(AdminInputModel admin)
+        {
+            AdminOutputModel newAdmin = new AdminOutputModel()
+            {
+                Id = 9,
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+
+            return Created("Admin", "NewAdmin");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteAdminById(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateAdmin(int id, AdminInputModel admin)
+        {
+            AdminOutputModel adminOutput = new AdminOutputModel()
+            {
+                Id = id,
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+
+            return Ok(adminOutput);
         }
     }
 }

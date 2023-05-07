@@ -8,7 +8,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        [HttpGet()]
+        [HttpGet("All-Managers")]
         public IActionResult GetAllManagers()
         {
             List<ManagerOutputModel> managers = new List<ManagerOutputModel>()
@@ -57,6 +57,38 @@ namespace MegaCity.API.Controllers
             };
 
             return Ok(manager);
+        }
+
+        [HttpPost()]
+        public IActionResult AddManager(ManagerInputModel manager)
+        {
+            ManagerOutputModel addManager = new ManagerOutputModel()
+            {
+                FirstName = manager.FirstName,
+                LastName = manager.LastName
+            };
+
+            return Created("Manager", "NewManager");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletedManagerById(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateManager(int id, ManagerInputModel manager)
+        {
+            ManagerOutputModel managerOutput = new ManagerOutputModel()
+            {
+                FirstName = manager.FirstName,
+                LastName = manager.LastName,
+                PhoneNumber = manager.PhoneNumber,
+                Email = manager.Email
+            };
+
+            return Ok(managerOutput);
         }
     }
 }
