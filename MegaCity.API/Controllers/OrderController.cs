@@ -8,6 +8,19 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class OrderListController : Controller
     {
+        [HttpPost()]
+        public IActionResult AddOrder(OrderInputModel order)
+        {
+            OrderOutputModel newOrder = new OrderOutputModel();
+            {
+
+               string Name = order.Name;
+               int  Number = order.Number;
+            }
+
+            return Created(new Uri("Order", UriKind.Relative), newOrder);
+        }
+         
         [HttpGet("{id}")]
         public IActionResult GetAllOrders()
         {
@@ -36,6 +49,24 @@ namespace MegaCity.API.Controllers
 
             };
 
+            return Ok(order);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteOrderById(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateOrder(int id,OrderInputModel order)
+        {
+            OrderOutputModel orderOutput = new OrderOutputModel();
+            {
+                int Id = id;
+                string Name = order.Name;
+                int Number = order.Number;
+            }
             return Ok(order);
         }
     }
