@@ -1,7 +1,9 @@
-﻿namespace MegaCity.API.Models
+﻿namespace MegaCity.API.Models.ModelsOutput
 {
-    public class AdminInputModel
+    public class ManagerOutputModel
     {
+        public int Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -13,5 +15,10 @@
         public int PhoneNumber { get; set; }
 
         public string Email { get; set; }
+
     }
 }
+
+
+
+

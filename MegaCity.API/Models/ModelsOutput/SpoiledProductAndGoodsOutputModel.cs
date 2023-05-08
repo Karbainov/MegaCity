@@ -1,7 +1,9 @@
-﻿namespace MegaCity.API.Models
+﻿namespace MegaCity.API.Models.ModelsOutput
 {
-    public class SpoiledProductAndGoodsInputModel
+    public class SpoiledProductAndGoodsOutputModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public double Price { get; set; }

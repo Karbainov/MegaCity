@@ -1,7 +1,9 @@
-﻿namespace MegaCity.API.Models
+﻿namespace MegaCity.API.Models.ModelsInput
 {
-    public class MenuOutputModel
+    public class MenuInputModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string Consist { get; set; }

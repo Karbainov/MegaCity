@@ -1,6 +1,6 @@
-﻿namespace MegaCity.API.Models
+﻿namespace MegaCity.API.Models.ModelsOutput
 {
-    public class GoodsOutputModel
+    public class ProductOutputModel
     {
         public int Id { get; set; }
 
