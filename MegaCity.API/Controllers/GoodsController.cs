@@ -1,4 +1,4 @@
-﻿using MegaCity.API.Models;
+﻿using MegaCity.API.Models.ModelsOutput;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
