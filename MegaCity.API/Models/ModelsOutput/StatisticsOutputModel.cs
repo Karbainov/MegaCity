@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
-namespace MegaCity.API.Models
+namespace MegaCity.API.Models.ModelsOutput
 {
     public class StatisticsOutputModel
     {

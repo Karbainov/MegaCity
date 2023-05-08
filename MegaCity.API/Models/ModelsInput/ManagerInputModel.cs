@@ -1,4 +1,4 @@
-﻿namespace MegaCity.API.Models
+﻿namespace MegaCity.API.Models.ModelsInput
 {
     public class ManagerInputModel
     {
