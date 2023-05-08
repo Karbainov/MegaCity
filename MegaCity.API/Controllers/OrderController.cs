@@ -4,49 +4,57 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MegaCity.API.Controllers
 {
-    [Route("controller")]
+    [Route("[controller]")]
     [ApiController]
-    public class OrderListController : Controller
+    public class OrderController : Controller
     {
         [HttpPost()]
         public IActionResult AddOrder(OrderInputModel order)
         {
             OrderOutputModel newOrder = new OrderOutputModel();
             {
-
-               string Name = order.Name;
-               int  Number = order.Number;
+                string Name = order.Name;
+                int Number = order.Number;
             }
 
             return Created(new Uri("Order", UriKind.Relative), newOrder);
         }
-         
-        [HttpGet("{id}")]
+
+        [HttpGet("All-Orders")]
         public IActionResult GetAllOrders()
         {
             List<OrderOutputModel> order = new List<OrderOutputModel>()
             {
                 new OrderOutputModel()
                 {
-                    Name="product1",
-
-                    Number=5
+                    Name = "product1",
+                    Number = 5
                 },
 
                 new OrderOutputModel()
                 {
-                    Name="product2",
-
-                    Number=10
+                    Name = "product2",
+                    Number = 10
                 },
 
                 new OrderOutputModel()
                 {
-                    Name="product3",
-
-                    Number=3
+                    Name = "product3",
+                    Number = 3
                 },
 
+            };
+
+            return Ok(order);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetOrder()
+        {
+            OrderOutputModel order = new OrderOutputModel()
+            {
+                Name = "product",
+                Number = 5
             };
 
             return Ok(order);
@@ -67,6 +75,7 @@ namespace MegaCity.API.Controllers
                 string Name = order.Name;
                 int Number = order.Number;
             }
+
             return Ok(order);
         }
     }

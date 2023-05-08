@@ -72,7 +72,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeletedManagerById(int id)
+        public IActionResult DeleteManagerById(int id)
         {
             return NoContent();
         }
