@@ -13,15 +13,15 @@ namespace MegaCity.API.Controllers
         [HttpGet("All-Promotions")]
         public IActionResult GetAllPromotions()
         {
-            List<PromotionOutputModel> allPromotions = new List<PromotionOutputModel>()
+            List<PromotionResponseModel> allPromotions = new List<PromotionResponseModel>()
             {
-                new PromotionOutputModel
+                new PromotionResponseModel
                 {
                     Name = "PromotionOne",
                     Day = 10
                 },
 
-                new PromotionOutputModel
+                new PromotionResponseModel
                 {
                     Name = "PromotionTwo",
                     Month = 3
@@ -34,7 +34,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetPromotion()
         {
-            PromotionOutputModel promotion = new PromotionOutputModel()
+            PromotionResponseModel promotion = new PromotionResponseModel()
             {
                 Name = "PromotionOne",
                 Month = 1,
@@ -45,9 +45,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddPromotion(PromotionInputModel promotion)
+        public IActionResult AddPromotion(PromotionRequestModel promotion)
         {
-            PromotionInputModel newPromotion = new PromotionInputModel()
+            PromotionRequestModel newPromotion = new PromotionRequestModel()
             {
                 Name = promotion.Name,
                 Month = promotion.Month,
@@ -64,9 +64,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdatePromotion(int id, PromotionInputModel promotion)
+        public IActionResult UpdatePromotion(int id, PromotionRequestModel promotion)
         {
-            PromotionOutputModel promotionOutput = new PromotionOutputModel()
+            PromotionResponseModel promotionOutput = new PromotionResponseModel()
             {
                 Id = id,
                 Name = promotion.Name,

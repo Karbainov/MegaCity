@@ -11,15 +11,15 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetAllGoods()
         {
-            List<GoodsOutputModel> allGoods = new List<GoodsOutputModel>
+            List<GoodsResponseModel> allGoods = new List<GoodsResponseModel>
             {
-                new GoodsOutputModel
+                new GoodsResponseModel
                 {
                     Name = "goodsOne",
                     Price = 12.6
                 },
 
-                new GoodsOutputModel
+                new GoodsResponseModel
                 {
                     Name = "goodsTwo",
                     Price = 19
@@ -32,7 +32,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
-            GoodsOutputModel goods = new GoodsOutputModel()
+            GoodsResponseModel goods = new GoodsResponseModel()
             {
                 Id= id,
                 Name = "Potato",

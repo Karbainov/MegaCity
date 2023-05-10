@@ -13,16 +13,16 @@ namespace MegaCity.API.Controllers
         [HttpGet("All-Menu")]
         public IActionResult GetAllMenu()
         {
-            List<MenuOutputModel> allMenu = new List<MenuOutputModel>()
+            List<MenuResponseModel> allMenu = new List<MenuResponseModel>()
             {
-                new MenuOutputModel()
+                new MenuResponseModel()
                 {
                     Name = "MenuOne",
                     Consist = "",
                     Portion = 1
                 },
 
-                new MenuOutputModel()
+                new MenuResponseModel()
                 {
                     Name = "MenuTwo",
                     Consist = "",
@@ -36,7 +36,7 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetMenu()
         {
-            MenuOutputModel menu = new MenuOutputModel()
+            MenuResponseModel menu = new MenuResponseModel()
             {
                 Name = "MenuOne",
                 Consist = "",
@@ -47,9 +47,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddMenu(MenuInputModel menu)
+        public IActionResult AddMenu(MenuRequestModel menu)
         {
-            MenuOutputModel newModel = new MenuOutputModel()
+            MenuResponseModel newModel = new MenuResponseModel()
             {
                 Name = menu.Name,
                 Consist = ""
@@ -65,9 +65,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut()]
-        public IActionResult UpdateMenu(int id, MenuInputModel menu)
+        public IActionResult UpdateMenu(int id, MenuRequestModel menu)
         {
-            MenuOutputModel menuOutput = new MenuOutputModel()
+            MenuResponseModel menuOutput = new MenuResponseModel()
             {
                 Name = menu.Name,
                 Consist = menu.Consist,

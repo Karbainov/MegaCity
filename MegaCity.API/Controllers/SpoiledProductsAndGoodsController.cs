@@ -14,9 +14,9 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetAllSpoiledProductAndGoods()
         {
-            List<SpoiledProductAndGoodsOutputModel> spoiled = new List<SpoiledProductAndGoodsOutputModel>()
+            List<SpoiledProductAndGoodsResponseModel> spoiled = new List<SpoiledProductAndGoodsResponseModel>()
             {
-                new SpoiledProductAndGoodsOutputModel()
+                new SpoiledProductAndGoodsResponseModel()
                 {
                     Id=5,
                     Name = "productOne",
@@ -26,7 +26,7 @@ namespace MegaCity.API.Controllers
                     ReasonWriteOff="lalala"
                 },
 
-                new SpoiledProductAndGoodsOutputModel()
+                new SpoiledProductAndGoodsResponseModel()
                 {
                     Id=8,
                     Name = "productTwo",
@@ -36,7 +36,7 @@ namespace MegaCity.API.Controllers
                     ReasonWriteOff="lalala"
                 },
 
-                new SpoiledProductAndGoodsOutputModel()
+                new SpoiledProductAndGoodsResponseModel()
                 {
                     Id=3,
                     Name = "productThree",
@@ -50,9 +50,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddSpoiledProductAndGoods(SpoiledProductAndGoodsInputModel spoiled)
+        public IActionResult AddSpoiledProductAndGoods(SpoiledProductAndGoodsRequestModel spoiled)
         {
-            SpoiledProductAndGoodsOutputModel newspoiledProductAndGoods = new SpoiledProductAndGoodsOutputModel()
+            SpoiledProductAndGoodsResponseModel newspoiledProductAndGoods = new SpoiledProductAndGoodsResponseModel()
             {
                 Id = 9,
                 Name = "productTwo",
@@ -73,9 +73,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateSpoiledProductAndGoods(int id, SpoiledProductAndGoodsInputModel spoiled)
+        public IActionResult UpdateSpoiledProductAndGoods(int id, SpoiledProductAndGoodsRequestModel spoiled)
         {
-            SpoiledProductAndGoodsOutputModel spoiledProductAndGoodsOutput = new SpoiledProductAndGoodsOutputModel();
+            SpoiledProductAndGoodsResponseModel spoiledProductAndGoodsOutput = new SpoiledProductAndGoodsResponseModel();
             {
                 int Id = id;
                 string Name = spoiled.Name;

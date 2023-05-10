@@ -10,9 +10,9 @@ namespace MegaCity.API.Controllers
     public class OrderController : Controller
     {
         [HttpPost()]
-        public IActionResult AddOrder(OrderInputModel order)
+        public IActionResult AddOrder(OrderRequestModel order)
         {
-            OrderOutputModel newOrder = new OrderOutputModel();
+            OrderResponseModel newOrder = new OrderResponseModel();
             {
                 string Name = order.Name;
                 int Number = order.Number;
@@ -24,21 +24,21 @@ namespace MegaCity.API.Controllers
         [HttpGet("All-Orders")]
         public IActionResult GetAllOrders()
         {
-            List<OrderOutputModel> order = new List<OrderOutputModel>()
+            List<OrderResponseModel> order = new List<OrderResponseModel>()
             {
-                new OrderOutputModel()
+                new OrderResponseModel()
                 {
                     Name = "product1",
                     Number = 5
                 },
 
-                new OrderOutputModel()
+                new OrderResponseModel()
                 {
                     Name = "product2",
                     Number = 10
                 },
 
-                new OrderOutputModel()
+                new OrderResponseModel()
                 {
                     Name = "product3",
                     Number = 3
@@ -52,7 +52,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetOrder()
         {
-            OrderOutputModel order = new OrderOutputModel()
+            OrderResponseModel order = new OrderResponseModel()
             {
                 Name = "product",
                 Number = 5
@@ -68,9 +68,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateOrder(int id,OrderInputModel order)
+        public IActionResult UpdateOrder(int id,OrderRequestModel order)
         {
-            OrderOutputModel orderOutput = new OrderOutputModel();
+            OrderResponseModel orderOutput = new OrderResponseModel();
             {
                 int Id = id;
                 string Name = order.Name;

@@ -11,15 +11,15 @@ namespace MegaCity.API.Controllers
         [HttpGet("All-Cashboxes")]
         public IActionResult GetAllCashboxes()
         {
-            List<CashboxOutputModel> cashboxes = new List<CashboxOutputModel>()
+            List<CashboxResponseModel> cashboxes = new List<CashboxResponseModel>()
             {
-                new CashboxOutputModel()
+                new CashboxResponseModel()
                 {
                     Cash = 20000,
                     Card = 17890
                 },
 
-                new CashboxOutputModel()
+                new CashboxResponseModel()
                 {
                     Cash = 20000,
                     Card = 17890
@@ -31,7 +31,7 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetCashbox()
         {
-            CashboxOutputModel cashbox = new CashboxOutputModel()
+            CashboxResponseModel cashbox = new CashboxResponseModel()
             {
                 Cash = 20000,
                 Card = 17890
@@ -40,9 +40,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddCashbox(CashboxOutputModel cashbox)
+        public IActionResult AddCashbox(CashboxResponseModel cashbox)
         {
-            CashboxOutputModel addCashbox = new CashboxOutputModel()
+            CashboxResponseModel addCashbox = new CashboxResponseModel()
             {
                 Cash = cashbox.Cash,
                 Card = cashbox.Card
@@ -58,9 +58,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateCashbox(int id, CashboxOutputModel cashbox)
+        public IActionResult UpdateCashbox(int id, CashboxResponseModel cashbox)
         {
-            CashboxOutputModel cashboxOutput = new CashboxOutputModel()
+            CashboxResponseModel cashboxOutput = new CashboxResponseModel()
             {
                 Cash = cashbox.Cash,
                 Card = cashbox.Card

@@ -11,9 +11,9 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetAllProducts()
         {
-            List<ProductOutputModel> products = new List<ProductOutputModel>()
+            List<ProductResponseModel> products = new List<ProductResponseModel>()
             {
-                new ProductOutputModel()
+                new ProductResponseModel()
                 {
                     Id=5,
                     Name = "productOne",
@@ -21,7 +21,7 @@ namespace MegaCity.API.Controllers
                     Count=150
                 },
 
-                new ProductOutputModel()
+                new ProductResponseModel()
                 {
                     Id=8,
                     Name = "productTwo",
@@ -29,7 +29,7 @@ namespace MegaCity.API.Controllers
                     Count=60
                 },
 
-                new ProductOutputModel()
+                new ProductResponseModel()
                 {
                     Id=3,
                     Name = "productThree",
@@ -44,7 +44,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
-            ProductOutputModel product = new ProductOutputModel()
+            ProductResponseModel product = new ProductResponseModel()
             {
                 Id = 20000,
                 Name="product",

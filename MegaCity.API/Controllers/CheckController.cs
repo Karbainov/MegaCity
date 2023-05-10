@@ -11,14 +11,14 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAllChecks()
         {
-            List<CheckOutputModel> check_models = new List<CheckOutputModel>()
+            List<CheckResponseModel> check_models = new List<CheckResponseModel>()
             {
-                new CheckOutputModel()
+                new CheckResponseModel()
                 {
                     Sum = 171
                 },
 
-                new CheckOutputModel()
+                new CheckResponseModel()
                 {
                     Sum = 187.50
                 },

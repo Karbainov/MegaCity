@@ -12,9 +12,9 @@ namespace MegaCity.API.Controllers
         [HttpGet("All-Managers")]
         public IActionResult GetAllManagers()
         {
-            List<ManagerOutputModel> managers = new List<ManagerOutputModel>()
+            List<ManagerResponseModel> managers = new List<ManagerResponseModel>()
             {
-                new ManagerOutputModel()
+                new ManagerResponseModel()
                 {
                     Id=5,
                     FirstName = "FirstName",
@@ -23,7 +23,7 @@ namespace MegaCity.API.Controllers
                     PhoneNumber=123456
                 },
 
-                new ManagerOutputModel()
+                new ManagerResponseModel()
                 {
                     Id=6,
                     FirstName = "FirstName",
@@ -32,7 +32,7 @@ namespace MegaCity.API.Controllers
                     PhoneNumber=123452
                 },
 
-                new ManagerOutputModel()
+                new ManagerResponseModel()
                 {
                     Id=44,
                     FirstName = "FirstName",
@@ -48,7 +48,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetManagerById(int id)
         {
-            ManagerOutputModel manager = new ManagerOutputModel()
+            ManagerResponseModel manager = new ManagerResponseModel()
             {
                 Id = 9,
                 FirstName = "FirstName",
@@ -61,9 +61,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddManager(ManagerInputModel manager)
+        public IActionResult AddManager(ManagerRequestModel manager)
         {
-            ManagerOutputModel addManager = new ManagerOutputModel()
+            ManagerResponseModel addManager = new ManagerResponseModel()
             {
                 FirstName = manager.FirstName,
                 LastName = manager.LastName
@@ -79,9 +79,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateManager(int id, ManagerInputModel manager)
+        public IActionResult UpdateManager(int id, ManagerRequestModel manager)
         {
-            ManagerOutputModel managerOutput = new ManagerOutputModel()
+            ManagerResponseModel managerOutput = new ManagerResponseModel()
             {
                 FirstName = manager.FirstName,
                 LastName = manager.LastName,
