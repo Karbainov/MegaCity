@@ -1,8 +1,8 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
-namespace MegaCity.API.Models.OutputModel
+namespace MegaCity.API.Models.ModelsOutput
 {
-    public class StatisticsOutputModel
+    public class StatisticsResponseModel
     {
         public double Profit { get; set; }
 

@@ -1,5 +1,4 @@
-﻿using MegaCity.API.Models.InputModel;
-using MegaCity.API.Models.OutputModel;
+using MegaCity.API.Models.ModelsOutput;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +11,9 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetAllProducts()
         {
-            List<ProductOutputModel> products = new List<ProductOutputModel>()
+            List<ProductResponseModel> products = new List<ProductResponseModel>()
             {
-                new ProductOutputModel()
+                new ProductResponseModel()
                 {
                     Id=5,
                     Name = "productOne",
@@ -22,7 +21,7 @@ namespace MegaCity.API.Controllers
                     Count=150
                 },
 
-                new ProductOutputModel()
+                new ProductResponseModel()
                 {
                     Id=8,
                     Name = "productTwo",
@@ -30,7 +29,7 @@ namespace MegaCity.API.Controllers
                     Count=60
                 },
 
-                new ProductOutputModel()
+                new ProductResponseModel()
                 {
                     Id=3,
                     Name = "productThree",
@@ -45,7 +44,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
-            ProductOutputModel product = new ProductOutputModel()
+            ProductResponseModel product = new ProductResponseModel()
             {
                 Id = 20000,
                 Name = "product",
@@ -55,71 +54,5 @@ namespace MegaCity.API.Controllers
 
             return Ok(product);
         }
-
-        [HttpGet("Spoiled")]
-        public IActionResult GetSpoiledProducts()
-        {
-            List<ProductOutputModel> SpoiledProducts = new List<ProductOutputModel>()
-            {
-                new ProductOutputModel()
-                {
-                    Name = "productOne",
-                    Count = 11
-                },
-
-                new ProductOutputModel()
-                {
-                    Name = "productTwo",
-                    Count = 17
-                }
-            };
-
-            return Ok(SpoiledProducts);
-        }
-
-
-
-        [HttpPost()]
-        public IActionResult AddProduct(ProductInputModel product)
-        {
-            ProductInputModel newProduct = new ProductInputModel()
-            {
-                Id = 1,
-                Name = product.Name,
-                DataInput = product.DataInput,
-                Count = product.Count,
-                Price = product.Price,
-
-            };
-
-            return Created("Product", "product");
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult DeleteProductById(int id)
-        {
-            return NoContent();
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult UpdateProduct(int id, ProductInputModel product)
-        {
-            ProductInputModel productOutput = new ProductInputModel()
-            {
-                Id = id,
-                Name = product.Name,
-                DataInput = product.DataInput,
-                Count = product.Count,
-                Price = product.Price,
-
-            };
-
-            return Ok(productOutput);
-        }
     }
 }
-
-
-                
-
-                

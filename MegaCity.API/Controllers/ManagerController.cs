@@ -1,4 +1,5 @@
-﻿using MegaCity.API.Models.OutputModel;
+using MegaCity.API.Models.ModelsInput;
+using MegaCity.API.Models.ModelsOutput;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,12 +9,12 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        [HttpGet()]
+        [HttpGet("All-Managers")]
         public IActionResult GetAllManagers()
         {
-            List<ManagerOutputModel> managers = new List<ManagerOutputModel>()
+            List<ManagerResponseModel> managers = new List<ManagerResponseModel>()
             {
-                new ManagerOutputModel()
+                new ManagerResponseModel()
                 {
                     Id=5,
                     FirstName = "FirstName",
@@ -22,7 +23,7 @@ namespace MegaCity.API.Controllers
                     PhoneNumber=123456
                 },
 
-                new ManagerOutputModel()
+                new ManagerResponseModel()
                 {
                     Id=6,
                     FirstName = "FirstName",
@@ -31,7 +32,7 @@ namespace MegaCity.API.Controllers
                     PhoneNumber=123452
                 },
 
-                new ManagerOutputModel()
+                new ManagerResponseModel()
                 {
                     Id=44,
                     FirstName = "FirstName",
@@ -47,7 +48,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetManagerById(int id)
         {
-            ManagerOutputModel manager = new ManagerOutputModel()
+            ManagerResponseModel manager = new ManagerResponseModel()
             {
                 Id = 9,
                 FirstName = "FirstName",
@@ -57,6 +58,38 @@ namespace MegaCity.API.Controllers
             };
 
             return Ok(manager);
+        }
+
+        [HttpPost()]
+        public IActionResult AddManager(ManagerRequestModel manager)
+        {
+            ManagerResponseModel addManager = new ManagerResponseModel()
+            {
+                FirstName = manager.FirstName,
+                LastName = manager.LastName
+            };
+
+            return Created("Manager", "NewManager");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteManagerById(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateManager(int id, ManagerRequestModel manager)
+        {
+            ManagerResponseModel managerOutput = new ManagerResponseModel()
+            {
+                FirstName = manager.FirstName,
+                LastName = manager.LastName,
+                PhoneNumber = manager.PhoneNumber,
+                Email = manager.Email
+            };
+
+            return Ok(managerOutput);
         }
     }
 }

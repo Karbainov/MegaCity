@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MegaCity.API.Models.OutputModel;
+using MegaCity.API.Models.ModelsOutput;
 
 namespace MegaCity.API.Controllers
 {
@@ -11,14 +11,14 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAllChecks()
         {
-            List<CheckOutputModel> check_models = new List<CheckOutputModel>()
+            List<CheckResponseModel> check_models = new List<CheckResponseModel>()
             {
-                new CheckOutputModel()
+                new CheckResponseModel()
                 {
                     Sum = 171
                 },
 
-                new CheckOutputModel()
+                new CheckResponseModel()
                 {
                     Sum = 187.50
                 },

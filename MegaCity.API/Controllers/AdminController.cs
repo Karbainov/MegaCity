@@ -1,4 +1,5 @@
-﻿using MegaCity.API.Models.OutputModel;
+using MegaCity.API.Models.ModelsInput;
+using MegaCity.API.Models.ModelsOutput;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +10,12 @@ namespace MegaCity.API.Controllers
     public class AdminController : ControllerBase
     {
 
-        [HttpGet()]
+        [HttpGet("All-Admins")]
         public IActionResult GetAllAdmins()
         {
-            List<AdminOutputModel> admins = new List<AdminOutputModel>()
+            List<AdminResponseModel> admins = new List<AdminResponseModel>()
             {
-                new AdminOutputModel()
+                new AdminResponseModel()
                 {
                     Id=5,
                     FirstName = "FirstName",
@@ -23,7 +24,7 @@ namespace MegaCity.API.Controllers
                     PhoneNumber=123456
                 },
 
-                new AdminOutputModel()
+                new AdminResponseModel()
                 {
                     Id=6,
                     FirstName = "FirstName",
@@ -32,7 +33,7 @@ namespace MegaCity.API.Controllers
                     PhoneNumber=123452
                 },
 
-                new AdminOutputModel()
+                new AdminResponseModel()
                 {
                     Id=44,
                     FirstName = "FirstName",
@@ -48,7 +49,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAdminById(int id)
         {
-            AdminOutputModel admin = new AdminOutputModel()
+            AdminResponseModel admin = new AdminResponseModel()
             {
                 Id = 9,
                 FirstName = "FirstName",
@@ -58,6 +59,38 @@ namespace MegaCity.API.Controllers
             };
 
             return Ok(admin);
+        }
+
+        [HttpPost()]
+        public IActionResult AddAdmin(AdminRequestModel admin)
+        {
+            AdminResponseModel newAdmin = new AdminResponseModel()
+            {
+                Id = 9,
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+
+            return Created("Admin", "NewAdmin");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteAdminById(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateAdmin(int id, AdminRequestModel admin)
+        {
+            AdminResponseModel adminOutput = new AdminResponseModel()
+            {
+                Id = id,
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+
+            return Ok(adminOutput);
         }
     }
 }

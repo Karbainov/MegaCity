@@ -1,12 +1,10 @@
-﻿namespace MegaCity.API.Models.OutputModel
-
+﻿namespace MegaCity.API.Models.InputModels
 {
-    public class FilialOutputModel
+    public class FilialRequestModel
     {
         public int Id { get; set; }
 
         public string Adress { get; set; }
-
 
     }
 }

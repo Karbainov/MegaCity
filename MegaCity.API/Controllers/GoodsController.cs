@@ -1,4 +1,4 @@
-﻿using MegaCity.API.Models.OutputModel;
+using MegaCity.API.Models.ModelsOutput;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,18 +8,18 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class GoodsController : ControllerBase
     {
-        [HttpGet("{id}")]
+        [HttpGet()]
         public IActionResult GetAllGoods()
         {
-            List<GoodsOutputModel> allGoods = new List<GoodsOutputModel>
+            List<GoodsResponseModel> allGoods = new List<GoodsResponseModel>
             {
-                new GoodsOutputModel
+                new GoodsResponseModel
                 {
                     Name = "goodsOne",
                     Price = 12.6
                 },
 
-                new GoodsOutputModel
+                new GoodsResponseModel
                 {
                     Name = "goodsTwo",
                     Price = 19
@@ -32,7 +32,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
-            GoodsOutputModel goods = new GoodsOutputModel()
+            GoodsResponseModel goods = new GoodsResponseModel()
             {
                 Id= id,
                 Name = "Potato",
@@ -40,27 +40,6 @@ namespace MegaCity.API.Controllers
             };
 
             return Ok("goods");
-        }
-
-        [HttpGet("Sppiled")]
-        public IActionResult GetSpoiledGoods()
-        {
-            List<ProductOutputModel> SpoiledGoods = new List<ProductOutputModel>()
-            {
-                new ProductOutputModel()
-                {
-                    Name = "productOne",
-                    Count = 11
-                },
-
-                new ProductOutputModel()
-                {
-                    Name = "productTwo",
-                    Count = 17
-                }
-            };
-
-            return Ok(SpoiledGoods);
         }
     }
 }

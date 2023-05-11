@@ -1,6 +1,6 @@
-﻿namespace MegaCity.API.Models.OutputModel
+﻿namespace MegaCity.API.Models.ModelsInput
 {
-    public class CashboxOutputModel
+    public class CashboxIRequestModel
     {
         public double Cash { get; set; }
 

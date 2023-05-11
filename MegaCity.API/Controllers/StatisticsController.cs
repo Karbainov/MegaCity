@@ -1,4 +1,4 @@
-﻿using MegaCity.API.Models.OutputModel;
+using MegaCity.API.Models.ModelsOutput;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +11,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("day")]
         public IActionResult GetDayStatistics()
         {
-            StatisticsOutputModel dayStatistics = new StatisticsOutputModel()
+            StatisticsResponseModel dayStatistics = new StatisticsResponseModel()
             {
                 Profit = 27637.3874678,
                 Cost = 366487.435,
@@ -27,7 +27,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("week")]
         public IActionResult GetWeekStatistics()
         {
-            StatisticsOutputModel weekStatistics = new StatisticsOutputModel()
+            StatisticsResponseModel weekStatistics = new StatisticsResponseModel()
             {
                 Profit = 357.23894,
                 Cost = 4674.4,
@@ -43,7 +43,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("month")]
         public IActionResult GetMonthStatistics()
         {
-            StatisticsOutputModel monthStatistics = new StatisticsOutputModel()
+            StatisticsResponseModel monthStatistics = new StatisticsResponseModel()
             {
                 Profit = 488955.547,
                 Cost = 4768.46,
@@ -59,7 +59,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("year")]
         public IActionResult GetYearStatistics()
         {
-            StatisticsOutputModel yearStatistics = new StatisticsOutputModel()
+            StatisticsResponseModel yearStatistics = new StatisticsResponseModel()
             {
                 Profit = 9489.5,
                 Cost = 45609.645,

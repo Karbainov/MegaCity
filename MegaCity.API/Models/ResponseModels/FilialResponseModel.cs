@@ -1,7 +1,7 @@
-﻿namespace MegaCity.API.Models.OutputModel
+﻿namespace MegaCity.API.Models.ModelsOutput
 
 {
-    public class FilialOutputModel
+    public class FilialResponseModel
     {
         public int Id { get; set; }
 

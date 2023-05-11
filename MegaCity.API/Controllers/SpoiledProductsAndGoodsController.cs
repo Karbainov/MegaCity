@@ -1,6 +1,9 @@
-﻿using MegaCity.API.Models.OutputModel;
+using MegaCity.API.Models.ModelsInput;
+using MegaCity.API.Models.ModelsOutput;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
+using System.Xml.Linq;
 
 namespace MegaCity.API.Controllers
 {
@@ -11,9 +14,9 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetAllSpoiledProductAndGoods()
         {
-            List<SpoiledProductAndGoodsOutputModel> spoiled = new List<SpoiledProductAndGoodsOutputModel>()
+            List<SpoiledProductAndGoodsResponseModel> spoiled = new List<SpoiledProductAndGoodsResponseModel>()
             {
-                new SpoiledProductAndGoodsOutputModel()
+                new SpoiledProductAndGoodsResponseModel()
                 {
                     Id=5,
                     Name = "productOne",
@@ -23,7 +26,7 @@ namespace MegaCity.API.Controllers
                     ReasonWriteOff="lalala"
                 },
 
-                new SpoiledProductAndGoodsOutputModel()
+                new SpoiledProductAndGoodsResponseModel()
                 {
                     Id=8,
                     Name = "productTwo",
@@ -33,7 +36,7 @@ namespace MegaCity.API.Controllers
                     ReasonWriteOff="lalala"
                 },
 
-                new SpoiledProductAndGoodsOutputModel()
+                new SpoiledProductAndGoodsResponseModel()
                 {
                     Id=3,
                     Name = "productThree",
@@ -45,5 +48,45 @@ namespace MegaCity.API.Controllers
             };
             return Ok(spoiled);
         }
+
+        [HttpPost()]
+        public IActionResult AddSpoiledProductAndGoods(SpoiledProductAndGoodsRequestModel spoiled)
+        {
+            SpoiledProductAndGoodsResponseModel newspoiledProductAndGoods = new SpoiledProductAndGoodsResponseModel()
+            {
+                Id = 9,
+                Name = "productTwo",
+                Price = 200,
+                Count = 60,
+                DataWriteOff = "11/12/12",
+                ReasonWriteOff = "lalala"
+            };
+
+            return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), newspoiledProductAndGoods);
+        
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteSpoiledProductAndGoods(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateSpoiledProductAndGoods(int id, SpoiledProductAndGoodsRequestModel spoiled)
+        {
+            SpoiledProductAndGoodsResponseModel spoiledProductAndGoodsOutput = new SpoiledProductAndGoodsResponseModel();
+            {
+                int Id = id;
+                string Name = spoiled.Name;
+                double price = spoiled.Price;
+                int Count = spoiled.Count;
+                string DataWriteOff = spoiled.DataWriteOff;
+                string ReasonWriteOff = spoiled.ReasonWriteOff;
+            }
+            return Ok(spoiledProductAndGoodsOutput);
+        }
+         
+
     }
 }
