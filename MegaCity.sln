@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCity.API", "MegaCity.API\MegaCity.API.csproj", "{1859E607-632F-4694-B9A4-0253C12D1E21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MegaCity.API", "MegaCity.API\MegaCity.API.csproj", "{1859E607-632F-4694-B9A4-0253C12D1E21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCity.BLL", "MegaCity.BLL\MegaCity.BLL.csproj", "{AF47AF27-1C0A-458A-B417-D2C9D2D54719}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1859E607-632F-4694-B9A4-0253C12D1E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1859E607-632F-4694-B9A4-0253C12D1E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1859E607-632F-4694-B9A4-0253C12D1E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF47AF27-1C0A-458A-B417-D2C9D2D54719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF47AF27-1C0A-458A-B417-D2C9D2D54719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF47AF27-1C0A-458A-B417-D2C9D2D54719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF47AF27-1C0A-458A-B417-D2C9D2D54719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
