@@ -1,4 +1,5 @@
-﻿using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class CashboxController : ControllerBase
     {
-        [HttpGet("All-Cashboxes")]
+        [HttpGet]
         public IActionResult GetAllCashboxes()
         {
             List<CashboxResponseModel> cashboxes = new List<CashboxResponseModel>()
@@ -28,7 +29,7 @@ namespace MegaCity.API.Controllers
             return Ok(cashboxes);
         }
 
-        [HttpGet()]
+        [HttpGet("{id}")]
         public IActionResult GetCashbox()
         {
             CashboxResponseModel cashbox = new CashboxResponseModel()
@@ -58,7 +59,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateCashbox(int id, CashboxResponseModel cashbox)
+        public IActionResult UpdateCashboxById(int id, CashboxResponseModel cashbox)
         {
             CashboxResponseModel cashboxOutput = new CashboxResponseModel()
             {

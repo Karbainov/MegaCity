@@ -1,5 +1,5 @@
-﻿using MegaCity.API.Models.ModelsInput;
-using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
@@ -10,7 +10,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class PromotionController : ControllerBase
     {
-        [HttpGet("All-Promotions")]
+        [HttpGet]
         public IActionResult GetAllPromotions()
         {
             List<PromotionResponseModel> allPromotions = new List<PromotionResponseModel>()
@@ -44,7 +44,7 @@ namespace MegaCity.API.Controllers
             return Ok(promotion);
         }
 
-        [HttpPost()]
+        [HttpPost]
         public IActionResult AddPromotion(PromotionRequestModel promotion)
         {
             PromotionRequestModel newPromotion = new PromotionRequestModel()
@@ -64,7 +64,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdatePromotion(int id, PromotionRequestModel promotion)
+        public IActionResult UpdatePromotionById(int id, PromotionRequestModel promotion)
         {
             PromotionResponseModel promotionOutput = new PromotionResponseModel()
             {

@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace MegaCity.API.Models.ModelsOutput
+﻿namespace MegaCity.API.Models.ResponseModel
 {
     public class StatisticsResponseModel
     {

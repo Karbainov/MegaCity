@@ -1,9 +1,11 @@
-﻿using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
+using MegaCity.API.Models.RequestModels;
 
 namespace MegaCity.API.Controllers
 {
@@ -24,7 +26,7 @@ namespace MegaCity.API.Controllers
             });
             _mapper = new Mapper(configuration);
         }
-        [HttpGet()]
+        [HttpGet]
         public IActionResult GetAllProducts()
         {
             List<ProductModel> product = _productService.GetAllProducts();
@@ -46,6 +48,38 @@ namespace MegaCity.API.Controllers
             };
 
             return Ok(product);
+        }
+
+        [HttpPost]
+        public IActionResult AddProduct(ProductRequestModel model)
+        {
+            ProductResponseModel product = new ProductResponseModel()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Count = model.Count
+            };
+
+            return Created("Product", "NewProduct");
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProductById(int id)
+        {
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateProductById(int id, ProductRequestModel product)
+        {
+            ProductResponseModel productOutput = new ProductResponseModel()
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Count = product.Count
+            };
+
+            return Ok(productOutput);
         }
     }
 }

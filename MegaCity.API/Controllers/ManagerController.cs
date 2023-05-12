@@ -1,5 +1,5 @@
-﻿using MegaCity.API.Models.ModelsInput;
-using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +9,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        [HttpGet("All-Managers")]
+        [HttpGet]
         public IActionResult GetAllManagers()
         {
             List<ManagerResponseModel> managers = new List<ManagerResponseModel>()
@@ -79,7 +79,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateManager(int id, ManagerRequestModel manager)
+        public IActionResult UpdateManagerById(int id, ManagerRequestModel manager)
         {
             ManagerResponseModel managerOutput = new ManagerResponseModel()
             {

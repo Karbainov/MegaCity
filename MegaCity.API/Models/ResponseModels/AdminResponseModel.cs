@@ -1,4 +1,4 @@
-﻿namespace MegaCity.API.Models.ModelsOutput
+﻿namespace MegaCity.API.Models.ResponseModel
 {
     public class AdminResponseModel
     {

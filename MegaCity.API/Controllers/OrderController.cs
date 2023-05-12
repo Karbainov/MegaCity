@@ -1,5 +1,5 @@
-﻿using MegaCity.API.Models.ModelsInput;
-using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -68,7 +68,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateOrder(int id,OrderRequestModel order)
+        public IActionResult UpdateOrderById(int id,OrderRequestModel order)
         {
             OrderResponseModel orderOutput = new OrderResponseModel();
             {

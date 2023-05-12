@@ -1,6 +1,5 @@
-﻿using MegaCity.API.Models;
-using MegaCity.API.Models.InputModels;
-using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +9,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class FilialController : ControllerBase
     {
-        [HttpGet("All-Filial")]
+        [HttpGet]
         public IActionResult GetAllFilials()
         {
             List<FilialResponseModel> filials = new List<FilialResponseModel>()
@@ -21,6 +20,7 @@ namespace MegaCity.API.Controllers
                     Adress="Nizami str.68"
                 },
             };
+
             return Ok(filials);
         }
 
@@ -34,6 +34,7 @@ namespace MegaCity.API.Controllers
 
             return Ok(filial);
         }
+
         [HttpPost()]
         public IActionResult AddFilialbiId(FilialRequestModel filial1)
         {
@@ -45,11 +46,13 @@ namespace MegaCity.API.Controllers
 
             return Ok(filial);
         }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteFilialById(int id)
         {
             return NoContent();
         }
+
         [HttpPut("{id}")]
         public IActionResult UpdateFilialbyId(int id, FilialRequestModel filial1)
         {
@@ -62,6 +65,5 @@ namespace MegaCity.API.Controllers
 
             return Ok(OutPutfilial);
         }
-
     }
 }

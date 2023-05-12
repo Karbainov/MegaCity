@@ -1,5 +1,5 @@
-﻿using MegaCity.API.Models.ModelsInput;
-using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
@@ -11,7 +11,7 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class SpoiledProductsAndGoodsController : ControllerBase
     {
-        [HttpGet()]
+        [HttpGet]
         public IActionResult GetAllSpoiledProductAndGoods()
         {
             List<SpoiledProductAndGoodsResponseModel> spoiled = new List<SpoiledProductAndGoodsResponseModel>()
@@ -46,10 +46,11 @@ namespace MegaCity.API.Controllers
                     ReasonWriteOff="lalala"
                 }
             };
+
             return Ok(spoiled);
         }
 
-        [HttpPost()]
+        [HttpPost]
         public IActionResult AddSpoiledProductAndGoods(SpoiledProductAndGoodsRequestModel spoiled)
         {
             SpoiledProductAndGoodsResponseModel newspoiledProductAndGoods = new SpoiledProductAndGoodsResponseModel()
@@ -63,17 +64,16 @@ namespace MegaCity.API.Controllers
             };
 
             return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), newspoiledProductAndGoods);
-        
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteSpoiledProductAndGoods(int id)
+        public IActionResult DeleteSpoiledProductAndGoodsById(int id)
         {
             return NoContent();
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateSpoiledProductAndGoods(int id, SpoiledProductAndGoodsRequestModel spoiled)
+        public IActionResult UpdateSpoiledProductAndGoodsById(int id, SpoiledProductAndGoodsRequestModel spoiled)
         {
             SpoiledProductAndGoodsResponseModel spoiledProductAndGoodsOutput = new SpoiledProductAndGoodsResponseModel();
             {
@@ -84,9 +84,8 @@ namespace MegaCity.API.Controllers
                 string DataWriteOff = spoiled.DataWriteOff;
                 string ReasonWriteOff = spoiled.ReasonWriteOff;
             }
+
             return Ok(spoiledProductAndGoodsOutput);
         }
-         
-
     }
 }

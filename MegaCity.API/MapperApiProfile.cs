@@ -2,7 +2,7 @@
 using MegaCity.API.Models;
 using MegaCity.BLL.Models;
 using MegaCity.BLL;
-using MegaCity.API.Models.ModelsOutput;
+using MegaCity.API.Models.ResponseModel;
 
 namespace MegaCity.API;
 

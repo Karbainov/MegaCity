@@ -1,4 +1,4 @@
-﻿namespace MegaCity.API.Models.InputModels
+﻿namespace MegaCity.API.Models.RequestModel
 {
     public class FilialRequestModel
     {

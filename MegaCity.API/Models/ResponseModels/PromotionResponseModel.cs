@@ -1,5 +1,5 @@
-﻿namespace MegaCity.API.Models.ModelsOutput
-{
+﻿namespace MegaCity.API.Models.ResponseModel
+{ 
     public class PromotionResponseModel
     {
         public int Id { get; set; }

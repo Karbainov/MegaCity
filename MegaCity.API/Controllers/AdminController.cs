@@ -1,7 +1,8 @@
-﻿using MegaCity.API.Models.ModelsInput;
-using MegaCity.API.Models.ModelsOutput;
+﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MegaCity.BLL;
 
 namespace MegaCity.API.Controllers
 {
@@ -10,7 +11,7 @@ namespace MegaCity.API.Controllers
     public class AdminController : ControllerBase
     {
 
-        [HttpGet("All-Admins")]
+        [HttpGet]
         public IActionResult GetAllAdmins()
         {
             List<AdminResponseModel> admins = new List<AdminResponseModel>()
@@ -81,7 +82,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateAdmin(int id, AdminRequestModel admin)
+        public IActionResult UpdateAdminById(int id, AdminRequestModel admin)
         {
             AdminResponseModel adminOutput = new AdminResponseModel()
             {

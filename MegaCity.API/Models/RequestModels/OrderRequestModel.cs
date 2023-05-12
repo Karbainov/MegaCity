@@ -1,4 +1,4 @@
-﻿namespace MegaCity.API.Models.ModelsInput
+﻿namespace MegaCity.API.Models.RequestModel
 {
     public class OrderRequestModel
     {
