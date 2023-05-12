@@ -1,5 +1,7 @@
-﻿using MegaCity.API.Models.RequestModel;
+﻿using AutoMapper;
+using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.ResponseModel;
+using MegaCity.BLL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,40 +11,22 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
+        ManagerService _managerService;
+        Mapper _mapper;
+
+        public ManagerController()
+        {
+            _managerService = new ManagerService();
+            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
+        }
+
         [HttpGet]
         public IActionResult GetAllManagers()
         {
-            List<ManagerResponseModel> managers = new List<ManagerResponseModel>()
-            {
-                new ManagerResponseModel()
-                {
-                    Id=5,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123456
-                },
+            List<ManagerModel> managers = _managerService.GetAllManagers();
 
-                new ManagerResponseModel()
-                {
-                    Id=6,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123452
-                },
-
-                new ManagerResponseModel()
-                {
-                    Id=44,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123458
-                }
-            };
-
-            return Ok(managers);
+            return Ok();
         }
 
         [HttpGet("{id}")]

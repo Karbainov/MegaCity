@@ -3,6 +3,8 @@ using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
 
 namespace MegaCity.API.Controllers
 {
@@ -10,41 +12,22 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
+        AdminService _adminService;
+        Mapper _mapper;
+
+        public AdminController()
+        {
+            _adminService = new AdminService();
+            MapperConfiguration configuration  = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
+        }
 
         [HttpGet]
         public IActionResult GetAllAdmins()
         {
-            List<AdminResponseModel> admins = new List<AdminResponseModel>()
-            {
-                new AdminResponseModel()
-                {
-                    Id=5,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123456
-                },
+            List<AdminModel> admins = _adminService.GetAllAdmins();
 
-                new AdminResponseModel()
-                {
-                    Id=6,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123452
-                },
-
-                new AdminResponseModel()
-                {
-                    Id=44,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=50,
-                    PhoneNumber=123458
-                }
-            };
-
-            return Ok(admins);
+            return Ok();
         }
 
         [HttpGet("{id}")]
