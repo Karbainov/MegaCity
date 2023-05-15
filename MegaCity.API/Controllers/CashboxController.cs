@@ -17,7 +17,7 @@ namespace MegaCity.API.Controllers
 
         public CashboxController()
         {
-            _cashboxService = new BLL.CashboxService();
+            _cashboxService = new CashboxService();
             MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
             _mapper = new Mapper(configuration);
         }
