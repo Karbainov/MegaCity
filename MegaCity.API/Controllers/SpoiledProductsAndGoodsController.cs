@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 using System.Xml.Linq;
+using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
+using MegaCity.API.Models.RequestModels;
 
 namespace MegaCity.API.Controllers
 {
@@ -11,49 +15,31 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class SpoiledProductsAndGoodsController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetAllSpoiledProductAndGoods()
+        SpoiledProductsAndGoodsService _spoiledProductsAndGoodsService;
+        Mapper _mapper;
+
+        public SpoiledProductsAndGoodsController()
         {
-            List<SpoiledProductAndGoodsResponseModel> spoiled = new List<SpoiledProductAndGoodsResponseModel>()
+            _spoiledProductsAndGoodsService = new SpoiledProductsAndGoodsService();
+
+            MapperConfiguration configuration = new MapperConfiguration(cfg =>
             {
-                new SpoiledProductAndGoodsResponseModel()
-                {
-                    Id=5,
-                    Name = "productOne",
-                    Price = 100,
-                    Count=150,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
-
-                new SpoiledProductAndGoodsResponseModel()
-                {
-                    Id=8,
-                    Name = "productTwo",
-                    Price = 200,
-                    Count=60,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
-
-                new SpoiledProductAndGoodsResponseModel()
-                {
-                    Id=3,
-                    Name = "productThree",
-                    Price = 300,
-                    Count=50,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                }
-            };
-
-            return Ok(spoiled);
+                cfg.AddProfile(new MapperApiProfile());
+            });
+            _mapper = new Mapper(configuration);
+        }
+         [HttpGet]
+        public IActionResult GetAllSpoiledProductsAndGoods()
+        {
+            List<SpoiledProductsAndGoodsModel> spoiledProductsAndGoods = _spoiledProductsAndGoodsService.GetAllSpoiledProductsAndGoods();
+            List<SpoiledProductsAndGoodsResponseModel> SpoiledProductAndGoods = _mapper.Map<List<SpoiledProductsAndGoodsResponseModel>>(spoiledProductsAndGoods);
+            return Ok(SpoiledProductAndGoods);
         }
 
         [HttpPost]
-        public IActionResult AddSpoiledProductAndGoods(SpoiledProductAndGoodsRequestModel spoiled)
+        public IActionResult AddSpoiledProductsAndGoods(SpoiledProductsAndGoodsRequestModel spoiled)
         {
-            SpoiledProductAndGoodsResponseModel newspoiledProductAndGoods = new SpoiledProductAndGoodsResponseModel()
+            SpoiledProductsAndGoodsResponseModel newspoiledProductAndGoods = new SpoiledProductsAndGoodsResponseModel()
             {
                 Id = 9,
                 Name = "productTwo",
@@ -73,9 +59,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateSpoiledProductAndGoodsById(int id, SpoiledProductAndGoodsRequestModel spoiled)
+        public IActionResult UpdateSpoiledProductAndGoodsById(int id, SpoiledProductsAndGoodsRequestModel spoiled)
         {
-            SpoiledProductAndGoodsResponseModel spoiledProductAndGoodsOutput = new SpoiledProductAndGoodsResponseModel();
+            SpoiledProductsAndGoodsResponseModel spoiledProductAndGoodsOutput = new SpoiledProductsAndGoodsResponseModel();
             {
                 int Id = id;
                 string Name = spoiled.Name;

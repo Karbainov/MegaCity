@@ -11,6 +11,10 @@ public class MapperApiProfile : Profile
     public MapperApiProfile()
     {
         CreateMap<ProductModel,ProductResponseModel>();
+        CreateMap<AdminModel, AdminResponseModel>();
+        CreateMap<ManagerModel, ManagerResponseModel>();
+        CreateMap<SpoiledProductsAndGoodsModel, SpoiledProductsAndGoodsResponseModel>();
+        CreateMap<GoodsModel, GoodsResponseModel>();
     }
 
 }
