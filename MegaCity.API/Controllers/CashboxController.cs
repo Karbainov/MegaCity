@@ -2,6 +2,9 @@
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
 
 namespace MegaCity.API.Controllers
 {
@@ -9,23 +12,21 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class CashboxController : ControllerBase
     {
+        CashboxService _cashboxService;
+        Mapper _mapper;
+
+        public CashboxController()
+        {
+            _cashboxService = new BLL.CashboxService();
+            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
+        }
+
         [HttpGet]
         public IActionResult GetAllCashboxes()
         {
-            List<CashboxResponseModel> cashboxes = new List<CashboxResponseModel>()
-            {
-                new CashboxResponseModel()
-                {
-                    Cash = 20000,
-                    Card = 17890
-                },
+            List<CashboxModel> cashboxes = _cashboxService.GetAllCashboxes();
 
-                new CashboxResponseModel()
-                {
-                    Cash = 20000,
-                    Card = 17890
-                }
-            };
             return Ok(cashboxes);
         }
 
