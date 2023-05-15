@@ -1,7 +1,9 @@
-﻿namespace MegaCity.API.Models.RequestModel
+﻿namespace MegaCity.API.Models.ResponseModel
 {
-    public class SpoiledProductAndGoodsRequestModel
+    public class SpoiledProductsAndGoodsResponseModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public double Price { get; set; }
