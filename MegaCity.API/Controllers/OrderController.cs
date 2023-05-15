@@ -2,6 +2,9 @@
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
 
 namespace MegaCity.API.Controllers
 {
@@ -9,6 +12,16 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class OrderController : Controller
     {
+        OrderService _orderService;
+        Mapper _mapper;
+
+        public OrderController()
+        {
+            _orderService = new OrderService();
+            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
+        }
+
         [HttpPost()]
         public IActionResult AddOrder(OrderRequestModel order)
         {
@@ -24,29 +37,9 @@ namespace MegaCity.API.Controllers
         [HttpGet("All-Orders")]
         public IActionResult GetAllOrders()
         {
-            List<OrderResponseModel> order = new List<OrderResponseModel>()
-            {
-                new OrderResponseModel()
-                {
-                    Name = "product1",
-                    Number = 5
-                },
+            List<OrderModel> orders = _orderService.GetAllOrders();
 
-                new OrderResponseModel()
-                {
-                    Name = "product2",
-                    Number = 10
-                },
-
-                new OrderResponseModel()
-                {
-                    Name = "product3",
-                    Number = 3
-                },
-
-            };
-
-            return Ok(order);
+            return Ok(orders);
         }
 
         [HttpGet("{id}")]

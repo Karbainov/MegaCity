@@ -2,6 +2,9 @@
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
 
 namespace MegaCity.API.Controllers
 {
@@ -9,22 +12,22 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class CheckController : ControllerBase
     {
+        CheckService _checkService;
+        Mapper _mapper;
+
+        public CheckController()
+        {
+            _checkService = new CheckService();
+            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
+        }
+
         [HttpGet()]
         public IActionResult GetAllChecks()
         {
-            List<CheckResponseModel> check_models = new List<CheckResponseModel>()
-            {
-                new CheckResponseModel()
-                {
-                    Sum = 171
-                },
+            List<CheckModel> checks = _checkService .GetAllChecks();
 
-                new CheckResponseModel()
-                {
-                    Sum = 187.50
-                },
-            };
-            return Ok(check_models);
+            return Ok(checks);
         }
 
         [HttpGet("{id}")]
