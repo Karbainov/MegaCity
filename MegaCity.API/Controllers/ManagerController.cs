@@ -4,6 +4,11 @@ using MegaCity.API.Models.ResponseModel;
 using MegaCity.BLL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
+using MegaCity.API.Models.RequestModels;
+
 
 namespace MegaCity.API.Controllers
 {
