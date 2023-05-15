@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MegaCity.BLL.Models
 {
-    internal class OrderModel
+    public class OrderModel
     {
+        public string Name { get; set; }
+
+        public int Number { get; set; }
     }
 }
