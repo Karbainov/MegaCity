@@ -5,42 +5,50 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using MegaCity.DAL;
+using MegaCity.DAL.Dots;
+
 
 namespace MegaCity.BLL
 {
     public class ProductService
     {
-        public List<ProductModel> GetAllProducts()
+        private IMapper _mapper;
+        private ProductRepository _productRepository;
+
+        public ProductService()
         {
-            
-            List<ProductModel> products = new List<ProductModel>()
-            {
-                new ProductModel()
-                {
-                    Id=5,
-                    Name = "productOne",
-                    Price = 100,
-                    Count=150
-                },
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+            _productRepository = new ProductRepository();
+        }
 
-                new ProductModel()
-                {
-                    Id=8,
-                    Name = "productTwo",
-                    Price = 200,
-                    Count=60
-                },
+        public List <ProductModel>GetAllProducts()
+        {
+            return _mapper.Map<List<ProductModel>>(_productRepository.GetAllProducts());
+        }
 
-                new ProductModel()
-                {
-                    Id=3,
-                    Name = "productThree",
-                    Price = 300,
-                    Count=50
-                }
-            };
+        public ProductModel GetProductById(int id)
+        {
+            var a = _productRepository.GetProductById(id);
+            return _mapper.Map<ProductModel>(a);
+        }
 
-            return products;
+        public ProductModel UpdateProduct(ProductModel productModel)
+        {
+            var model = _mapper.Map<ProductDto>(productModel);
+            return _mapper.Map<ProductModel>(_productRepository.UpdateProduct(model));
+        }
+
+        public void DeleteProductById(int id)
+        {
+            _productRepository.DeleteProductById(id);
+        }
+
+        public ProductModel AddProduct(ProductModel productModel)
+        {
+            var model = _mapper.Map<ProductDto>(productModel);
+            return _mapper.Map<ProductModel>(_productRepository.AddProduct(model));
         }
     }
     

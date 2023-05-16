@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
-using MegaCity.API.Models.RequestModels;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace MegaCity.API.Controllers
 {
@@ -14,18 +15,15 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class GoodsController : ControllerBase
     {
-        GoodsService _goodsService;
-        Mapper _mapper;
+       private GoodsService _goodsService;
+       private IMapper _mapper;
 
         public GoodsController()
         {
             _goodsService = new GoodsService();
 
-            MapperConfiguration configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new MapperApiProfile());
-            });
-            _mapper = new Mapper(configuration);
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
+            
         }
         [HttpGet]
         public IActionResult GetAllGoods()
@@ -38,46 +36,35 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
-            GoodsResponseModel goods = new GoodsResponseModel()
-            {
-                Id= id,
-                Name = "Potato",
-                Price = 17
-            };
+            var goods = _mapper.Map<GoodsResponseModel>(_goodsService.GetGoodsById(id));
+            return Ok(goods);
 
-            return Ok("goods");
         }
 
-        [HttpPost()]
-        public IActionResult AddGoods(GoodsRequestModel model)
+        [HttpPost("{Id}")]
+        public IActionResult AddGoods(int productId,GoodsRequestModel model)
         {
-            GoodsResponseModel goods = new GoodsResponseModel()
-            {
-                Name = model.Name,
-                Price = model.Price,
-                Count = model.Count
-            };
-
-            return Created("Goods", "NewGoods");
+            GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
+            GoodsModel newGoods = _goodsService.AddGoods(productId, goodsModel);
+            GoodsResponseModel result = _mapper.Map<GoodsResponseModel>(newGoods);
+            return Created(new Uri($"goods/{productId}", UriKind.Relative), result);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteGoodsById(int id)
         {
+            _goodsService.DeleteGoodsById(id);
             return NoContent();
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateGoodsById(int id, GoodsRequestModel goods)
         {
-            GoodsResponseModel modelOutput = new GoodsResponseModel()
-            {
-                Name = goods.Name,
-                Price = goods.Price,
-                Count = goods.Count
-            };
-
-            return Ok(modelOutput);
+            GoodsModel goodsModel = _mapper.Map<GoodsModel>(goods);
+            goodsModel.Id = id;
+            GoodsModel newGoods = _goodsService.UpdateGoods(goodsModel);
+            GoodsResponseModel result = _mapper.Map<GoodsResponseModel>(newGoods);
+            return Ok(result);
         }
     }
 }
