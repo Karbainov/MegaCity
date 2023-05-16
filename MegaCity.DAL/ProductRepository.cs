@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 public class ProductRepository
 {
-    private ProductDbContext _context;
+    private MegaCityDbContext _context;
 
     public ProductRepository()
     {
-        _context = new ProductDbContext();
+        _context = new MegaCityDbContext();
     }
      
-    public ProductDto AddProduct(ProductDbContext model)
+    public ProductDto AddProduct(ProductDto model)
     {
         _context.Products.Add(model);
         _context.SaveChanges();
@@ -27,7 +27,7 @@ public class ProductRepository
         return _context.Products.Include(g => g.Goods).FirstOrDefault(i => i.Id == id);
     }
 
-    public void deleteProductById(int id)
+    public void DeleteProductById(int id)
     {
         var model = _context.Products.FirstOrDefault(i => i.Id == id);
 

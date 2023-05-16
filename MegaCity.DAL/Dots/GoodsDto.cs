@@ -15,10 +15,7 @@ namespace MegaCity.DAL.Dots
         public double Price { get; set; }
 
         public int Count { get; set; }
-<<<<<<< HEAD
 
         public ProductDto Product { get; set; }
-=======
->>>>>>> main
     }
 }

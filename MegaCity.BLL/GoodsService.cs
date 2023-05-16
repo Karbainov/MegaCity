@@ -23,10 +23,10 @@ namespace MegaCity.BLL
             _goodsRepository = new GoodsRepository();
         }
 
-        public GoodsModel GetGoodsById(int id)
+        public List<GoodsModel> GetAllGoods()
         {
-            return _mapper.Map<GoodsModel>(_goodsRepository.GetGoodsById(id));
-
+            /// return _mapper.Map<GoodsModel>(_goodsRepository.());
+            return null;
         }
 
         public GoodsModel UpdateGoods(GoodsModel goodsModel)
@@ -46,7 +46,7 @@ namespace MegaCity.BLL
             return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(productId, goods));
         }
 
-        public GoodsModel GetGoodsById()
+        public GoodsModel GetGoodsById(int id)
         {
             GoodsModel goods = new GoodsModel()
             {

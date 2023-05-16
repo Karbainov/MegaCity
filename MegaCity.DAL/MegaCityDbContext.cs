@@ -8,21 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MegaCity.DAL
 {
-    public class ProductDbContext
+    public class MegaCityDbContext:DbContext
     {
-<<<<<<< HEAD:MegaCity.DAL/ProductDbContext.cs
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-=======
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
->>>>>>> main:MegaCity.DAL/DbContext.cs
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "MegaCityDb");
         }
-<<<<<<< HEAD:MegaCity.DAL/ProductDbContext.cs
 
         public DbSet<GoodsDto> Goods { get; set; }
         public DbSet<ProductDto> Products { get; set; }
-=======
         public DbSet<AdminDto> Admins { get; set; }
 
         public DbSet<CashboxDto> Cashboxes { get; set; }
@@ -31,19 +25,15 @@ namespace MegaCity.DAL
 
         public DbSet<FilialDto> Filials { get; set; }
 
-        public DbSet<GoodsDto> Goods { get; set; }
-
         public DbSet<ManagerDto> Managers { get; set; }
 
         public DbSet<OrderDto> Orders { get; set; }
-
-        public DbSet<ProductDto> Products { get; set; }
 
         public DbSet<PromotionDto> Promotions { get; set; }
 
         public DbSet<SpoiledProductsAndGoodsDto> SpoiledProductsAndGoods { get; set; }
 
         public DbSet<StatisticsDto> Statistics { get; set; }
->>>>>>> main:MegaCity.DAL/DbContext.cs
+
     }
 }

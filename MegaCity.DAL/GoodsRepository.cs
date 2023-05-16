@@ -10,11 +10,11 @@ namespace MegaCity.DAL
 {
     public class GoodsRepository
     {
-        private ProductDbContext _context;
+        private MegaCityDbContext _context;
 
         public GoodsRepository()
         {
-            _context = new ProductDbContext();
+            _context = new MegaCityDbContext();
         }
 
         public GoodsDto AddGoods(int productId,GoodsDto Goods)
