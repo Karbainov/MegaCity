@@ -46,7 +46,15 @@ namespace MegaCity.BLL
                 Name = filial.Name,
                 Adress = filial.Adress
             };
+        }
 
+        public void UpdateFilialById(int id, FilialModel filial)
+        {
+            FilialModel filialOutput = new FilialModel
+            {
+                Name = filial.Name,
+                Adress = filial.Adress
+            };
         }
     }
 }

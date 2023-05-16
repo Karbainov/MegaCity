@@ -56,5 +56,14 @@ namespace MegaCity.BLL
                 int Number = order.Number;
             };
         }
+
+        public void UpdateOrderById(int id, OrderModel order)
+        {
+            OrderModel orderOutput = new OrderModel();
+            {
+                string Name = order.Name;
+                int Number = order.Number;
+            };
+        }
     }
 }

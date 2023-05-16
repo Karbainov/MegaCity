@@ -61,11 +61,10 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateCashboxById(int id, CashboxResponseModel cashbox)
         {
-            CashboxResponseModel cashboxOutput = new CashboxResponseModel()
-            {
-                Cash = cashbox.Cash,
-                Card = cashbox.Card
-            };
+            CashboxModel cashboxModel = _mapper.Map<CashboxModel>(cashbox);
+            _cashboxService.UpdateCashboxById(id, cashboxModel);
+
+            CashboxResponseModel cashboxOutput = _mapper.Map<CashboxResponseModel>(cashboxModel);
 
             return Ok(cashboxOutput);
         }

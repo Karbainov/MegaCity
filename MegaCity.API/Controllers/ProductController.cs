@@ -65,12 +65,10 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateProductById(int id, ProductRequestModel product)
         {
-            ProductResponseModel productOutput = new ProductResponseModel()
-            {
-                Name = product.Name,
-                Price = product.Price,
-                Count = product.Count
-            };
+            ProductModel productModel = _mapper.Map<ProductModel>(product);
+            _productService.UpdateProductById(id, productModel);
+
+            ProductResponseModel productOutput = _mapper.Map<ProductResponseModel>(productModel);
 
             return Ok(productOutput);
         }
