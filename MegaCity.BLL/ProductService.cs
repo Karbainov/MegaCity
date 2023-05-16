@@ -50,6 +50,29 @@ namespace MegaCity.BLL
             var model = _mapper.Map<ProductDto>(productModel);
             return _mapper.Map<ProductModel>(_productRepository.AddProduct(model));
         }
+
+        public ProductModel GetProductById()
+        {
+            ProductModel product = new ProductModel()
+            {
+                Id = 20000,
+                Name = "product",
+                Price = 20,
+                Count = 70
+            };
+
+            return product;
+        }
+
+        public void AddProduct(ProductModel model)
+        {
+            ProductModel product = new ProductModel()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Count = model.Count
+            };
+        }
     }
     
 }

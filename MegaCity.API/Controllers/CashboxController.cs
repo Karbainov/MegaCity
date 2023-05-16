@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
+using System.Security.Cryptography.Xml;
 
 namespace MegaCity.API.Controllers
 {
@@ -26,31 +27,29 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllCashboxes()
         {
             List<CashboxModel> cashboxes = _cashboxService.GetAllCashboxes();
+            List<CashboxResponseModel> allCashboxes = _mapper.Map<List<CashboxResponseModel>>(cashboxes);
 
-            return Ok(cashboxes);
+            return Ok(allCashboxes);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCashbox()
+        public IActionResult GetCashboxById(int id)
         {
-            CashboxResponseModel cashbox = new CashboxResponseModel()
-            {
-                Cash = 20000,
-                Card = 17890
-            };
-            return Ok(cashbox);
+            CashboxModel cashbox = _cashboxService.GetCashboxById();
+            CashboxResponseModel cashboxId = _mapper.Map<CashboxResponseModel>(cashbox);
+
+            return Ok(cashboxId);
         }
 
         [HttpPost()]
         public IActionResult AddCashbox(CashboxResponseModel cashbox)
         {
-            CashboxResponseModel addCashbox = new CashboxResponseModel()
-            {
-                Cash = cashbox.Cash,
-                Card = cashbox.Card
-            };
+            CashboxModel cashboxModel = _mapper.Map<CashboxModel>(cashbox);
+            _cashboxService.AddCashbox(cashboxModel);
 
-            return Created("Cashbox", "NewCashbox");
+            CashboxResponseModel newCashbox = _mapper.Map<CashboxResponseModel>(cashboxModel);
+
+            return Created(new Uri("Cashbox", UriKind.Relative), newCashbox);
         }
 
         [HttpDelete("{id}")]

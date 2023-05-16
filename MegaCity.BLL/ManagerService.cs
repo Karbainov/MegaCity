@@ -43,5 +43,28 @@ namespace MegaCity.BLL
 
             return managers;
         }
+
+        public ManagerModel GetManagerById()
+        {
+            ManagerModel manager = new ManagerModel()
+            {
+                Id = 9,
+                FirstName = "FirstName",
+                LastName = "LastName",
+                Age = 150,
+                PhoneNumber = 123451
+            };
+
+            return manager;
+        }
+
+        public void AddManager(ManagerModel manager)
+        {
+            ManagerModel addManager = new ManagerModel()
+            {
+                FirstName = manager.FirstName,
+                LastName = manager.LastName
+            };
+        }
     }
 }

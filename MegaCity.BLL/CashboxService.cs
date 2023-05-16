@@ -28,5 +28,26 @@ namespace MegaCity.BLL
 
             return cashboxes;
         }
+
+        public CashboxModel GetCashboxById()
+        {
+
+            CashboxModel cashbox = new CashboxModel()
+            {
+                Cash = 20000,
+                Card = 17890
+            };
+
+            return cashbox;
+        }
+
+        public void AddCashbox(CashboxModel cashbox)
+        {
+            CashboxModel addCashbox = new CashboxModel()
+            {
+                Cash = cashbox.Cash,
+                Card = cashbox.Card
+            };
+        }
     }
 }

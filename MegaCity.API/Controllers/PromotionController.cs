@@ -2,7 +2,9 @@
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography;
+using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
 
 namespace MegaCity.API.Controllers
 {
@@ -10,36 +12,29 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class PromotionController : ControllerBase
     {
+        PromotionService _promotionService;
+        Mapper _mapper;
+
+        public PromotionController()
+        {
+            _promotionService = new PromotionService();
+            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
+        }
+
         [HttpGet]
         public IActionResult GetAllPromotions()
         {
-            List<PromotionResponseModel> allPromotions = new List<PromotionResponseModel>()
-            {
-                new PromotionResponseModel
-                {
-                    Name = "PromotionOne",
-                    Day = 10
-                },
-
-                new PromotionResponseModel
-                {
-                    Name = "PromotionTwo",
-                    Month = 3
-                }
-            };
+            List<PromotionModel> promotions = _promotionService.GetAllPromotions();
+            List<PromotionResponseModel> allPromotions = _mapper.Map<List<PromotionResponseModel>>(promotions);
 
             return Ok(allPromotions);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetPromotion()
+        public IActionResult GetPromotionById(int id)
         {
-            PromotionResponseModel promotion = new PromotionResponseModel()
-            {
-                Name = "PromotionOne",
-                Month = 1,
-                Description = "It is promotion for our clients"
-            };
+            PromotionModel promotion = _promotionService.GetPromotionById();
 
             return Ok(promotion);
         }
@@ -47,14 +42,12 @@ namespace MegaCity.API.Controllers
         [HttpPost]
         public IActionResult AddPromotion(PromotionRequestModel promotion)
         {
-            PromotionRequestModel newPromotion = new PromotionRequestModel()
-            {
-                Name = promotion.Name,
-                Month = promotion.Month,
-                Description = promotion.Description
-            };
+            PromotionModel promotionModel = _mapper.Map<PromotionModel>(promotion);
+            _promotionService.AddPromotion(promotionModel);
 
-            return Created("newPromotion", "Promotion");
+            PromotionResponseModel newPromotion = _mapper.Map<PromotionResponseModel>(promotionModel);
+
+            return Created(new Uri("Promotion", UriKind.Relative), newPromotion);
         }
 
         [HttpDelete("{id}")]

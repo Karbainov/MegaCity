@@ -45,5 +45,27 @@ namespace MegaCity.BLL
             var goods = _mapper.Map<GoodsDto>(goodsModel);
             return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(productId, goods));
         }
+
+        public GoodsModel GetGoodsById()
+        {
+            GoodsModel goods = new GoodsModel()
+            {
+                Name = "Potato",
+                Price = 17
+            };
+
+            return goods;
+        }
+
+        public void AddGoods(GoodsModel model)
+        {
+            GoodsModel goods = new GoodsModel()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Count = model.Count
+            };
+        }
+
     }
 }

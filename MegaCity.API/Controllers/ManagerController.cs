@@ -30,35 +30,29 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllManagers()
         {
             List<ManagerModel> managers = _managerService.GetAllManagers();
+            List<ManagerResponseModel> allManagers = _mapper.Map<List<ManagerResponseModel>>(managers);
 
-            return Ok();
+            return Ok(allManagers);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetManagerById(int id)
         {
-            ManagerResponseModel manager = new ManagerResponseModel()
-            {
-                Id = 9,
-                FirstName = "FirstName",
-                LastName = "LastName",
-                Age = 150,
-                PhoneNumber = 123451
-            };
+            ManagerModel manager = _managerService.GetManagerById();
+            ManagerResponseModel managerId = _mapper.Map<ManagerResponseModel>(manager);
 
-            return Ok(manager);
+            return Ok(managerId);
         }
 
         [HttpPost()]
         public IActionResult AddManager(ManagerRequestModel manager)
         {
-            ManagerResponseModel addManager = new ManagerResponseModel()
-            {
-                FirstName = manager.FirstName,
-                LastName = manager.LastName
-            };
+            ManagerModel managerModel = _mapper.Map<ManagerModel>(manager);
+            _managerService.AddManager(managerModel);
 
-            return Created("Manager", "NewManager");
+            ManagerResponseModel newManager = _mapper.Map<ManagerResponseModel>(managerModel);
+
+            return Created(new Uri("Manager", UriKind.Relative), newManager);
         }
 
         [HttpDelete("{id}")]

@@ -1,4 +1,4 @@
-﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,12 +27,12 @@ namespace MegaCity.API.Controllers
         [HttpGet]
         public IActionResult GetAllProducts()
         {
-            
-            var products = _mapper.Map<List<ProductResponseModel>>(_productService.GetAllProducts());
-            return Ok(products);
+            List<ProductModel> products = _productService.GetAllProducts();
+            List<ProductResponseModel> allProducts = _mapper.Map<List<ProductResponseModel>>(products);
+
+            return Ok(allProducts);
 
         } 
-
 
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)

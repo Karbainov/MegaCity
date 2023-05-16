@@ -40,5 +40,27 @@ namespace MegaCity.BLL
 
             return admins;
         }
+
+        public AdminModel GetAdminById()
+        {
+            AdminModel admin = new AdminModel()
+            {
+                FirstName = "FirstName",
+                LastName = "LastName",
+                Age = 35,
+                PhoneNumber = 123451
+            };
+
+            return admin;
+        }
+
+        public void AddAdmin(AdminModel admin)
+        {
+            AdminModel newAdmin = new AdminModel()
+            {
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+        }
     }
 }

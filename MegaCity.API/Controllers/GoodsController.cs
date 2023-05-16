@@ -1,4 +1,4 @@
-﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.RequestModels;
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
@@ -29,8 +29,9 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllGoods()
         {
             List<GoodsModel> goods = _goodsService.GetAllGoods();
-            List<GoodsResponseModel> Goods = _mapper.Map<List<GoodsResponseModel>>(goods);
-            return Ok(Goods);
+            List<GoodsResponseModel> allGoods = _mapper.Map<List<GoodsResponseModel>>(goods);
+
+            return Ok(allGoods);
         }
 
         [HttpGet("{id}")]
@@ -39,15 +40,18 @@ namespace MegaCity.API.Controllers
             var goods = _mapper.Map<GoodsResponseModel>(_goodsService.GetGoodsById(id));
             return Ok(goods);
 
+            return Ok("goods");
         }
 
         [HttpPost("{Id}")]
         public IActionResult AddGoods(int productId,GoodsRequestModel model)
         {
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
-            GoodsModel newGoods = _goodsService.AddGoods(productId, goodsModel);
-            GoodsResponseModel result = _mapper.Map<GoodsResponseModel>(newGoods);
-            return Created(new Uri($"goods/{productId}", UriKind.Relative), result);
+            _goodsService.AddGoods(goodsModel);
+
+            GoodsResponseModel newGoods = _mapper.Map<GoodsResponseModel>(goodsModel);
+
+            return Created(new Uri("Goods", UriKind.Relative), newGoods);
         }
 
         [HttpDelete("{id}")]
