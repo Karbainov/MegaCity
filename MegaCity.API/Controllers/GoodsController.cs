@@ -48,14 +48,12 @@ namespace MegaCity.API.Controllers
         [HttpPost()]
         public IActionResult AddGoods(GoodsRequestModel model)
         {
-            GoodsResponseModel goods = new GoodsResponseModel()
-            {
-                Name = model.Name,
-                Price = model.Price,
-                Count = model.Count
-            };
+            GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
+            _goodsService.AddGoods(goodsModel);
 
-            return Created("Goods", "NewGoods");
+            GoodsResponseModel newGoods = _mapper.Map<GoodsResponseModel>(goodsModel);
+
+            return Created(new Uri("Goods", UriKind.Relative), newGoods);
         }
 
         [HttpDelete("{id}")]

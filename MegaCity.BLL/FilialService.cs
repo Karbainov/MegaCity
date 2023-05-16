@@ -38,5 +38,15 @@ namespace MegaCity.BLL
 
             return filial;
         }
+
+        public void AddFilial(FilialModel filial)
+        {
+            FilialModel filialModel = new FilialModel
+            {
+                Name = filial.Name,
+                Adress = filial.Adress
+            };
+
+        }
     }
 }

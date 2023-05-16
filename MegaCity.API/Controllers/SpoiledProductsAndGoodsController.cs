@@ -40,17 +40,12 @@ namespace MegaCity.API.Controllers
         [HttpPost]
         public IActionResult AddSpoiledProductsAndGoods(SpoiledProductsAndGoodsRequestModel spoiled)
         {
-            SpoiledProductsAndGoodsResponseModel newspoiledProductAndGoods = new SpoiledProductsAndGoodsResponseModel()
-            {
-                Id = 9,
-                Name = "productTwo",
-                Price = 200,
-                Count = 60,
-                DataWriteOff = "11/12/12",
-                ReasonWriteOff = "lalala"
-            };
+            SpoiledProductsAndGoodsModel spoiledModel = _mapper.Map<SpoiledProductsAndGoodsModel>(spoiled);
+            _spoiledProductsAndGoodsService.AddSpoiledProductsAndGoods(spoiledModel);
 
-            return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), newspoiledProductAndGoods);
+            SpoiledProductsAndGoodsResponseModel newSpoiled = _mapper.Map<SpoiledProductsAndGoodsResponseModel>(spoiledModel);
+
+            return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), newSpoiled);
         }
 
         [HttpDelete("{id}")]

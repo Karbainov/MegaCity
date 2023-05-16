@@ -42,14 +42,12 @@ namespace MegaCity.API.Controllers
         [HttpPost]
         public IActionResult AddPromotion(PromotionRequestModel promotion)
         {
-            PromotionRequestModel newPromotion = new PromotionRequestModel()
-            {
-                Name = promotion.Name,
-                Month = promotion.Month,
-                Description = promotion.Description
-            };
+            PromotionModel promotionModel = _mapper.Map<PromotionModel>(promotion);
+            _promotionService.AddPromotion(promotionModel);
 
-            return Created("newPromotion", "Promotion");
+            PromotionResponseModel newPromotion = _mapper.Map<PromotionResponseModel>(promotionModel);
+
+            return Created(new Uri("Promotion", UriKind.Relative), newPromotion);
         }
 
         [HttpDelete("{id}")]

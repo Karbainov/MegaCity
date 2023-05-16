@@ -53,5 +53,14 @@ namespace MegaCity.BLL
 
             return admin;
         }
+
+        public void AddAdmin(AdminModel admin)
+        {
+            AdminModel newAdmin = new AdminModel()
+            {
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+        }
     }
 }
