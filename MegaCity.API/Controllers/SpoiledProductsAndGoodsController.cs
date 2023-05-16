@@ -33,6 +33,7 @@ namespace MegaCity.API.Controllers
         {
             List<SpoiledProductsAndGoodsModel> spoiledProductsAndGoods = _spoiledProductsAndGoodsService.GetAllSpoiledProductsAndGoods();
             List<SpoiledProductsAndGoodsResponseModel> SpoiledProductAndGoods = _mapper.Map<List<SpoiledProductsAndGoodsResponseModel>>(spoiledProductsAndGoods);
+
             return Ok(SpoiledProductAndGoods);
         }
 

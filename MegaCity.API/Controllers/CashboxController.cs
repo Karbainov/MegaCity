@@ -26,16 +26,18 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllCashboxes()
         {
             List<CashboxModel> cashboxes = _cashboxService.GetAllCashboxes();
+            List<CashboxResponseModel> allCashboxes = _mapper.Map<List<CashboxResponseModel>>(cashboxes);
 
-            return Ok(cashboxes);
+            return Ok(allCashboxes);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCashboxById(int id)
         {
             CashboxModel cashbox = _cashboxService.GetCashboxById();
+            CashboxResponseModel cashboxId = _mapper.Map<CashboxResponseModel>(cashbox);
 
-            return Ok(cashbox);
+            return Ok(cashboxId);
         }
 
         [HttpPost()]

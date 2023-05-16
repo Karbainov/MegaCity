@@ -26,16 +26,18 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllFilials()
         {
             List<FilialModel> filials = _filialService.GetAllFilials();
+            List<FilialResponseModel> allFilials = _mapper.Map<List<FilialResponseModel>>(filials);
 
-            return Ok(filials);
+            return Ok(allFilials);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetFilialbyId(int id)
         {
             FilialModel filial = _filialService.GetFilialById();
+            FilialResponseModel filialId = _mapper.Map<FilialResponseModel>(filial);
 
-            return Ok(filial);
+            return Ok(filialId);
         }
 
         [HttpPost()]

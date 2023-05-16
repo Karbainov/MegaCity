@@ -30,16 +30,18 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllManagers()
         {
             List<ManagerModel> managers = _managerService.GetAllManagers();
+            List<ManagerResponseModel> allManagers = _mapper.Map<List<ManagerResponseModel>>(managers);
 
-            return Ok();
+            return Ok(allManagers);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetManagerById(int id)
         {
             ManagerModel manager = _managerService.GetManagerById();
+            ManagerResponseModel managerId = _mapper.Map<ManagerResponseModel>(manager);
 
-            return Ok(manager);
+            return Ok(managerId);
         }
 
         [HttpPost()]

@@ -31,16 +31,18 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllGoods()
         {
             List<GoodsModel> goods = _goodsService.GetAllGoods();
-            List<GoodsResponseModel> Goods = _mapper.Map<List<GoodsResponseModel>>(goods);
-            return Ok(Goods);
+            List<GoodsResponseModel> allGoods = _mapper.Map<List<GoodsResponseModel>>(goods);
+
+            return Ok(allGoods);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
             GoodsModel goods = _goodsService.GetGoodsById();
+            GoodsResponseModel goodsId = _mapper.Map<GoodsResponseModel>(goods);
 
-            return Ok(goods);
+            return Ok(goodsId);
         }
 
         [HttpPost()]

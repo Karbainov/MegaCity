@@ -26,12 +26,13 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllPromotions()
         {
             List<PromotionModel> promotions = _promotionService.GetAllPromotions();
+            List<PromotionResponseModel> allPromotions = _mapper.Map<List<PromotionResponseModel>>(promotions);
 
-            return Ok(promotions);
+            return Ok(allPromotions);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetPromotion()
+        public IActionResult GetPromotionById(int id)
         {
             PromotionModel promotion = _promotionService.GetPromotionById();
 

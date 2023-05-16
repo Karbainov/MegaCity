@@ -26,16 +26,18 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllAdmins()
         {
             List<AdminModel> admins = _adminService.GetAllAdmins();
+            List<AdminResponseModel> allAdmins= _mapper.Map<List<AdminResponseModel>>(admins);
 
-            return Ok();
+            return Ok(allAdmins);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetAdminById(int id)
         {
             AdminModel admin = _adminService.GetAdminById();
+            AdminResponseModel adminId = _mapper.Map<AdminResponseModel>(admin);
 
-            return Ok(admin);
+            return Ok(adminId);
         }
 
         [HttpPost()]
@@ -43,7 +45,6 @@ namespace MegaCity.API.Controllers
         {
             AdminResponseModel newAdmin = new AdminResponseModel()
             {
-                Id = 9,
                 FirstName = admin.FirstName,
                 LastName = admin.LastName
             };

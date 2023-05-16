@@ -26,16 +26,18 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllChecks()
         {
             List<CheckModel> checks = _checkService.GetAllChecks();
+            List<CheckResponseModel> allChecks = _mapper.Map<List<CheckResponseModel>>(checks);
 
-            return Ok(checks);
+            return Ok(allChecks);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetCheckById(int id)
         {
             CheckModel check = _checkService.GetCheckById();
+            CheckResponseModel checkId = _mapper.Map<CheckResponseModel>(check);
 
-            return Ok(check);
+            return Ok(checkId);
         }
     }
 }

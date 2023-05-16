@@ -38,16 +38,18 @@ namespace MegaCity.API.Controllers
         public IActionResult GetAllOrders()
         {
             List<OrderModel> orders = _orderService.GetAllOrders();
+            List<OrderResponseModel> allOrders = _mapper.Map<List<OrderResponseModel>>(orders);
 
-            return Ok(orders);
+            return Ok(allOrders);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetOrder(int id)
         {
             OrderModel order = _orderService.GetOrderById();
+            OrderResponseModel orderId = _mapper.Map<OrderResponseModel>(order);
 
-            return Ok(order);
+            return Ok(orderId);
         }
 
         [HttpDelete("{id}")]
