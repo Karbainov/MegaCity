@@ -43,13 +43,12 @@ namespace MegaCity.API.Controllers
         [HttpPost()]
         public IActionResult AddFilialbiId(FilialRequestModel filial)
         {
-            FilialResponseModel filialModel = new FilialResponseModel
-            {
-                Name = filial.Name,
-                Adress = filial.Adress
-            };
+            FilialModel filialModel = _mapper.Map<FilialModel>(filial);
+            _filialService.AddFilial(filialModel);
 
-            return Ok(filialModel);
+            FilialResponseModel newFilial = _mapper.Map<FilialResponseModel>(filialModel);
+
+            return Created(new Uri("Filial", UriKind.Relative), newFilial);
         }
 
         [HttpDelete("{id}")]

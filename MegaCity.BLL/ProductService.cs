@@ -55,6 +55,16 @@ namespace MegaCity.BLL
 
             return product;
         }
+
+        public void AddProduct(ProductModel model)
+        {
+            ProductModel product = new ProductModel()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Count = model.Count
+            };
+        }
     }
     
 }

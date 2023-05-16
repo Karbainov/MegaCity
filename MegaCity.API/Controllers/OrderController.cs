@@ -22,18 +22,6 @@ namespace MegaCity.API.Controllers
             _mapper = new Mapper(configuration);
         }
 
-        [HttpPost()]
-        public IActionResult AddOrder(OrderRequestModel order)
-        {
-            OrderResponseModel newOrder = new OrderResponseModel();
-            {
-                string Name = order.Name;
-                int Number = order.Number;
-            }
-
-            return Created(new Uri("Order", UriKind.Relative), newOrder);
-        }
-
         [HttpGet("All-Orders")]
         public IActionResult GetAllOrders()
         {
@@ -50,6 +38,17 @@ namespace MegaCity.API.Controllers
             OrderResponseModel orderId = _mapper.Map<OrderResponseModel>(order);
 
             return Ok(orderId);
+        }
+
+        [HttpPost()]
+        public IActionResult AddOrder(OrderRequestModel order)
+        {
+            OrderModel orderModel = _mapper.Map<OrderModel>(order);
+            _orderService.AddOrder(orderModel);
+
+            OrderResponseModel newOrder = _mapper.Map<OrderResponseModel>(orderModel);
+
+            return Created(new Uri("Order", UriKind.Relative), newOrder);
         }
 
         [HttpDelete("{id}")]

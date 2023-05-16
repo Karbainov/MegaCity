@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MegaCity.BLL.Models;
 
-namespace MegaCity.BLL.Models
+namespace MegaCity.BLL
 {
     public class SpoiledProductsAndGoodsService
     {
@@ -14,7 +15,6 @@ namespace MegaCity.BLL.Models
             {
                 new SpoiledProductsAndGoodsModel()
                 {
-                    Id=5,
                     Name = "productOne",
                     Price = 100,
                     Count=150,
@@ -24,7 +24,6 @@ namespace MegaCity.BLL.Models
 
                 new SpoiledProductsAndGoodsModel()
                 {
-                    Id=8,
                     Name = "productTwo",
                     Price = 200,
                     Count=60,
@@ -34,7 +33,6 @@ namespace MegaCity.BLL.Models
 
                 new SpoiledProductsAndGoodsModel()
                 {
-                    Id=3,
                     Name = "productThree",
                     Price = 300,
                     Count=50,
@@ -44,6 +42,18 @@ namespace MegaCity.BLL.Models
             };
 
             return spoiled;
+        }
+
+        public void AddSpoiledProductsAndGoods(SpoiledProductsAndGoodsModel spoiled)
+        {
+            SpoiledProductsAndGoodsModel newspoiledProductAndGoods = new SpoiledProductsAndGoodsModel()
+            {
+                Name = "productTwo",
+                Price = 200,
+                Count = 60,
+                DataWriteOff = "11/12/12",
+                ReasonWriteOff = "lalala"
+            };
         }
     }
 }

@@ -41,5 +41,15 @@ namespace MegaCity.BLL
 
             return promotion;
         }
+
+        public void AddPromotion(PromotionModel promotion)
+        {
+            PromotionModel newPromotion = new PromotionModel()
+            {
+                Name = promotion.Name,
+                Month = promotion.Month,
+                Description = promotion.Description
+            };
+        }
     }
 }

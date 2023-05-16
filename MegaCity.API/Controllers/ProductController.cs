@@ -36,7 +36,6 @@ namespace MegaCity.API.Controllers
 
         } 
 
-
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
@@ -49,14 +48,12 @@ namespace MegaCity.API.Controllers
         [HttpPost]
         public IActionResult AddProduct(ProductRequestModel model)
         {
-            ProductResponseModel product = new ProductResponseModel()
-            {
-                Name = model.Name,
-                Price = model.Price,
-                Count = model.Count
-            };
+            ProductModel productModel = _mapper.Map<ProductModel>(model);
+            _productService.AddProduct(productModel);
 
-            return Created("Product", "NewProduct");
+            ProductResponseModel newProduct = _mapper.Map<ProductResponseModel>(productModel);
+
+            return Created(new Uri("Product", UriKind.Relative), newProduct);
         }
 
         [HttpDelete("{id}")]
