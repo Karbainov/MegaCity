@@ -25,18 +25,15 @@ namespace MegaCity.API.Controllers
         [HttpGet()]
         public IActionResult GetAllChecks()
         {
-            List<CheckModel> checks = _checkService .GetAllChecks();
+            List<CheckModel> checks = _checkService.GetAllChecks();
 
             return Ok(checks);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCheck(int id)
+        public IActionResult GetCheckById(int id)
         {
-            CheckResponseModel check = new CheckResponseModel()
-            {
-                Sum = 165672
-            };
+            CheckModel check = _checkService.GetCheckById();
 
             return Ok(check);
         }

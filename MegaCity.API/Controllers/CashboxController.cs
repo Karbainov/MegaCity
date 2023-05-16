@@ -31,13 +31,10 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCashbox()
+        public IActionResult GetCashboxById(int id)
         {
-            CashboxResponseModel cashbox = new CashboxResponseModel()
-            {
-                Cash = 20000,
-                Card = 17890
-            };
+            CashboxModel cashbox = _cashboxService.GetCashboxById();
+
             return Ok(cashbox);
         }
 

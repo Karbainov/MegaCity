@@ -37,14 +37,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetManagerById(int id)
         {
-            ManagerResponseModel manager = new ManagerResponseModel()
-            {
-                Id = 9,
-                FirstName = "FirstName",
-                LastName = "LastName",
-                Age = 150,
-                PhoneNumber = 123451
-            };
+            ManagerModel manager = _managerService.GetManagerById();
 
             return Ok(manager);
         }

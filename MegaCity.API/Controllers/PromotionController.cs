@@ -2,7 +2,9 @@
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Cryptography;
+using MegaCity.BLL;
+using MegaCity.BLL.Models;
+using AutoMapper;
 
 namespace MegaCity.API.Controllers
 {
@@ -10,36 +12,28 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class PromotionController : ControllerBase
     {
+        PromotionService _promotionService;
+        Mapper _mapper;
+
+        public PromotionController()
+        {
+            _promotionService = new PromotionService();
+            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
+        }
+
         [HttpGet]
         public IActionResult GetAllPromotions()
         {
-            List<PromotionResponseModel> allPromotions = new List<PromotionResponseModel>()
-            {
-                new PromotionResponseModel
-                {
-                    Name = "PromotionOne",
-                    Day = 10
-                },
+            List<PromotionModel> promotions = _promotionService.GetAllPromotions();
 
-                new PromotionResponseModel
-                {
-                    Name = "PromotionTwo",
-                    Month = 3
-                }
-            };
-
-            return Ok(allPromotions);
+            return Ok(promotions);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetPromotion()
         {
-            PromotionResponseModel promotion = new PromotionResponseModel()
-            {
-                Name = "PromotionOne",
-                Month = 1,
-                Description = "It is promotion for our clients"
-            };
+            PromotionModel promotion = _promotionService.GetPromotionById();
 
             return Ok(promotion);
         }

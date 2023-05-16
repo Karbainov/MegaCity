@@ -28,5 +28,16 @@ namespace MegaCity.BLL
 
             return goods;
         }
+
+        public GoodsModel GetGoodsById()
+        {
+            GoodsModel goods = new GoodsModel()
+            {
+                Name = "Potato",
+                Price = 17
+            };
+
+            return goods;
+        }
     }
 }
