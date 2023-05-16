@@ -6,6 +6,7 @@ using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
 using MegaCity.API.Models.RequestModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace MegaCity.API.Controllers
 {
@@ -19,18 +20,15 @@ namespace MegaCity.API.Controllers
         public ProductController()
         {
             _productService = new ProductService();
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
 
-            MapperConfiguration configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new MapperApiProfile());
-            });
-            _mapper = new Mapper(configuration);
+            
         }
         [HttpGet]
         public IActionResult GetAllProducts()
         {
-            List<ProductModel> product = _productService.GetAllProducts();
-            List<ProductResponseModel> products = _mapper.Map<List<ProductResponseModel>>(product);
+            
+            var products = _mapper.Map<List<ProductResponseModel>>(_productService.GetAllProducts());
             return Ok(products);
 
         } 
@@ -39,47 +37,35 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
-            ProductResponseModel product = new ProductResponseModel()
-            {
-                Id = 20000,
-                Name="product",
-                Price=20,
-                Count=70
-            };
-
+            var a = _productService.GetProductById(id);
+            var product = _mapper.Map<ProductResponseModel>(a);
             return Ok(product);
         }
 
         [HttpPost]
         public IActionResult AddProduct(ProductRequestModel model)
         {
-            ProductResponseModel product = new ProductResponseModel()
-            {
-                Name = model.Name,
-                Price = model.Price,
-                Count = model.Count
-            };
-
-            return Created("Product", "NewProduct");
+            ProductModel productModel = _mapper.Map<ProductModel>(model);
+            ProductModel newProduct = _productService.AddProduct(productModel);
+            ProductResponseModel result = _mapper.Map<ProductResponseModel>(newProduct);
+            return Created(new Uri($"product", UriKind.Relative), result);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteProductById(int id)
         {
+            _productService.DeleteProductById(id);
             return NoContent();
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateProductById(int id, ProductRequestModel product)
         {
-            ProductResponseModel productOutput = new ProductResponseModel()
-            {
-                Name = product.Name,
-                Price = product.Price,
-                Count = product.Count
-            };
-
-            return Ok(productOutput);
+            ProductModel productModel = _mapper.Map<ProductModel>(product);
+            productModel.Id = id;
+            ProductModel newProduct = _productService.UpdateProduct(productModel);
+            ProductResponseModel result = _mapper.Map<ProductResponseModel>(newProduct);
+            return Ok(result);
         }
     }
 }

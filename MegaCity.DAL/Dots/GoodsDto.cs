@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MegaCity.BLL.Models
+namespace MegaCity.DAL.Dots
 {
-    public class ProductModel
+    public class GoodsDto
     {
         public int Id { get; set; }
 
@@ -16,11 +16,6 @@ namespace MegaCity.BLL.Models
 
         public int Count { get; set; }
 
-        public List<GoodsModel> Goods { get; set; }
-
-        public ProductModel()
-        {
-            Goods = new List<GoodsModel>();
-        }
+        public ProductDto Product { get; set; }
     }
 }
