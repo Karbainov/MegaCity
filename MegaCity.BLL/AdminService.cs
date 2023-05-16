@@ -45,7 +45,6 @@ namespace MegaCity.BLL
         {
             AdminModel admin = new AdminModel()
             {
-                Id = 9,
                 FirstName = "FirstName",
                 LastName = "LastName",
                 Age = 35,
