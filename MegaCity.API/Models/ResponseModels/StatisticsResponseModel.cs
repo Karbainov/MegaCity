@@ -2,6 +2,8 @@
 {
     public class StatisticsResponseModel
     {
+        public int Id { get; set; }
+
         public double Profit { get; set; }
 
         public double Cost { get; set; }
