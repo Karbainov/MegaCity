@@ -43,13 +43,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetOrder()
+        public IActionResult GetOrder(int id)
         {
-            OrderResponseModel order = new OrderResponseModel()
-            {
-                Name = "product",
-                Number = 5
-            };
+            OrderModel order = _orderService.GetOrderById();
 
             return Ok(order);
         }

@@ -35,5 +35,17 @@ namespace MegaCity.BLL
 
             return orders;
         }
+
+        public OrderModel GetOrderById()
+        {
+
+            OrderModel order = new OrderModel()
+            {
+                Name = "product",
+                Number = 5
+            };
+
+            return order;
+        }
     }
 }

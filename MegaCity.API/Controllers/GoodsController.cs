@@ -38,14 +38,9 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
-            GoodsResponseModel goods = new GoodsResponseModel()
-            {
-                Id= id,
-                Name = "Potato",
-                Price = 17
-            };
+            GoodsModel goods = _goodsService.GetGoodsById();
 
-            return Ok("goods");
+            return Ok(goods);
         }
 
         [HttpPost()]

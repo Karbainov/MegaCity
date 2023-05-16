@@ -25,5 +25,15 @@ namespace MegaCity.BLL
             };
             return check_models;
         }
+
+        public CheckModel GetCheckById()
+        {
+            CheckModel check = new CheckModel()
+            {
+                Sum = 165672
+            };
+
+            return check;
+        }
     }
 }

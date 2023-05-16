@@ -39,13 +39,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
         {
-            ProductResponseModel product = new ProductResponseModel()
-            {
-                Id = 20000,
-                Name="product",
-                Price=20,
-                Count=70
-            };
+            ProductModel product = _productService.GetProductById();
 
             return Ok(product);
         }

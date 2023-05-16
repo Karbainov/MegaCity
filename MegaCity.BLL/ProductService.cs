@@ -42,6 +42,19 @@ namespace MegaCity.BLL
 
             return products;
         }
+
+        public ProductModel GetProductById()
+        {
+            ProductModel product = new ProductModel()
+            {
+                Id = 20000,
+                Name = "product",
+                Price = 20,
+                Count = 70
+            };
+
+            return product;
+        }
     }
     
 }

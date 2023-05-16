@@ -33,14 +33,7 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAdminById(int id)
         {
-            AdminResponseModel admin = new AdminResponseModel()
-            {
-                Id = 9,
-                FirstName = "FirstName",
-                LastName = "LastName",
-                Age = 35,
-                PhoneNumber = 123451
-            };
+            AdminModel admin = _adminService.GetAdminById();
 
             return Ok(admin);
         }
