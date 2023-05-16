@@ -50,5 +50,14 @@ namespace MegaCity.BLL
             };
         }
 
+        public void UpdateGoodsById(int id, GoodsModel goods)
+        {
+            GoodsModel modelOutput = new GoodsModel()
+            {
+                Name = goods.Name,
+                Price = goods.Price,
+                Count = goods.Count
+            };
+        }
     }
 }

@@ -62,5 +62,14 @@ namespace MegaCity.BLL
                 LastName = admin.LastName
             };
         }
+
+        public void UpdateAdminById(int id, AdminModel admin)
+        {
+            AdminModel adminOutput = new AdminModel()
+            {
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+        }
     }
 }

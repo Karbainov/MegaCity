@@ -51,5 +51,15 @@ namespace MegaCity.BLL
                 Description = promotion.Description
             };
         }
+
+        public void UpdatePromotionById(int id, PromotionModel promotion)
+        {
+            PromotionModel promotionOutput = new PromotionModel()
+            {
+                Name = promotion.Name,
+                Month = promotion.Month,
+                Description = promotion.Description
+            };
+        }
     }
 }

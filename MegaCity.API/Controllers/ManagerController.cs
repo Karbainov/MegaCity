@@ -64,13 +64,10 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateManagerById(int id, ManagerRequestModel manager)
         {
-            ManagerResponseModel managerOutput = new ManagerResponseModel()
-            {
-                FirstName = manager.FirstName,
-                LastName = manager.LastName,
-                PhoneNumber = manager.PhoneNumber,
-                Email = manager.Email
-            };
+            ManagerModel managerModel = _mapper.Map<ManagerModel>(manager);
+            _managerService.UpdateManagerById(id, managerModel);
+
+            ManagerResponseModel managerOutput = _mapper.Map<ManagerResponseModel>(managerModel);
 
             return Ok(managerOutput);
         }

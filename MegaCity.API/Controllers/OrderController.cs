@@ -60,12 +60,10 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateOrderById(int id,OrderRequestModel order)
         {
-            OrderResponseModel orderOutput = new OrderResponseModel();
-            {
-                int Id = id;
-                string Name = order.Name;
-                int Number = order.Number;
-            }
+            OrderModel orderModel = _mapper.Map<OrderModel>(order);
+            _orderService.UpdateOrderById(id, orderModel);
+
+            OrderResponseModel orderOutput = _mapper.Map<OrderResponseModel>(orderModel);
 
             return Ok(order);
         }

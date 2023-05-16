@@ -55,5 +55,17 @@ namespace MegaCity.BLL
                 ReasonWriteOff = "lalala"
             };
         }
+
+        public void UpdateSpoiledProductAndGoodsById(int id, SpoiledProductsAndGoodsModel spoiled)
+        {
+            SpoiledProductsAndGoodsModel spoiledProductAndGoodsOutput = new SpoiledProductsAndGoodsModel();
+            {
+                string Name = spoiled.Name;
+                double price = spoiled.Price;
+                int Count = spoiled.Count;
+                string DataWriteOff = spoiled.DataWriteOff;
+                string ReasonWriteOff = spoiled.ReasonWriteOff;
+            };
+        }
     }
 }

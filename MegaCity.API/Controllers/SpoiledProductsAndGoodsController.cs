@@ -57,17 +57,12 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateSpoiledProductAndGoodsById(int id, SpoiledProductsAndGoodsRequestModel spoiled)
         {
-            SpoiledProductsAndGoodsResponseModel spoiledProductAndGoodsOutput = new SpoiledProductsAndGoodsResponseModel();
-            {
-                int Id = id;
-                string Name = spoiled.Name;
-                double price = spoiled.Price;
-                int Count = spoiled.Count;
-                string DataWriteOff = spoiled.DataWriteOff;
-                string ReasonWriteOff = spoiled.ReasonWriteOff;
-            }
+            SpoiledProductsAndGoodsModel spoiledModel = _mapper.Map<SpoiledProductsAndGoodsModel>(spoiled);
+            _spoiledProductsAndGoodsService.UpdateSpoiledProductAndGoodsById(id, spoiledModel);
 
-            return Ok(spoiledProductAndGoodsOutput);
+            SpoiledProductsAndGoodsResponseModel spoiledOutput = _mapper.Map<SpoiledProductsAndGoodsResponseModel>(spoiledModel);
+
+            return Ok(spoiledOutput);
         }
     }
 }

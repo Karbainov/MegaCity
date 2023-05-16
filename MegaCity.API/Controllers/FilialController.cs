@@ -60,14 +60,12 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateFilialbyId(int id, FilialRequestModel filial)
         {
-            FilialResponseModel OutPutfilial = new FilialResponseModel
-            {
-                Name = filial.Name,
-                Adress = filial.Adress
+            FilialModel filialModel = _mapper.Map<FilialModel>(filial);
+            _filialService.UpdateFilialById(id, filialModel);
 
-            };
+            FilialResponseModel filialOutput = _mapper.Map<FilialResponseModel>(filialModel);
 
-            return Ok(OutPutfilial);
+            return Ok(filialOutput);
         }
     }
 }
