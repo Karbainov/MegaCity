@@ -73,6 +73,15 @@ namespace MegaCity.BLL
                 Count = model.Count
             };
         }
+
+        public void UpdateProductById(int id, ProductModel product)
+        {
+            ProductModel productOutput = new ProductModel()
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Count = product.Count
+            };
+        }
     }
-    
 }

@@ -6,19 +6,12 @@ using System.Threading.Tasks;
 
 namespace MegaCity.DAL.Dots
 {
-    public class GoodsDto
+    public class FilialDto
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public double Price { get; set; }
-
-        public int Count { get; set; }
-<<<<<<< HEAD
-
-        public ProductDto Product { get; set; }
-=======
->>>>>>> main
+        public string Adress { get; set; }
     }
 }

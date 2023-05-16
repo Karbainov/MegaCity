@@ -49,5 +49,14 @@ namespace MegaCity.BLL
                 Card = cashbox.Card
             };
         }
+
+        public void UpdateCashboxById(int id, CashboxModel cashbox)
+        {
+            CashboxModel cashboxOutput = new CashboxModel()
+            {
+                Cash = cashbox.Cash,
+                Card = cashbox.Card
+            };
+        }
     }
 }

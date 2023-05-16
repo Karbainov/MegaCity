@@ -59,13 +59,10 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdatePromotionById(int id, PromotionRequestModel promotion)
         {
-            PromotionResponseModel promotionOutput = new PromotionResponseModel()
-            {
-                Id = id,
-                Name = promotion.Name,
-                Month = promotion.Month,
-                Description = promotion.Description
-            };
+            PromotionModel promotionModel = _mapper.Map<PromotionModel>(promotion);
+            _promotionService.UpdatePromotionById(id, promotionModel);
+
+            PromotionResponseModel promotionOutput = _mapper.Map<PromotionResponseModel>(promotionModel);
 
             return Ok(promotionOutput);
         }

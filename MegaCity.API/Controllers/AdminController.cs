@@ -60,12 +60,10 @@ namespace MegaCity.API.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateAdminById(int id, AdminRequestModel admin)
         {
-            AdminResponseModel adminOutput = new AdminResponseModel()
-            {
-                Id = id,
-                FirstName = admin.FirstName,
-                LastName = admin.LastName
-            };
+            AdminModel adminModel = _mapper.Map<AdminModel>(admin);
+            _adminService.UpdateAdminById(id, adminModel);
+
+            AdminResponseModel adminOutput = _mapper.Map<AdminResponseModel>(adminModel);
 
             return Ok(adminOutput);
         }

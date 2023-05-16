@@ -1,4 +1,4 @@
-﻿namespace MegaCity.DAL.Dots;
+namespace MegaCity.DAL.Dots;
 using Microsoft.EntityFrameworkCore;
 
 public class ProductRepository

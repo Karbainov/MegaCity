@@ -66,5 +66,16 @@ namespace MegaCity.BLL
                 LastName = manager.LastName
             };
         }
+
+        public void UpdateManagerById(int id, ManagerModel manager)
+        {
+            ManagerModel managerOutput = new ManagerModel()
+            {
+                FirstName = manager.FirstName,
+                LastName = manager.LastName,
+                PhoneNumber = manager.PhoneNumber,
+                Email = manager.Email
+            };
+        }
     }
 }
