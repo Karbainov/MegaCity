@@ -34,7 +34,7 @@ namespace MegaCity.DAL
 
         public void DeletePromotionById(int id)
         {
-            
+            //_context.Promotions.Remove();
         }
     }
 }
