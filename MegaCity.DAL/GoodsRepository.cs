@@ -51,7 +51,7 @@ namespace MegaCity.DAL
         {
             var u = _context.Goods.FirstOrDefault(i => i.Id == Goods.Id);
             u.Name = Goods.Name;
-            u.Price = Goods.Price;
+            u.Cost = Goods.Cost;
             u.Count = Goods.Count;
             _context.SaveChanges();
             return u;

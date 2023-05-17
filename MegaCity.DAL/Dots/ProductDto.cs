@@ -16,6 +16,8 @@ namespace MegaCity.DAL.Dots
 
         public int Count { get; set; }
 
-        public List<GoodsDto> Goods { get; set; } = new List<GoodsDto>();
+        public List<ComponentDto> Components { get; set; }
+
+        public List<OrderPositionDto> Positions { get; set; }
     }
 }

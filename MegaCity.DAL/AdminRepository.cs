@@ -21,12 +21,12 @@ namespace MegaCity.DAL
             _context.Admins.ToList();
         }
 
-        public AdminDto GetAdminById(int id)
+        public UserDto GetAdminById(int id)
         {
             return _context.Admins.FirstOrDefault(i => i.Id == id);
         }
 
-        public void AddAdmin(AdminDto admin)
+        public void AddAdmin(UserDto admin)
         {
             _context.Admins.Add(admin);
             _context.SaveChanges();

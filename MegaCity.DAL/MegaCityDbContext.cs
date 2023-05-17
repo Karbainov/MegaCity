@@ -19,11 +19,11 @@ namespace MegaCity.DAL
 
         public DbSet<ProductDto> Products { get; set; }
 
-        public DbSet<AdminDto> Admins { get; set; }
+        public DbSet<UserDto> Admins { get; set; }
 
         public DbSet<CashboxDto> Cashboxes { get; set; }
 
-        public DbSet<CheckDto> Checks { get; set; }
+        public DbSet<OrderdTo> Checks { get; set; }
 
         public DbSet<FilialDto> Filials { get; set; }
 
@@ -33,7 +33,7 @@ namespace MegaCity.DAL
 
         public DbSet<PromotionDto> Promotions { get; set; }
 
-        public DbSet<SpoiledProductsAndGoodsDto> SpoiledProductsAndGoods { get; set; }
+        public DbSet<WriteOffDto> SpoiledProductsAndGoods { get; set; }
 
         public DbSet<StatisticsDto> Statistics { get; set; }
 

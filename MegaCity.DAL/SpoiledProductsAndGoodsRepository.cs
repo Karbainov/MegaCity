@@ -21,7 +21,7 @@ namespace MegaCity.DAL
             _context.SpoiledProductsAndGoods.ToList();
         }
 
-        public void AddSpoiledProductsAndGoods(SpoiledProductsAndGoodsDto spoiled)
+        public void AddSpoiledProductsAndGoods(WriteOffDto spoiled)
         {
             _context.SpoiledProductsAndGoods.Add(spoiled);
             _context.SaveChanges();

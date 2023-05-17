@@ -21,17 +21,6 @@ namespace MegaCity.DAL
             _context.Cashboxes.ToList();
         }
 
-        public CashboxDto GetCashboxById(int id)
-        {
-            return _context.Cashboxes.FirstOrDefault(i => i.Id == id);
-        }
-
-        public void AddAdmin(CashboxDto cashbox)
-        {
-            _context.Cashboxes.Add(cashbox);
-            _context.SaveChanges();
-        }
-
         public void DeleteById(int id)
         {
             var cashbox = _context.Cashboxes.FirstOrDefault(i => i.Id == id);

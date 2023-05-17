@@ -12,10 +12,14 @@ namespace MegaCity.DAL.Dots
 
         public string Name { get; set; }
 
-        public double Price { get; set; }
+        public double Cost { get; set; }
 
         public int Count { get; set; }
 
-        public ProductDto Product { get; set; }
+        public string Unit { get; set; }
+
+        public List<ComponentDto> Components { get; set; }
+
+        public List<StorageChangePositionDto> StorageChangePositions { get; set; }
     }
 }

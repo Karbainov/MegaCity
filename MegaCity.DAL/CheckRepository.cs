@@ -21,12 +21,12 @@ namespace MegaCity.DAL
             _context.Checks.ToList();
         }
 
-        public CheckDto GetCheckById(int id)
+        public OrderdTo GetCheckById(int id)
         {
             return _context.Checks.FirstOrDefault(i => i.Id == id);
         }
 
-        public void AddCheck(CheckDto check)
+        public void AddCheck(OrderdTo check)
         {
             _context.Checks.Add(check);
             _context.SaveChanges();

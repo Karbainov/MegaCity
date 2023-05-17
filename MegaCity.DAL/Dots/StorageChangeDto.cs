@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace MegaCity.DAL.Dots
 {
-   public class OrderDto
+    public class StorageChangeDto
     {
         public int Id { get; set; }
 
-        public double Sum { get; set; }
-
         public DateTime Date { get; set; }
 
-        public List<OrderPositionDto> Positions { get; set; }
+        public string Type { get; set; } //Supply or WriteOff
 
         public UserDto User { get; set; }
+
+        public List<GoodsDto> Goods { get; set; }
     }
 }
