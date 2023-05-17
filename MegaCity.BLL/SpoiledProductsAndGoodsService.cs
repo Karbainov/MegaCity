@@ -83,7 +83,7 @@ namespace MegaCity.BLL
 
         public void DeleteById(int id)
         {
-            _spoiledProductsAndGoodsRepository.AddSpoiledProductsAndGoods(id);
+            _spoiledProductsAndGoodsRepository.DeleteSpoiledProductsAndGoodsById(id);
         }
     }
 }

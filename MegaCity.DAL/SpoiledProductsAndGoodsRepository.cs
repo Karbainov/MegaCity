@@ -27,7 +27,7 @@ namespace MegaCity.DAL
             _context.SaveChanges();
         }
 
-        public void DeleteSpoiledProductsAndGoods(int id)
+        public void DeleteSpoiledProductsAndGoodsById(int id)
         {
             var spoiled = _context.SpoiledProductsAndGoods.FirstOrDefault(i => i.Id == id);
             if (spoiled != null)
