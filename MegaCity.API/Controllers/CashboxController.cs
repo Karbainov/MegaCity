@@ -46,7 +46,6 @@ namespace MegaCity.API.Controllers
         {
             CashboxModel cashboxModel = _mapper.Map<CashboxModel>(cashbox);
             _cashboxService.AddCashbox(cashboxModel);
-
             CashboxResponseModel newCashbox = _mapper.Map<CashboxResponseModel>(cashboxModel);
 
             return Created(new Uri("Cashbox", UriKind.Relative), newCashbox);
@@ -63,7 +62,6 @@ namespace MegaCity.API.Controllers
         {
             CashboxModel cashboxModel = _mapper.Map<CashboxModel>(cashbox);
             _cashboxService.UpdateCashboxById(id, cashboxModel);
-
             CashboxResponseModel cashboxOutput = _mapper.Map<CashboxResponseModel>(cashboxModel);
 
             return Ok(cashboxOutput);

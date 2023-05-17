@@ -3,12 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using MegaCity.BLL.Models;
+using MegaCity.DAL;
+using MegaCity.DAL.Dots;
+
 
 namespace MegaCity.BLL
 {
     public class SpoiledProductsAndGoodsService
     {
+        private IMapper _mapper;
+        private SpoiledProductsAndGoodsRepository _spoiledProductsAndGoodsRepository;
+
+        public SpoiledProductsAndGoodsService()
+        {
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+            _spoiledProductsAndGoodsRepository = new SpoiledProductsAndGoodsRepository();
+        }
+
         public List<SpoiledProductsAndGoodsModel> GetAllSpoiledProductsAndGoods()
         {
             List<SpoiledProductsAndGoodsModel> spoiled = new List<SpoiledProductsAndGoodsModel>()
@@ -66,6 +79,11 @@ namespace MegaCity.BLL
                 string DataWriteOff = spoiled.DataWriteOff;
                 string ReasonWriteOff = spoiled.ReasonWriteOff;
             };
+        }
+
+        public void DeleteById(int id)
+        {
+            _spoiledProductsAndGoodsRepository.AddSpoiledProductsAndGoods(id);
         }
     }
 }

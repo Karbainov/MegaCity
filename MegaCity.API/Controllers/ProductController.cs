@@ -21,9 +21,8 @@ namespace MegaCity.API.Controllers
         {
             _productService = new ProductService();
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
-
-            
         }
+
         [HttpGet]
         public IActionResult GetAllProducts()
         {
@@ -39,6 +38,7 @@ namespace MegaCity.API.Controllers
         {
             var a = _productService.GetProductById(id);
             var product = _mapper.Map<ProductResponseModel>(a);
+
             return Ok(product);
         }
 
@@ -48,6 +48,7 @@ namespace MegaCity.API.Controllers
             ProductModel productModel = _mapper.Map<ProductModel>(model);
             ProductModel newProduct = _productService.AddProduct(productModel);
             ProductResponseModel result = _mapper.Map<ProductResponseModel>(newProduct);
+
             return Created(new Uri($"product", UriKind.Relative), result);
         }
 
@@ -63,7 +64,6 @@ namespace MegaCity.API.Controllers
         {
             ProductModel productModel = _mapper.Map<ProductModel>(product);
             _productService.UpdateProductById(id, productModel);
-
             ProductResponseModel productOutput = _mapper.Map<ProductResponseModel>(productModel);
 
             return Ok(productOutput);

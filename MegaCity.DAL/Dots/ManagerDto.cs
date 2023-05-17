@@ -21,5 +21,15 @@ namespace MegaCity.DAL.Dots
         public int PhoneNumber { get; set; }
 
         public string Email { get; set; }
+
+        public List<GoodsDto> goodsDtos { get; set; }
+
+        public CashboxDto CashboxDto { get; set; }
+
+        public CheckDto CheckDto { get; set; }
+
+        public List<OrderDto> orderDtos { get; set; }
+
+        public List<PromotionDto> promotionDtos { get; set; }
     }
 }

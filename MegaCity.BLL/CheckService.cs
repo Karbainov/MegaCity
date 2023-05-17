@@ -1,4 +1,6 @@
-﻿using MegaCity.BLL.Models;
+﻿using AutoMapper;
+using MegaCity.BLL.Models;
+using MegaCity.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,15 @@ namespace MegaCity.BLL
 {
     public class CheckService
     {
+        private IMapper _mapper;
+        private CheckRepository _checkRepository;
+
+        public CheckService()
+        {
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+            _checkRepository = new CheckRepository();
+        }
+
         public List<CheckModel> GetAllChecks()
         {
             List<CheckModel> check_models = new List<CheckModel>()
@@ -34,6 +45,11 @@ namespace MegaCity.BLL
             };
 
             return check;
+        }
+
+        public void DeleteCheckById(int id)
+        {
+            _checkRepository.DeleteByid(id);
         }
     }
 }

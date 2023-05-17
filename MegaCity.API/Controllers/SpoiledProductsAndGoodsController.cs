@@ -21,7 +21,6 @@ namespace MegaCity.API.Controllers
         public SpoiledProductsAndGoodsController()
         {
             _spoiledProductsAndGoodsService = new SpoiledProductsAndGoodsService();
-
             MapperConfiguration configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MapperApiProfile());
@@ -42,7 +41,6 @@ namespace MegaCity.API.Controllers
         {
             SpoiledProductsAndGoodsModel spoiledModel = _mapper.Map<SpoiledProductsAndGoodsModel>(spoiled);
             _spoiledProductsAndGoodsService.AddSpoiledProductsAndGoods(spoiledModel);
-
             SpoiledProductsAndGoodsResponseModel newSpoiled = _mapper.Map<SpoiledProductsAndGoodsResponseModel>(spoiledModel);
 
             return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), newSpoiled);
@@ -59,7 +57,6 @@ namespace MegaCity.API.Controllers
         {
             SpoiledProductsAndGoodsModel spoiledModel = _mapper.Map<SpoiledProductsAndGoodsModel>(spoiled);
             _spoiledProductsAndGoodsService.UpdateSpoiledProductAndGoodsById(id, spoiledModel);
-
             SpoiledProductsAndGoodsResponseModel spoiledOutput = _mapper.Map<SpoiledProductsAndGoodsResponseModel>(spoiledModel);
 
             return Ok(spoiledOutput);

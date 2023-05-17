@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
-using MegaCity.API.Models.RequestModels;
 
 
 namespace MegaCity.API.Controllers
@@ -49,7 +48,6 @@ namespace MegaCity.API.Controllers
         {
             ManagerModel managerModel = _mapper.Map<ManagerModel>(manager);
             _managerService.AddManager(managerModel);
-
             ManagerResponseModel newManager = _mapper.Map<ManagerResponseModel>(managerModel);
 
             return Created(new Uri("Manager", UriKind.Relative), newManager);
@@ -66,7 +64,6 @@ namespace MegaCity.API.Controllers
         {
             ManagerModel managerModel = _mapper.Map<ManagerModel>(manager);
             _managerService.UpdateManagerById(id, managerModel);
-
             ManagerResponseModel managerOutput = _mapper.Map<ManagerResponseModel>(managerModel);
 
             return Ok(managerOutput);

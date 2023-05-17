@@ -34,7 +34,12 @@ namespace MegaCity.DAL
 
         public void DeletePromotionById(int id)
         {
-            //_context.Promotions.Remove();
+            var promotion = _context.Promotions.FirstOrDefault(i => i.Id == id);
+            if (promotion != null)
+            {
+                _context.Promotions.Remove(promotion);
+                _context.SaveChanges();
+            }
         }
     }
 }
