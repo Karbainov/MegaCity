@@ -21,7 +21,6 @@ namespace MegaCity.API.Controllers
         public GoodsController()
         {
             _goodsService = new GoodsService();
-
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
             
         }
@@ -38,9 +37,8 @@ namespace MegaCity.API.Controllers
         public IActionResult GetGoodsById(int id)
         {
             var goods = _mapper.Map<GoodsResponseModel>(_goodsService.GetGoodsById(id));
-            return Ok(goods);
 
-            return Ok("goods");
+            return Ok(goods);
         }
 
         [HttpPost("{Id}")]
@@ -48,7 +46,6 @@ namespace MegaCity.API.Controllers
         {
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
             _goodsService.AddGoods(goodsModel);
-
             GoodsResponseModel newGoods = _mapper.Map<GoodsResponseModel>(goodsModel);
 
             return Created(new Uri("Goods", UriKind.Relative), newGoods);
@@ -66,7 +63,6 @@ namespace MegaCity.API.Controllers
         {
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(goods);
             _goodsService.UpdateGoodsById(id, goodsModel);
-
             GoodsResponseModel goodsOutput = _mapper.Map<GoodsResponseModel>(goodsModel);
 
             return Ok(goodsOutput);

@@ -4,11 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MegaCity.BLL.Models;
+using MegaCity.DAL;
+using MegaCity.DAL.Dots;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace MegaCity.BLL
 {
     public class AdminService
     {
+        private IMapper _mapper;
+        private AdminRepository _adminRepository;
+
+        public AdminService()
+        {
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+            _adminRepository = new AdminRepository();
+        }
+
         public List<AdminModel> GetAllAdmins()
         {
             List<AdminModel> admins = new List<AdminModel>()
@@ -70,6 +83,11 @@ namespace MegaCity.BLL
                 FirstName = admin.FirstName,
                 LastName = admin.LastName
             };
+        }
+
+        public void DeleteAdminById(int id)
+        {
+            _adminRepository.DeleteById(id);
         }
     }
 }

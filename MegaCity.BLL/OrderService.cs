@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using MegaCity.BLL.Models;
+using MegaCity.DAL;
 
 namespace MegaCity.BLL
 {
     public class OrderService
     {
+        private IMapper _mapper;
+        private OrderRepository _orderRepository;
+
+        public OrderService()
+        {
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+            _orderRepository = new OrderRepository();
+        }
+
         public List<OrderModel> GetAllOrders()
         {
             List<OrderModel> orders = new List<OrderModel>()
@@ -64,6 +75,11 @@ namespace MegaCity.BLL
                 string Name = order.Name;
                 int Number = order.Number;
             };
+        }
+
+        public void DeleteOrderById(int id)
+        {
+            _orderRepository.DeleteOrderById(id);
         }
     }
 }

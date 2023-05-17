@@ -45,7 +45,6 @@ namespace MegaCity.API.Controllers
         {
             FilialModel filialModel = _mapper.Map<FilialModel>(filial);
             _filialService.AddFilial(filialModel);
-
             FilialResponseModel newFilial = _mapper.Map<FilialResponseModel>(filialModel);
 
             return Created(new Uri("Filial", UriKind.Relative), newFilial);
@@ -62,7 +61,6 @@ namespace MegaCity.API.Controllers
         {
             FilialModel filialModel = _mapper.Map<FilialModel>(filial);
             _filialService.UpdateFilialById(id, filialModel);
-
             FilialResponseModel filialOutput = _mapper.Map<FilialResponseModel>(filialModel);
 
             return Ok(filialOutput);

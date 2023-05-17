@@ -45,7 +45,6 @@ namespace MegaCity.API.Controllers
         {
             OrderModel orderModel = _mapper.Map<OrderModel>(order);
             _orderService.AddOrder(orderModel);
-
             OrderResponseModel newOrder = _mapper.Map<OrderResponseModel>(orderModel);
 
             return Created(new Uri("Order", UriKind.Relative), newOrder);
@@ -62,7 +61,6 @@ namespace MegaCity.API.Controllers
         {
             OrderModel orderModel = _mapper.Map<OrderModel>(order);
             _orderService.UpdateOrderById(id, orderModel);
-
             OrderResponseModel orderOutput = _mapper.Map<OrderResponseModel>(orderModel);
 
             return Ok(order);

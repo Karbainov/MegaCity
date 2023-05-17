@@ -27,10 +27,14 @@ namespace MegaCity.DAL
             _context.SaveChanges();
         }
 
-        public void DeleteSpoiledProductsAndGoods()
+        public void DeleteSpoiledProductsAndGoods(int id)
         {
-
+            var spoiled = _context.SpoiledProductsAndGoods.FirstOrDefault(i => i.Id == id);
+            if (spoiled != null)
+            {
+                _context.SpoiledProductsAndGoods.Remove(spoiled);
+                _context.SaveChanges();
+            }
         }
-
     }
 }

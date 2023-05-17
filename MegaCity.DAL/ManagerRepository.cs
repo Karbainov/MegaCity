@@ -35,7 +35,12 @@ namespace MegaCity.DAL
 
         public void DeleteMnaagerById(int id)
         {
-            
+            var manager = _context.Managers.FirstOrDefault(i => i.Id == id);
+            if (manager != null)
+            {
+                _context.Managers.Remove(manager);
+                _context.SaveChanges();
+            }
         }
     }
 }

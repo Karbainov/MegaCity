@@ -34,7 +34,12 @@ namespace MegaCity.DAL
 
         public void DeleteOrderById(int id)
         {
-            
+            var order = _context.Orders.FirstOrDefault(i => i.Id == id);
+            if (order != null)
+            {
+                _context.Orders.Remove(order);
+                _context.SaveChanges();
+            }
         }
     }
 }

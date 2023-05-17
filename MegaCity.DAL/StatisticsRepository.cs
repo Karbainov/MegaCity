@@ -21,9 +21,14 @@ namespace MegaCity.DAL
             _context.Statistics.ToList();
         }
 
-        public void DeleteStatistics()
+        public void DeleteStatistics(int id)
         {
-            
+            var statistics = _context.Statistics.FirstOrDefault(i => i.Id == id);
+            if (statistics != null)
+            {
+                _context.Statistics.Remove(statistics);
+                _context.SaveChanges();
+            }
         }
     }
 }

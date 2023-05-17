@@ -44,7 +44,6 @@ namespace MegaCity.API.Controllers
         {
             PromotionModel promotionModel = _mapper.Map<PromotionModel>(promotion);
             _promotionService.AddPromotion(promotionModel);
-
             PromotionResponseModel newPromotion = _mapper.Map<PromotionResponseModel>(promotionModel);
 
             return Created(new Uri("Promotion", UriKind.Relative), newPromotion);
@@ -61,7 +60,6 @@ namespace MegaCity.API.Controllers
         {
             PromotionModel promotionModel = _mapper.Map<PromotionModel>(promotion);
             _promotionService.UpdatePromotionById(id, promotionModel);
-
             PromotionResponseModel promotionOutput = _mapper.Map<PromotionResponseModel>(promotionModel);
 
             return Ok(promotionOutput);

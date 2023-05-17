@@ -34,8 +34,12 @@ namespace MegaCity.DAL
 
         public void DeleteById(int id)
         {
-            //_context.Cashboxes.Remove();
-            _context.SaveChanges();
+            var cashbox = _context.Cashboxes.FirstOrDefault(i => i.Id == id);
+            if (cashbox != null)
+            {
+                _context.Cashboxes.Remove(cashbox);
+                _context.SaveChanges();
+            }
         }
     }
 }

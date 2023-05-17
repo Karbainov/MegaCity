@@ -16,7 +16,9 @@ namespace MegaCity.DAL
         }
 
         public DbSet<GoodsDto> Goods { get; set; }
+
         public DbSet<ProductDto> Products { get; set; }
+
         public DbSet<AdminDto> Admins { get; set; }
 
         public DbSet<CashboxDto> Cashboxes { get; set; }

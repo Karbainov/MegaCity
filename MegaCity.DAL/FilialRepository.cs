@@ -34,7 +34,12 @@ namespace MegaCity.DAL
 
         public void DeleteFilialById(int id)
         {
-            
+            var filial = _context.Filials.FirstOrDefault(i => i.Id == id);
+            if (filial != null)
+            {
+                _context.Filials.Remove(filial);
+                _context.SaveChanges();
+            }
         }
     }
 }

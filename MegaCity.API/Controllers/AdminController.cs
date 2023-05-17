@@ -45,7 +45,6 @@ namespace MegaCity.API.Controllers
         {
             AdminModel adminModel = _mapper.Map<AdminModel>(admin);
             _adminService.AddAdmin(adminModel);
-
             AdminResponseModel newAdmin = _mapper.Map<AdminResponseModel>(adminModel);
 
             return Created(new Uri("Admin", UriKind.Relative), newAdmin);
@@ -62,7 +61,6 @@ namespace MegaCity.API.Controllers
         {
             AdminModel adminModel = _mapper.Map<AdminModel>(admin);
             _adminService.UpdateAdminById(id, adminModel);
-
             AdminResponseModel adminOutput = _mapper.Map<AdminResponseModel>(adminModel);
 
             return Ok(adminOutput);

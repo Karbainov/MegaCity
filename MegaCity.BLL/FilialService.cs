@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using MegaCity.BLL.Models;
+using MegaCity.DAL;
 
 namespace MegaCity.BLL
 {
     public class FilialService
     {
+        private IMapper _mapper;
+        private FilialRepository _filialRepository;
+
+        public FilialService()
+        {
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+            _filialRepository = new FilialRepository();
+        }
+
         public List<FilialModel> GetAllFilials()
         {
             List<FilialModel> filials = new List<FilialModel>()
@@ -55,6 +66,11 @@ namespace MegaCity.BLL
                 Name = filial.Name,
                 Adress = filial.Adress
             };
+        }
+
+        public void DeleteFilialById(int id)
+        {
+            _filialRepository.DeleteFilialById(id);
         }
     }
 }

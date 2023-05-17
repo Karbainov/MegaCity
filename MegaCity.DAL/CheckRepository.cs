@@ -32,9 +32,14 @@ namespace MegaCity.DAL
             _context.SaveChanges();
         }
 
-        public void DeleteByid()
+        public void DeleteByid(int id)
         {
-            
+            var check = _context.Checks.FirstOrDefault(i => i.Id == id);
+            if (check != null)
+            {
+                _context.Checks.Remove(check);
+                _context.SaveChanges();
+            }
         }
     }
 }
