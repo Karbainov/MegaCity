@@ -21,21 +21,21 @@ namespace MegaCity.DAL
 
         public DbSet<UserDto> Admins { get; set; }
 
-        public DbSet<CashboxDto> Cashboxes { get; set; }
+        public DbSet<ComponentDto> Components { get; set; }
 
-        public DbSet<OrderdTo> Checks { get; set; }
+        public DbSet<OrderDto> Checks { get; set; }
 
         public DbSet<FilialDto> Filials { get; set; }
 
-        public DbSet<ManagerDto> Managers { get; set; }
+        public DbSet<StorageChangeDto> StorageChanges { get; set; }
 
         public DbSet<OrderDto> Orders { get; set; }
 
-        public DbSet<PromotionDto> Promotions { get; set; }
+        public DbSet<OrderPositionDto> OrderPositions { get; set; }
 
-        public DbSet<WriteOffDto> SpoiledProductsAndGoods { get; set; }
+        public DbSet<StorageChangePositionDto> StorageChangePositions { get; set; }
 
-        public DbSet<StatisticsDto> Statistics { get; set; }
+        public DbSet<UserDto> Users { get; set; }
 
     }
 }
