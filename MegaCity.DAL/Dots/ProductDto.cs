@@ -19,5 +19,11 @@ namespace MegaCity.DAL.Dots
         public List<ComponentDto> Components { get; set; }
 
         public List<OrderPositionDto> Positions { get; set; }
+
+        public ProductDto() 
+        { 
+            Components = new List<ComponentDto>();
+            Positions = new List<OrderPositionDto>();
+        }
     }
 }

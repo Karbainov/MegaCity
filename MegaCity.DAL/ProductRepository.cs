@@ -24,7 +24,7 @@ public class ProductRepository
 
     public ProductDto GetProductById(int id)
     {
-        return _context.Products.Include(g => g.Goods).FirstOrDefault(i => i.Id == id);
+        return _context.Products.Include(g => g.Components).ThenInclude(k => k.Goods).FirstOrDefault(i => i.Id == id);
     }
 
     public void DeleteProductById(int id)

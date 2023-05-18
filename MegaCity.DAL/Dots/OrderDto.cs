@@ -17,5 +17,10 @@ namespace MegaCity.DAL.Dots
         public List<OrderPositionDto> Positions { get; set; }
 
         public UserDto User { get; set; }
+
+        public OrderDto()
+        {
+            Positions = new List<OrderPositionDto>();
+        }
     }
 }
