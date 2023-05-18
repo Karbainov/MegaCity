@@ -15,5 +15,13 @@ namespace MegaCity.DAL.Dots
         public ProductDto Product { get; set; }
 
         public OrderDto Order { get; set; }
+
+        public OrderPositionDto(int id, int count, ProductDto product, OrderDto order)
+        {
+            Id = id;
+            Count = count;
+            Product = product;
+            Order = order;
+        }
     }
 }

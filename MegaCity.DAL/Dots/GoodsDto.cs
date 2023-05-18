@@ -21,5 +21,16 @@ namespace MegaCity.DAL.Dots
         public List<ComponentDto> Components { get; set; }
 
         public List<StorageChangePositionDto> StorageChangePositions { get; set; }
+
+        public GoodsDto(int id, string name, double cost, int count, string unit, List<ComponentDto> components, List<StorageChangePositionDto> storageChangePositions)
+        {
+            Id = id;
+            Name = name;
+            Cost = cost;
+            Count = count;
+            Unit = unit;
+            Components = components;
+            StorageChangePositions = storageChangePositions;
+        }
     }
 }

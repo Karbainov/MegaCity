@@ -15,5 +15,13 @@ namespace MegaCity.DAL.Dots
         public GoodsDto Goods { get; set; }
 
         public ProductDto Product { get; set; }
+
+        public ComponentDto(int id, double count, GoodsDto goods, ProductDto product)
+        {
+            Id = id;
+            Count = count;
+            Goods = goods;
+            Product = product;
+        }
     }
 }

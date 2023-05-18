@@ -17,5 +17,13 @@ namespace MegaCity.DAL.Dots
         public UserDto User { get; set; }
 
         public List<GoodsDto> Goods { get; set; }
+        public StorageChangeDto(int id, DateTime date, string type, UserDto user, List<GoodsDto> goods)
+        {
+            Id = id;
+            Date = date;
+            Type = type;
+            User = user;
+            Goods = goods;
+        }
     }
 }

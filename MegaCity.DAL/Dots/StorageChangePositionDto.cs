@@ -15,5 +15,12 @@ namespace MegaCity.DAL.Dots
         public GoodsDto Goods { get; set; }
 
         public StorageChangeDto StorageChange { get; set; }
+        public StorageChangePositionDto(int id, double count, GoodsDto goods, StorageChangeDto storageChange)
+        {
+            Id = id;
+            Count = count;
+            Goods = goods;
+            StorageChange = storageChange;
+        }
     }
 }

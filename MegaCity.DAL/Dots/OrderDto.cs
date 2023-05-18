@@ -17,5 +17,14 @@ namespace MegaCity.DAL.Dots
         public List<OrderPositionDto> Positions { get; set; }
 
         public UserDto User { get; set; }
+
+        public OrderDto(int id, double sum, DateTime date, List<OrderPositionDto> positions, UserDto user)
+        {
+            Id = id;
+            Sum = sum;
+            Date = date;
+            Positions = positions;
+            User = user;
+        }
     }
 }

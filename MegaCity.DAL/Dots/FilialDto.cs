@@ -13,5 +13,12 @@ namespace MegaCity.DAL.Dots
         public string Name { get; set; }
 
         public string Adress { get; set; }
+
+        public FilialDto(int id, string name, string adress)
+        {
+            Id = id;
+            Name = name;
+            Adress = adress;
+        }
     }
 }

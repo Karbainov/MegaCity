@@ -28,5 +28,19 @@ namespace MegaCity.DAL.Dots
         public List<OrderDto> Orders { get; set; }
 
         public List<StorageChangeDto> StorageChanges { get; set; }
+
+        public UserDto(int id, string firstName, string lastName, DateTime dateOfBirth, string phoneNumber, string email, string password, string role, List<OrderDto> orders, List<StorageChangeDto> storageChanges)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dateOfBirth;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Password = password;
+            Role = role;
+            Orders = orders;
+            StorageChanges = storageChanges;
+        }
     }
 }
