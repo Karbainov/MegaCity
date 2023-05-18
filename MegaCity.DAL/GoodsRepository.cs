@@ -24,8 +24,6 @@ namespace MegaCity.DAL
             if(model!=null)
             {
                 _context.Goods.Add(Goods);
-                model.Goods.Add(Goods);
-                Goods.Product = model;
                 _context.SaveChanges();
 
             }

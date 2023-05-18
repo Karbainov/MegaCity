@@ -18,21 +18,21 @@ namespace MegaCity.DAL
 
         public void GetAllSpoiledProductsAndPromotions()
         {
-            _context.SpoiledProductsAndGoods.ToList();
+            _context.StorageChanges.ToList();
         }
 
-        public void AddSpoiledProductsAndGoods(WriteOffDto spoiled)
+        public void AddSpoiledProductsAndGoods(StorageChangeDto spoiled)
         {
-            _context.SpoiledProductsAndGoods.Add(spoiled);
+            _context.StorageChanges.Add(spoiled);
             _context.SaveChanges();
         }
 
         public void DeleteSpoiledProductsAndGoodsById(int id)
         {
-            var spoiled = _context.SpoiledProductsAndGoods.FirstOrDefault(i => i.Id == id);
+            var spoiled = _context.StorageChanges.FirstOrDefault(i => i.Id == id);
             if (spoiled != null)
             {
-                _context.SpoiledProductsAndGoods.Remove(spoiled);
+                _context.StorageChanges.Remove(spoiled);
                 _context.SaveChanges();
             }
         }

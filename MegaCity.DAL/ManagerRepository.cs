@@ -18,27 +18,27 @@ namespace MegaCity.DAL
 
         public void GetAllManagers()
         {
-            _context.Managers.ToList();
+            _context.Users.ToList();
             _context.SaveChanges();
         }
 
-        public ManagerDto GetMnagerById(int id)
+        public UserDto GetMnagerById(int id)
         {
-            return _context.Managers.FirstOrDefault(i => i.Id == id);
+            return _context.Users.FirstOrDefault(i => i.Id == id);
         }
 
-        public void AddManager(ManagerDto manager)
+        public void AddManager(UserDto manager)
         {
-            _context.Managers.Add(manager);
+            _context.Users.Add(manager);
             _context.SaveChanges();
         }
 
         public void DeleteMnaagerById(int id)
         {
-            var manager = _context.Managers.FirstOrDefault(i => i.Id == id);
+            var manager = _context.Users.FirstOrDefault(i => i.Id == id);
             if (manager != null)
             {
-                _context.Managers.Remove(manager);
+                _context.Users.Remove(manager);
                 _context.SaveChanges();
             }
         }
