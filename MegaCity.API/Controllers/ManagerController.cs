@@ -1,7 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.ResponseModel;
 using MegaCity.BLL;
+﻿using MegaCity.API.Models.OutputModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;

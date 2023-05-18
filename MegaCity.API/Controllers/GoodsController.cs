@@ -1,6 +1,7 @@
 using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.RequestModels;
 using MegaCity.API.Models.ResponseModel;
+using MegaCity.API.Models.OutputModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;

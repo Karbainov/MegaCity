@@ -1,5 +1,13 @@
+<<<<<<< Updated upstream
 ﻿using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.ResponseModel;
+=======
+
+﻿using MegaCity.API.Models.OutputModel;
+﻿using MegaCity.API.Models;
+using MegaCity.API.Models.InputModels;
+using MegaCity.API.Models.ModelsOutput;
+>>>>>>> Stashed changes
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;

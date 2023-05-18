@@ -2,9 +2,17 @@
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+<<<<<<< Updated upstream
 using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
+=======
+<<<<<<< HEAD
+using MegaCity.API.Models.ModelsOutput;
+=======
+using MegaCity.API.Models.OutputModel;
+>>>>>>> 1.16AddEndPointsForFilial
+>>>>>>> Stashed changes
 
 namespace MegaCity.API.Controllers
 {

@@ -1,5 +1,14 @@
+<<<<<<< Updated upstream
 ﻿using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.ResponseModel;
+=======
+<<<<<<< HEAD
+﻿using MegaCity.API.Models.ModelsInput;
+using MegaCity.API.Models.ModelsOutput;
+=======
+﻿using MegaCity.API.Models.OutputModel;
+>>>>>>> 1.16AddEndPointsForFilial
+>>>>>>> Stashed changes
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
