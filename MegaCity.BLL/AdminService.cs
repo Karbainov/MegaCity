@@ -8,6 +8,7 @@ using MegaCity.DAL;
 using MegaCity.DAL.Dots;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace MegaCity.BLL
 {
@@ -21,6 +22,11 @@ namespace MegaCity.BLL
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
             _adminRepository = new AdminRepository();
         }
+
+        //public string AdminService.Insert (int StartIndex, string User);
+
+        public string admin = "INSERT INTO dbo.SMS_PW(Id, FirstName, LastName, Date, PhoneNumber, Email) VALUES(@id, @firstName, @lastName, @date, @phoneNumber, @email)";
+        //SqlCommand command = new SqlCommand(admin, db.Connection);
 
         public List<AdminModel> GetAllAdmins()
         {
