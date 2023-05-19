@@ -26,10 +26,21 @@ namespace MegaCity.DAL
             return _context.Orders.FirstOrDefault(i => i.Id == id);
         }
 
-        public void AddOrder(OrderDto order)
+        public OrderDto AddOrder(int userId, OrderDto order)
         {
-            _context.Orders.Add(order);
-            _context.SaveChanges();
+            var user = _context.Users.FirstOrDefault(i => i.Id == userId);
+
+            if (order != null)
+            {
+                _context.Orders.Add(order);
+
+                user.Orders.Add(order);
+                order.User = user;
+
+                _context.SaveChanges();
+            }
+
+            return order;
         }
 
         public void DeleteOrderById(int id)

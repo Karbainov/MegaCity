@@ -59,13 +59,15 @@ namespace MegaCity.BLL
             return order;
         }
 
-        public void AddOrder(OrderModel order)
+        public OrderModel AddOrder(int userId, OrderModel order)
         {
             OrderModel newOrder = new OrderModel();
             {
                 string Name = order.Name;
                 int Number = order.Number;
             };
+
+            return newOrder;
         }
 
         public void UpdateOrderById(int id, OrderModel order)

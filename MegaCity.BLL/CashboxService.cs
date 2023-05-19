@@ -12,13 +12,13 @@ namespace MegaCity.BLL
     public class CashboxService
     {
         private IMapper _mapper;
-        private CashboxRepository _cashboxRepository;
+        //private CashboxRepository _cashboxRepository;
 
-        public CashboxService()
-        {
-            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
-            _cashboxRepository = new CashboxRepository();
-        }
+        //public CashboxService()
+        //{
+        //    _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+        //    _cashboxRepository = new CashboxRepository();
+        //}
 
         public List<CashboxModel> GetAllCashboxes()
         {
@@ -70,9 +70,9 @@ namespace MegaCity.BLL
             };
         }
 
-        public void DeleteCashboxById(int id)
-        {
-            _cashboxRepository.DeleteById(id);
-        }
+        //public void DeleteCashboxById(int id)
+        //{
+        //    _cashboxRepository.DeleteById(id);
+        //}
     }
 }

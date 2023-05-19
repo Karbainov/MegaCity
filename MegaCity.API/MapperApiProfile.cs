@@ -30,6 +30,7 @@ public class MapperApiProfile : Profile
         CreateMap<ManagerRequestModel, ManagerModel>();
 
         CreateMap<OrderModel, OrderResponseModel>();
+        CreateMap<OrderRequestModel, OrderModel>();
 
         CreateMap<ProductModel,ProductResponseModel>();
         CreateMap<ProductRequestModel, ProductModel>();
