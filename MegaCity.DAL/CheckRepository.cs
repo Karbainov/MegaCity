@@ -28,7 +28,7 @@ namespace MegaCity.DAL
 
         public OrderDto AddCheck(int userId, OrderDto check)
         {
-            var newCheck = _context.Checks.FirstOrDefault();
+            var newCheck = _context.Checks.FirstOrDefault(i => i.Id == userId);
 
             if (check != null)
             {
