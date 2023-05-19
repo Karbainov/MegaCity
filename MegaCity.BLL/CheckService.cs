@@ -47,6 +47,17 @@ namespace MegaCity.BLL
             return check;
         }
 
+        public CheckModel AddCheck(int userId, CheckModel check)
+        {
+            CheckModel newCheck = new CheckModel()
+            {
+                Sum = 165672
+            };
+
+
+            return newCheck;
+        }
+
         public void DeleteCheckById(int id)
         {
             _checkRepository.DeleteByid(id);

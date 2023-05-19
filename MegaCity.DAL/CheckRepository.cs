@@ -26,10 +26,21 @@ namespace MegaCity.DAL
             return _context.Checks.FirstOrDefault(i => i.Id == id);
         }
 
-        public void AddCheck(OrderDto check)
+        public OrderDto AddCheck(int userId, OrderDto check)
         {
-            _context.Checks.Add(check);
-            _context.SaveChanges();
+            var newCheck = _context.Checks.FirstOrDefault();
+
+            if (check != null)
+            {
+                _context.Checks.Add(check);
+
+                //newCheck.Orders.Add(check);
+                //check.User = newCheck;
+
+                _context.SaveChanges();
+            }
+
+            return newCheck;
         }
 
         public void DeleteByid(int id)

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
+using MegaCity.API.Models.RequestModels;
 
 namespace MegaCity.API.Controllers
 {
@@ -38,6 +39,16 @@ namespace MegaCity.API.Controllers
             CheckResponseModel checkId = _mapper.Map<CheckResponseModel>(check);
 
             return Ok(checkId);
+        }
+
+        [HttpPost]
+        public IActionResult AddCheck(int userId, CheckRequestModel check)
+        {
+            CheckModel checkModel = _mapper.Map<CheckModel>(check);
+            CheckModel newCheck = _checkService.AddCheck(userId, checkModel);
+            CheckResponseModel result = _mapper.Map<CheckResponseModel>(newCheck);
+
+            return Created(new Uri("newCheck", UriKind.Relative), result);
         }
     }
 }
