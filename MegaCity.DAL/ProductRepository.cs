@@ -10,10 +10,20 @@ public class ProductRepository
         _context = new MegaCityDbContext();
     }
      
-    public ProductDto AddProduct(ProductDto model)
+    public ProductDto AddProduct(int userId, ProductDto model)
     {
-        _context.Products.Add(model);
-        _context.SaveChanges();
+        var product = _context.Products.FirstOrDefault();
+
+        if (product != null)
+        {
+            _context.Products.Add(product);
+
+            //product.Products.Add(model);
+            //model.User = product;
+
+            _context.SaveChanges();
+        }
+
         return model;
     }
 
