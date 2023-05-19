@@ -40,10 +40,10 @@ namespace MegaCity.BLL
             _goodsRepository.DeleteGoodsById(id);
         }
 
-        public GoodsModel AddGoods(int productId,GoodsModel goodsModel)
+        public GoodsModel AddGoods(int userId, GoodsModel goodsModel)
         {
             var goods = _mapper.Map<GoodsDto>(goodsModel);
-            return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(productId, goods));
+            return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(userId, goods));
         }
 
         public GoodsModel GetGoodsById(int id)
