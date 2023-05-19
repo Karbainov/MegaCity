@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using MegaCity.DAL.Dots;
@@ -26,10 +27,17 @@ namespace MegaCity.DAL
             return _context.Admins.FirstOrDefault(i => i.Id == id);
         }
 
-        public void AddAdmin(UserDto admin)
+        public UserDto AddAdmin(UserDto admin)
         {
-            _context.Admins.Add(admin);
-            _context.SaveChanges();
+            var adminUser = _context.Users.FirstOrDefault();
+
+            if (admin != null)
+            {
+                _context.Admins.Add(admin);
+                _context.SaveChanges();
+            }
+
+            return adminUser;
         }
 
         public void DeleteById(int id)
