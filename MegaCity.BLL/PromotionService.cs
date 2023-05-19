@@ -12,13 +12,13 @@ namespace MegaCity.BLL
     public class PromotionService
     {
         private IMapper _mapper;
-        private PromotionRepository _promotionRepository;
+        //private PromotionRepository _promotionRepository;
 
-        public PromotionService()
-        {
-            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
-            _promotionRepository = new PromotionRepository();
-        }
+        //public PromotionService()
+        //{
+        //    _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
+        //    _promotionRepository = new PromotionRepository();
+        //}
 
         public List<PromotionModel> GetAllPromotions()
         {
@@ -73,9 +73,9 @@ namespace MegaCity.BLL
             };
         }
 
-        public void DeletePromotionById(int id)
-        {
-            _promotionRepository.DeletePromotionById(id);
-        }
+    //    public void DeletePromotionById(int id)
+    //    {
+    //        _promotionRepository.DeletePromotionById(id);
+    //    }
     }
 }
