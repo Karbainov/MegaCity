@@ -1,6 +1,12 @@
-﻿namespace MegaCity.API.Models.ResponseModel
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MegaCity.BLL.Models
 {
-    public class SpoiledProductsAndGoodsResponseModel
+    public class WriteOffModel
     {
         public int Id { get; set; }
 

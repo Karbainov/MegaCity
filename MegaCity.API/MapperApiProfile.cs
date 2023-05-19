@@ -35,8 +35,8 @@ public class MapperApiProfile : Profile
         CreateMap<ProductModel,ProductResponseModel>();
         CreateMap<ProductRequestModel, ProductModel>();
 
-        CreateMap<SpoiledProductsAndGoodsModel, SpoiledProductsAndGoodsResponseModel>();
-        CreateMap<SpoiledProductsAndGoodsRequestModel, SpoiledProductsAndGoodsModel>();
+        CreateMap<WriteOffModel, WriteOffResponseModel>();
+        CreateMap<WriteOffRequestModel, WriteOffModel>();
     }
 
 }

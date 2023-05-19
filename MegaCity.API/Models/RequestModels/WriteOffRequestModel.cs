@@ -1,6 +1,6 @@
 ﻿namespace MegaCity.API.Models.RequestModel
 {
-    public class SpoiledProductsAndGoodsRequestModel
+    public class WriteOffRequestModel
     {
         public string Name { get; set; }
 
