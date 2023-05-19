@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MegaCity.BLL.Models;
 using MegaCity.DAL;
+using MegaCity.DAL.Dots;
 
 namespace MegaCity.BLL
 {
@@ -59,15 +60,30 @@ namespace MegaCity.BLL
             return order;
         }
 
-        public OrderModel AddOrder(int userId, OrderModel order)
+        public OrderModel AddOrder(int userId, List<OrderPositionModel> orderPositions)
         {
-            OrderModel newOrder = new OrderModel();
+            OrderDto orderDto = new OrderDto()
             {
-                string Name = order.Name;
-                int Number = order.Number;
+                Date = DateTime.Now,
             };
 
-            return newOrder;
+            var newOrderDto = _orderRepository.AddOrder(userId, orderDto);
+
+            if (newOrderDto != null)
+            {
+                foreach (var position in orderPositions)
+                {
+                    _orderRepository.AddOrderPositions(position.Count, position.ProductId, newOrderDto.Id);
+                }
+
+                OrderModel newOrder = _mapper.Map<OrderModel>(newOrderDto);
+
+                return newOrder;
+            }
+            else
+            {
+                throw new Exception("Ошибка!!!");
+            }
         }
 
         public void UpdateOrderById(int id, OrderModel order)

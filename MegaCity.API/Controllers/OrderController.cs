@@ -41,10 +41,11 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddOrder(int userId, OrderRequestModel order)
+        public IActionResult AddOrder(OrderRequestModel order)
         {
-            OrderModel orderModel = _mapper.Map<OrderModel>(order); //выдает ошибку 500
-            OrderModel newOrder  = _orderService.AddOrder(userId, orderModel);
+            //OrderModel orderModel = _mapper.Map<OrderModel>(order);
+            List<OrderPositionModel> orderPositions = _mapper.Map<List<OrderPositionModel>>(order.Positions);
+            OrderModel newOrder  = _orderService.AddOrder(order.UserId, orderPositions);
             OrderResponseModel result= _mapper.Map<OrderResponseModel>(newOrder);
 
             return Created(new Uri("Order", UriKind.Relative), result);

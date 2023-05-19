@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MegaCity.DAL.Dots;
+using Microsoft.EntityFrameworkCore;
 
 namespace MegaCity.DAL
 {
@@ -41,6 +42,34 @@ namespace MegaCity.DAL
             }
 
             return order;
+        }
+
+        public OrderPositionDto AddOrderPositions(int count, int productId, int orderId)
+        {
+            var product = _context.Products.FirstOrDefault(i => i.Id == productId);
+            var order = _context.Orders.FirstOrDefault(i => i.Id == orderId);
+
+            if (product != null && order != null)
+            {
+                OrderPositionDto newOrderPosition = new OrderPositionDto()
+                {
+                    Count = count,
+                    Product = product,
+                    Order = order
+                };
+                _context.OrderPositions.Add(newOrderPosition);
+
+                product.Positions.Add(newOrderPosition);
+                order.Positions.Add(newOrderPosition);
+
+                _context.SaveChanges();
+
+                return newOrderPosition;
+            }
+            else 
+            {
+                throw new Exception("Такой продукт или заказ не существует!");
+            }
         }
 
         public void DeleteOrderById(int id)
