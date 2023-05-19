@@ -70,13 +70,15 @@ namespace MegaCity.BLL
             return manager;
         }
 
-        public void AddManager(ManagerModel manager)
+        public ManagerModel AddManager(ManagerModel manager)
         {
-            ManagerModel addManager = new ManagerModel()
+            ManagerModel newManager = new ManagerModel()
             {
                 FirstName = manager.FirstName,
                 LastName = manager.LastName
             };
+
+            return newManager;
         }
 
         public void UpdateManagerById(int id, ManagerModel manager)
