@@ -75,13 +75,20 @@ namespace MegaCity.BLL
 
         public AdminModel AddAdmin(AdminModel admin)
         {
-            AdminModel newAdmin = new AdminModel()
-            {
-                FirstName = admin.FirstName,
-                LastName = admin.LastName
-            };
+            UserDto adminDto = new UserDto();
 
-            return newAdmin;
+            var adminUser = _adminRepository.AddAdmin(adminDto);
+
+            if (adminUser != null)
+            {
+                AdminModel newAdminUser = _mapper.Map<AdminModel>(adminUser);
+
+                return newAdminUser;
+            }
+            else
+            {
+                throw new Exception("Админ не создан!");
+            }
         }
 
         public void UpdateAdminById(int id, AdminModel admin)
