@@ -72,13 +72,20 @@ namespace MegaCity.BLL
 
         public ManagerModel AddManager(ManagerModel manager)
         {
-            ManagerModel newManager = new ManagerModel()
-            {
-                FirstName = manager.FirstName,
-                LastName = manager.LastName
-            };
+            UserDto managerDto = new UserDto();
 
-            return newManager;
+            var managerUser = _managerRepository.AddManager(managerDto);
+
+            if (managerUser != null)
+            {
+                ManagerModel newManagerUser = _mapper.Map<ManagerModel>(managerUser);
+
+                return newManagerUser;
+            }
+            else
+            {
+                throw new Exception("Админ не создан!");
+            }
         }
 
         public void UpdateManagerById(int id, ManagerModel manager)
