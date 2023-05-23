@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MegaCity.BLL.Models
 {
-    public class WriteOffModel
+    public class StorageChangeModel
     {
         public int Id { get; set; }
 

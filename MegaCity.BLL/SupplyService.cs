@@ -11,20 +11,20 @@ using MegaCity.DAL.Dots;
 
 namespace MegaCity.BLL
 {
-    public class WriteOffService
+    public class SupplyService
     {
         private IMapper _mapper;
-        private WriteOffRepository _writeOffRepository;
+        private SupplyRepository _supplyRepository;
 
-        public WriteOffService()
+        public SupplyService()
         {
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
-            _writeOffRepository = new WriteOffRepository();
+            _supplyRepository = new SupplyRepository();
         }
 
-        public List<StorageChangeModel> GetAllWriteOff()
+        public List<StorageChangeModel> GetAllSupply()
         {
-            List<StorageChangeModel> writeOff = new List<StorageChangeModel>()
+            List<StorageChangeModel> supply = new List<StorageChangeModel>()
             {
                 new StorageChangeModel()
                 {
@@ -54,12 +54,12 @@ namespace MegaCity.BLL
                 }
             };
 
-            return writeOff;
+            return supply;
         }
 
-        public void AddWriteOff(StorageChangeModel spoiled)
+        public void AddSupply(StorageChangeModel spoiled)
         {
-            StorageChangeModel newWriteOff = new StorageChangeModel()
+            StorageChangeModel newSupply = new StorageChangeModel()
             {
                 Name = "productTwo",
                 Price = 200,
@@ -69,9 +69,9 @@ namespace MegaCity.BLL
             };
         }
 
-        public void DeleteWriteOffById(int id)
+        public void DeleteSupplyById(int id)
         {
-            _writeOffRepository.DeleteWriteOffById(id);
+            _supplyRepository.DeleteSupplyById(id);
         }
     }
 }

@@ -28,8 +28,8 @@ public class MapperApiProfile : Profile
         CreateMap<ProductModel,ProductResponseModel>();
         CreateMap<ProductRequestModel, ProductModel>();
 
-        CreateMap<WriteOffModel, WriteOffResponseModel>();
-        CreateMap<WriteOffRequestModel, WriteOffModel>();
+        CreateMap<StorageChangeModel, StorageChangeResponseModel>();
+        CreateMap<StorageChangeRequestModel, StorageChangeModel>();
     }
 
 }
