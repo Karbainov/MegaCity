@@ -17,9 +17,9 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public void GetAllOrders()
+        public List<OrderDto> GetAllOrders()
         {
-            _context.Orders.ToList();
+           return _context.Orders.ToList();
         }
 
         public OrderDto GetOrderById(int id)

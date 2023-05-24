@@ -24,49 +24,14 @@ namespace MegaCity.BLL
 
         public List<StorageChangeModel> GetAllWriteOff()
         {
-            List<StorageChangeModel> writeOff = new List<StorageChangeModel>()
-            {
-                new StorageChangeModel()
-                {
-                    Name = "productOne",
-                    Price = 100,
-                    Count=150,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
-
-                new StorageChangeModel()
-                {
-                    Name = "productTwo",
-                    Price = 200,
-                    Count=60,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
-
-                new StorageChangeModel()
-                {
-                    Name = "productThree",
-                    Price = 300,
-                    Count=50,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                }
-            };
+            List<StorageChangeModel> writeOff = new List<StorageChangeModel>();
 
             return writeOff;
         }
 
         public void AddWriteOff(StorageChangeModel spoiled)
         {
-            StorageChangeModel newWriteOff = new StorageChangeModel()
-            {
-                Name = "productTwo",
-                Price = 200,
-                Count = 60,
-                DataWriteOff = "11/12/12",
-                ReasonWriteOff = "lalala"
-            };
+            StorageChangeModel newWriteOff = new StorageChangeModel();
         }
 
         public void DeleteWriteOffById(int id)

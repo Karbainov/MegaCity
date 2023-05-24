@@ -19,16 +19,17 @@ namespace MegaCity.DAL
         public void GetAllManagers()
         {
             _context.Users.ToList();
-            _context.SaveChanges();
         }
 
-        public UserDto GetMnagerById(int id)
+        public UserDto GetManagerById(int id)
         {
             return _context.Users.FirstOrDefault(i => i.Id == id);
         }
 
-        public UserDto AddManager(UserDto manager)
+        public UserDto AddManager(int userId,UserDto manager)
         {
+            var user = _context.Users.FirstOrDefault(i => i.Id == manager.Id);
+            
             if (manager != null)
             {
                 UserDto newManager = new UserDto()

@@ -23,40 +23,13 @@ namespace MegaCity.BLL
 
         public List<OrderModel> GetAllOrders()
         {
-            List<OrderModel> orders = new List<OrderModel>()
-            {
-                new OrderModel()
-                {
-                    Name = "product1",
-                    Number = 5
-                },
-
-                new OrderModel()
-                {
-                    Name = "product2",
-                    Number = 10
-                },
-
-                new OrderModel()
-                {
-                    Name = "product3",
-                    Number = 3
-                },
-
-            };
-
+            List<OrderModel> orders = new List<OrderModel>();
             return orders;
         }
 
         public OrderModel GetOrderById()
         {
-
-            OrderModel order = new OrderModel()
-            {
-                Name = "product",
-                Number = 5
-            };
-
+            OrderModel order = new OrderModel();
             return order;
         }
 

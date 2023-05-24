@@ -27,8 +27,10 @@ namespace MegaCity.DAL
             return _context.Users.FirstOrDefault(i => i.Id == id);
         }
 
-        public UserDto AddAdmin(UserDto admin)
+        public UserDto AddAdmin(int userId, UserDto admin)
         {
+            var user = _context.Users.FirstOrDefault(i => i.Id == admin.Id);
+            
             if (admin != null)
             {
                 UserDto newAdmin = new UserDto()

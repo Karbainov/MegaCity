@@ -21,28 +21,28 @@ namespace MegaCity.API.Controllers
         public GoodsController()
         {
             _goodsService = new GoodsService();
-            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
-            _mapper = new Mapper(configuration);
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
             
         }
         
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
-            var goods = _mapper.Map<GoodsResponseModel>(_goodsService.GetGoodsById(id));
+            var a = _goodsService.GetGoodsById();
+            var goods = _mapper.Map<GoodsResponseModel>(a);
 
             return Ok(goods);
         }
 
         [HttpPost("{Id}")]
-        public IActionResult AddGoods(GoodsRequestModel model)
+        public IActionResult AddGoods(int userId,GoodsRequestModel model)
         {
             
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
-            GoodsModel newGoods = _goodsService.AddGoods(model.Id);
+            GoodsModel newGoods = _goodsService.AddGoods(userId,goodsModel);
             GoodsResponseModel result = _mapper.Map<GoodsResponseModel>(newGoods);
 
-            return Created(new Uri("Goods", UriKind.Relative), result);
+            return Created(new Uri($"Goods", UriKind.Relative), result);
         }
 
         [HttpDelete("{id}")]

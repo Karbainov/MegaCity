@@ -53,14 +53,7 @@ namespace MegaCity.BLL
 
         public ProductModel GetProductById()
         {
-            ProductModel product = new ProductModel()
-            {
-                Id = 20000,
-                Name = "product",
-                Price = 20,
-                Count = 70
-            };
-
+            ProductModel product = new ProductModel();
             return product;
         }
 
