@@ -18,6 +18,8 @@ namespace MegaCity.DAL.Dots
 
         public string Unit { get; set; }
 
+        public DateTime Date { get; set; }
+
         public List<ComponentDto> Components { get; set; }
 
         public List<StorageChangePositionDto> StorageChangePositions { get; set; }

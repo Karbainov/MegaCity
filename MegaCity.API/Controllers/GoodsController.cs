@@ -15,24 +15,17 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class GoodsController : ControllerBase
     {
-       private GoodsService _goodsService;
-       private IMapper _mapper;
+        GoodsService _goodsService;
+        Mapper _mapper;
 
         public GoodsController()
         {
             _goodsService = new GoodsService();
-            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
+            MapperConfiguration configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile()));
+            _mapper = new Mapper(configuration);
             
         }
-        [HttpGet]
-        public IActionResult GetAllGoods()
-        {
-            List<GoodsModel> goods = _goodsService.GetAllGoods();
-            List<GoodsResponseModel> allGoods = _mapper.Map<List<GoodsResponseModel>>(goods);
-
-            return Ok(allGoods);
-        }
-
+        
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
@@ -42,10 +35,11 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost("{Id}")]
-        public IActionResult AddGoods(int userId, GoodsRequestModel model)
+        public IActionResult AddGoods(GoodsRequestModel model)
         {
+            
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
-            GoodsModel newGoods = _goodsService.AddGoods(userId, goodsModel);
+            GoodsModel newGoods = _goodsService.AddGoods(model.Id);
             GoodsResponseModel result = _mapper.Map<GoodsResponseModel>(newGoods);
 
             return Created(new Uri("Goods", UriKind.Relative), result);
@@ -65,7 +59,7 @@ namespace MegaCity.API.Controllers
             _goodsService.UpdateGoodsById(id, goodsModel);
             GoodsResponseModel goodsOutput = _mapper.Map<GoodsResponseModel>(goodsModel);
 
-            return Ok(goodsOutput);
+            return Ok(goods);
         }
     }
 }

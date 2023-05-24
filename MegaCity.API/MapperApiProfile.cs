@@ -23,6 +23,7 @@ public class MapperApiProfile : Profile
 
         CreateMap<OrderModel, OrderResponseModel>();
         CreateMap<OrderRequestModel, OrderModel>();
+
         CreateMap<OrderPositionRequestModel, OrderPositionModel>();
 
         CreateMap<ProductModel,ProductResponseModel>();

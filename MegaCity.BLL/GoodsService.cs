@@ -23,16 +23,15 @@ namespace MegaCity.BLL
             _goodsRepository = new GoodsRepository();
         }
 
-        public List<GoodsModel> GetAllGoods()
+        public List<GoodsModel> GetGoodsById()
         {
-            /// return _mapper.Map<GoodsModel>(_goodsRepository.());
-            return null;
+            List<GoodsModel> goods = new List<GoodsModel>();
+            return goods;
         }
 
-        public GoodsModel UpdateGoods(GoodsModel goodsModel)
+        public void UpdateGoodsById(int id, GoodsModel goods)
         {
-            var goods = _mapper.Map<GoodsDto>(goodsModel);
-            return _mapper.Map<GoodsModel>(_goodsRepository.UpdateGoods(goods));
+            GoodsModel goodsOutput = new GoodsModel();
         }
 
         public void DeleteGoodsById(int id)
@@ -40,41 +39,29 @@ namespace MegaCity.BLL
             _goodsRepository.DeleteGoodsById(id);
         }
 
-        public GoodsModel AddGoods(int userId, GoodsModel goodsModel)
+        public GoodsModel AddGoods(int userId, List<GoodsModel>goods)
         {
-            var goods = _mapper.Map<GoodsDto>(goodsModel);
-            return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(userId, goods));
-        }
-
-        public GoodsModel GetGoodsById(int id)
-        {
-            GoodsModel goods = new GoodsModel()
+            GoodsDto goodsDto = new GoodsDto()
             {
-                Name = "Potato",
-                Price = 17
+                Date = DateTime.Now,
             };
+            var newgoodsDto = _goodsRepository.AddGoods(userId,goodsDto);
 
-            return goods;
-        }
-
-        public void AddGoods(GoodsModel model)
-        {
-            GoodsModel goods = new GoodsModel()
+            if(newgoodsDto!=null)
             {
-                Name = model.Name,
-                Price = model.Price,
-                Count = model.Count
-            };
+                foreach(var model in goods)
+                {
+                    _goodsRepository.AddGoods(model.Id);
+                }
+                GoodsModel newGoods = _mapper.Map<GoodsModel>(newgoodsDto);
+
+                return newGoods;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
-        public void UpdateGoodsById(int id, GoodsModel goods)
-        {
-            GoodsModel modelOutput = new GoodsModel()
-            {
-                Name = goods.Name,
-                Price = goods.Price,
-                Count = goods.Count
-            };
-        }
     }
 }
