@@ -19,5 +19,12 @@ namespace MegaCity.BLL.Models
         public double ProductPrice { get; set; }
 
         public int ProductCount { get; set; }
+
+        public List<ProductModel> Products { get; set; }
+
+        public OrderPositionModel()
+        {
+            Products = new List<ProductModel>();
+        }
     }
 }

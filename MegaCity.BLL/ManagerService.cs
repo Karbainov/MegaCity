@@ -23,69 +23,21 @@ namespace MegaCity.BLL
 
         public List<ManagerModel> GetAllManagers()
         {
-            List<ManagerModel> managers = new List<ManagerModel>()
-            {
-                new ManagerModel()
-                {
-                    Id=5,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123456
-                },
-
-                new ManagerModel()
-                {
-                    Id=6,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123452
-                },
-
-                new ManagerModel()
-                {
-                    Id=44,
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123458
-                }
-            };
-
+            List<ManagerModel> managers = new List<ManagerModel>();
             return managers;
         }
 
         public ManagerModel GetManagerById()
         {
-            ManagerModel manager = new ManagerModel()
-            {
-                Id = 9,
-                FirstName = "FirstName",
-                LastName = "LastName",
-                Age = 150,
-                PhoneNumber = 123451
-            };
+            ManagerModel manager = new ManagerModel();
 
             return manager;
         }
 
-        public ManagerModel AddManager(ManagerModel manager)
+        public ManagerModel AddManager(int userId,ManagerModel manager)
         {
-            UserDto managerDto = new UserDto();
-
-            var managerUser = _managerRepository.AddManager(managerDto);
-
-            if (managerUser != null)
-            {
-                ManagerModel newManagerUser = _mapper.Map<ManagerModel>(managerUser);
-
-                return newManagerUser;
-            }
-            else
-            {
-                throw new Exception("Админ не создан!");
-            }
+            var model = _mapper.Map<ManagerModel>(manager);
+            return _mapper.Map<ManagerModel>(_managerRepository.AddManager(userId, model));
         }
 
         public void UpdateManagerById(int id, ManagerModel manager)
