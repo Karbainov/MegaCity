@@ -45,10 +45,27 @@ namespace MegaCity.BLL
             _productRepository.DeleteProductById(id);
         }
 
-        public ProductModel AddProduct(int userId, ProductModel productModel)
+        public ProductModel AddProduct(List<ComponentModel> components)
         {
-            var model = _mapper.Map<ProductDto>(productModel);
-            return _mapper.Map<ProductModel>(_productRepository.AddProduct(userId, model));
+            ProductDto productDto = new ProductDto();
+
+            var newProductDto = _productRepository.AddProduct(productDto);
+
+            if (newProductDto != null)
+            {
+                foreach (var component in components)
+                {
+                    _productRepository.AddComponent(component.Count, component.GoodsId, component.ProductId);
+                }
+
+                ProductModel newProduct = _mapper.Map<ProductModel>(newProductDto);
+
+                return newProduct;
+            }
+            else
+            {
+                throw new Exception("Продукт не создан!");
+            }
         }
 
         public ProductModel GetProductById()

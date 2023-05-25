@@ -10,21 +10,41 @@ public class ProductRepository
         _context = new MegaCityDbContext();
     }
      
-    public ProductDto AddProduct(int userId, ProductDto model)
+    public ProductDto AddProduct(ProductDto product)
     {
-        var product = _context.Products.FirstOrDefault();
-
         if (product != null)
         {
             _context.Products.Add(product);
-
-            //product.Products.Add(model);
-            //model.User = product;
-
             _context.SaveChanges();
         }
 
-        return model;
+        return product;
+    }
+
+    public ComponentDto AddComponent(double count, int goodsId, int productId)
+    {
+        var goods = _context.Goods.FirstOrDefault(i => i.Id == goodsId);
+        var product = _context.Products.FirstOrDefault(i => i.Id == productId);
+
+        if (goods != null && product != null)
+        {
+            ComponentDto newComponent = new ComponentDto()
+            {
+                Count = count,
+                Goods = goods,
+                Product = product
+            };
+            _context.Components.Add(newComponent);
+            goods.Components.Add(newComponent);
+            product.Components.Add(newComponent);
+            _context.SaveChanges();
+
+            return newComponent;
+        }
+        else
+        {
+            throw new Exception();
+        }
     }
 
     public List<ProductDto>GetAllProducts()
@@ -39,11 +59,11 @@ public class ProductRepository
 
     public void DeleteProductById(int id)
     {
-        var model = _context.Products.FirstOrDefault(i => i.Id == id);
+        var product = _context.Products.FirstOrDefault(i => i.Id == id);
 
-        if(model!=null)
+        if(product != null)
         {
-            _context.Products.Remove(model);
+            _context.Products.Remove(product);
             _context.SaveChanges();
         }
     }
