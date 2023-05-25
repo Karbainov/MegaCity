@@ -41,22 +41,10 @@ namespace MegaCity.BLL
             return admin;
         }
 
-        public AdminModel AddAdmin(AdminModel admin)
+        public AdminModel AddAdmin(int userId,AdminModel adminModel)
         {
-            UserDto adminDto = new UserDto();
-
-            var adminUser = _adminRepository.AddAdmin(adminDto);
-
-            if (adminUser != null)
-            {
-                AdminModel newAdminUser = _mapper.Map<AdminModel>(adminUser);
-
-                return newAdminUser;
-            }
-            else
-            {
-                throw new Exception("Админ не создан!");
-            }
+            var model = _mapper.Map<UserDto>(adminModel);
+            return _mapper.Map<AdminModel>(_adminRepository.AddAdmin(userId, model));
         }
 
         public void UpdateAdminById(int id, AdminModel admin)

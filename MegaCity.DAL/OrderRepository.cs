@@ -17,9 +17,9 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public List<OrderDto> GetAllOrders()
+        public void GetAllOrders(int id)
         {
-           return _context.Orders.ToList();
+            _context.Orders.Include(o => o.Positions).Where(u=>u.Id==id).ToList();
         }
 
         public OrderDto GetOrderById(int id)
@@ -29,19 +29,24 @@ namespace MegaCity.DAL
 
         public OrderDto AddOrder(int userId, OrderDto order)
         {
-            var user = _context.Users.FirstOrDefault(i => i.Id == userId);
+            var user = _context.Orders.FirstOrDefault(i => i.Id == order.Id);
 
             if (order != null)
             {
-                _context.Orders.Add(order);
-
-                user.Orders.Add(order);
-                order.User = user;
-
+                user.Sum = order.Sum;
+                user.Positions = order.Positions;
+                user.Date = order.Date;
+                user.User = order.User;
+                
                 _context.SaveChanges();
-            }
 
-            return order;
+                return user;
+            }
+            else
+            {
+                throw new Exception();
+            }
+            
         }
 
         public OrderPositionDto AddOrderPositions(int count, int productId, int orderId)
@@ -75,7 +80,14 @@ namespace MegaCity.DAL
         public void DeleteOrderById(int id)
         {
             var order = _context.Orders.FirstOrDefault(i => i.Id == id);
-            if (order != null)
+            foreach (var o in _context.Orders.ToList())
+            {
+                if(o.User.Id==id)
+                {
+                    o.User = null;
+                }
+            }
+            if(order!= null)
             {
                 _context.Orders.Remove(order);
                 _context.SaveChanges();

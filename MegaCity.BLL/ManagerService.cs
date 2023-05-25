@@ -36,7 +36,7 @@ namespace MegaCity.BLL
 
         public ManagerModel AddManager(int userId,ManagerModel manager)
         {
-            var model = _mapper.Map<ManagerModel>(manager);
+            var model = _mapper.Map<UserDto>(manager);
             return _mapper.Map<ManagerModel>(_managerRepository.AddManager(userId, model));
         }
 
