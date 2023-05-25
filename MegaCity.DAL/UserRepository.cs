@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
@@ -8,26 +9,26 @@ using MegaCity.DAL.Dots;
 
 namespace MegaCity.DAL
 {
-    public class AdminRepository
+    public class UserRepository
     {
         private MegaCityDbContext _context;
 
-        public AdminRepository()
+        public UserRepository()
         {
             _context = new MegaCityDbContext();
         }
 
-        public void GetAllAdmins()
+        public void GetAllUsers()
         {
             _context.Users.ToList();
         }
 
-        public UserDto GetAdminById(int id)
+        public UserDto GetUserById(int id)
         {
             return _context.Users.FirstOrDefault(i => i.Id == id);
         }
 
-        public UserDto AddAdmin(int userId, UserDto admin)
+        public UserDto AddUser(int userId, UserDto admin)
         {
             var user = _context.Users.FirstOrDefault(i => i.Id == admin.Id);
             
@@ -52,13 +53,35 @@ namespace MegaCity.DAL
             }
         }
 
-        public void DeleteById(int id)
+        public void DeleteUserById(int id)
         {
             var admin = _context.Users.FirstOrDefault(i => i.Id == id);
             if (admin != null)
             {
                 _context.Users.Remove(admin);
                 _context.SaveChanges();
+            }
+        }
+
+        public UserDto UpdateUserById(int id, UserDto user)
+        {
+            var userId = _context.Users.FirstOrDefault(i => i.Id == user.Id);
+
+            if (userId != null)
+            {
+                userId.FirstName = user.FirstName;
+                userId.LastName = user.LastName;
+                userId.Email = user.Email;
+                userId.Password = user.Password;
+                userId.Role = user.Role;
+
+                _context.SaveChanges();
+
+                return userId;
+            }
+            else
+            {
+                throw new Exception("Не удалось изменить!");
             }
         }
     }

@@ -13,8 +13,8 @@ namespace MegaCity.BLL.Models
 
         public double Count { get; set; }
 
-        public GoodsDto Goods { get; set; }
+        public GoodsModel Goods { get; set; }
 
-        public StorageChangeDto StorageChange { get; set; }
+        public StorageChangeModel StorageChange { get; set; }
     }
 }

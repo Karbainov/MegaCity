@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MegaCity.DAL.Dots;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,21 +11,19 @@ namespace MegaCity.BLL.Models
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public DateTime Date { get; set; }
 
-        public double Price { get; set; }
+        public string Type { get; set; }
 
-        public int Count { get; set; }
+        public UserDto User { get; set; }
 
-        public string DataWriteOff { get; set; }
+        public List<GoodsModel> Goods { get; set; }
 
-        public string ReasonWriteOff { get; set; }
-
-        public List<StorageChangePositionModel> Positions { get; set; }
+        public StorageChangePositionModel StorageChangePosition { get; set; }
 
         public StorageChangeModel()
         {
-            Positions = new List<StorageChangePositionModel>();
+            Goods = new List<GoodsModel>();
         }
     }
 }

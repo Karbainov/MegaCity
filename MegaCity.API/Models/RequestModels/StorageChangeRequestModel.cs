@@ -8,8 +8,6 @@
 
         public int Count { get; set; }
 
-        public string DataWriteOff { get; set; }
-
-        public string ReasonWriteOff { get; set; }
+        public string Type { get; set; } //Supply or WriteOff
     }
 }

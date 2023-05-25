@@ -18,12 +18,8 @@ public class MapperApiProfile : Profile
         CreateMap<GoodsModel, GoodsResponseModel>();
         CreateMap<GoodsRequestModel, GoodsModel>();
 
-        CreateMap<ManagerModel, ManagerResponseModel>();
-        CreateMap<ManagerRequestModel, ManagerModel>();
-
         CreateMap<OrderModel, OrderResponseModel>();
         CreateMap<OrderRequestModel, OrderModel>();
-
         CreateMap<OrderPositionRequestModel, OrderPositionModel>();
 
         CreateMap<ProductModel,ProductResponseModel>();

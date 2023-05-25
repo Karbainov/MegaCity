@@ -61,10 +61,14 @@ public class ProductRepository
     {
         var product = _context.Products.FirstOrDefault(i => i.Id == id);
 
-        if(product != null)
+        if (product != null)
         {
             _context.Products.Remove(product);
             _context.SaveChanges();
+        }
+        else
+        {
+            throw new Exception();
         }
     }
 

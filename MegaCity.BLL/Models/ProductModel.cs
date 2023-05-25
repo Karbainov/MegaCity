@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MegaCity.DAL.Dots;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,14 @@ namespace MegaCity.BLL.Models
 
         public int Count { get; set; }
 
-        public List<GoodsModel> Goods { get; set; }
+        public List<ComponentModel> Components { get; set; }
+
+        public List<OrderPositionModel> Positions { get; set; }
 
         public ProductModel()
         {
-            Goods = new List<GoodsModel>();
+            Components = new List<ComponentModel>();
+            Positions = new List<OrderPositionModel>();
         }
     }
 }
