@@ -44,10 +44,10 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddManager(ManagerRequestModel manager)
+        public IActionResult AddManager(int userId,ManagerRequestModel model)
         {
-            ManagerModel managerModel = _mapper.Map<ManagerModel>(manager);
-            ManagerModel newManager = _managerService.AddManager(managerModel);
+            ManagerModel managerModel = _mapper.Map<ManagerModel>(model);
+            ManagerModel newManager = _managerService.AddManager(userId,managerModel);
             ManagerResponseModel result = _mapper.Map<ManagerResponseModel>(newManager);
 
             return Created(new Uri("Manager", UriKind.Relative), result);

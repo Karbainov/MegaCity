@@ -13,5 +13,12 @@ namespace MegaCity.BLL.Models
         public string Name { get; set; }
 
         public int Number { get; set; }
+
+        public List<OrderPositionModel> Positions { get; set; }
+
+        public OrderModel()
+        {
+            Positions = new List<OrderPositionModel>();
+        }
     }
 }

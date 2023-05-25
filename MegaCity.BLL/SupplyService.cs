@@ -24,49 +24,14 @@ namespace MegaCity.BLL
 
         public List<StorageChangeModel> GetAllSupply()
         {
-            List<StorageChangeModel> supply = new List<StorageChangeModel>()
-            {
-                new StorageChangeModel()
-                {
-                    Name = "productOne",
-                    Price = 100,
-                    Count=150,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
-
-                new StorageChangeModel()
-                {
-                    Name = "productTwo",
-                    Price = 200,
-                    Count=60,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
-
-                new StorageChangeModel()
-                {
-                    Name = "productThree",
-                    Price = 300,
-                    Count=50,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                }
-            };
+            List<StorageChangeModel> supply = new List<StorageChangeModel>();
 
             return supply;
         }
 
         public void AddSupply(StorageChangeModel spoiled)
         {
-            StorageChangeModel newSupply = new StorageChangeModel()
-            {
-                Name = "productTwo",
-                Price = 200,
-                Count = 60,
-                DataWriteOff = "11/12/12",
-                ReasonWriteOff = "lalala"
-            };
+            StorageChangeModel newSupply = new StorageChangeModel();
         }
 
         public void DeleteSupplyById(int id)

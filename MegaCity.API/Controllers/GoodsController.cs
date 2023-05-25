@@ -15,8 +15,8 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class GoodsController : ControllerBase
     {
-       private GoodsService _goodsService;
-       private IMapper _mapper;
+        GoodsService _goodsService;
+        Mapper _mapper;
 
         public GoodsController()
         {
@@ -24,31 +24,25 @@ namespace MegaCity.API.Controllers
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
             
         }
-        [HttpGet]
-        public IActionResult GetAllGoods()
-        {
-            List<GoodsModel> goods = _goodsService.GetAllGoods();
-            List<GoodsResponseModel> allGoods = _mapper.Map<List<GoodsResponseModel>>(goods);
-
-            return Ok(allGoods);
-        }
-
+        
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
-            var goods = _mapper.Map<GoodsResponseModel>(_goodsService.GetGoodsById(id));
+            var a = _goodsService.GetGoodsById();
+            var goods = _mapper.Map<GoodsResponseModel>(a);
 
             return Ok(goods);
         }
 
         [HttpPost("{Id}")]
-        public IActionResult AddGoods(int userId, GoodsRequestModel model)
+        public IActionResult AddGoods(int userId,GoodsRequestModel model)
         {
+            
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
-            GoodsModel newGoods = _goodsService.AddGoods(userId, goodsModel);
+            GoodsModel newGoods = _goodsService.AddGoods(userId,goodsModel);
             GoodsResponseModel result = _mapper.Map<GoodsResponseModel>(newGoods);
 
-            return Created(new Uri("Goods", UriKind.Relative), result);
+            return Created(new Uri($"Goods", UriKind.Relative), result);
         }
 
         [HttpDelete("{id}")]
@@ -65,7 +59,7 @@ namespace MegaCity.API.Controllers
             _goodsService.UpdateGoodsById(id, goodsModel);
             GoodsResponseModel goodsOutput = _mapper.Map<GoodsResponseModel>(goodsModel);
 
-            return Ok(goodsOutput);
+            return Ok(goods);
         }
     }
 }

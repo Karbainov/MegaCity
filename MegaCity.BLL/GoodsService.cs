@@ -23,16 +23,15 @@ namespace MegaCity.BLL
             _goodsRepository = new GoodsRepository();
         }
 
-        public List<GoodsModel> GetAllGoods()
+        public List<GoodsModel> GetGoodsById()
         {
-            /// return _mapper.Map<GoodsModel>(_goodsRepository.());
-            return null;
+            List<GoodsModel> goods = new List<GoodsModel>();
+            return goods;
         }
 
-        public GoodsModel UpdateGoods(GoodsModel goodsModel)
+        public void UpdateGoodsById(int id, GoodsModel goods)
         {
-            var goods = _mapper.Map<GoodsDto>(goodsModel);
-            return _mapper.Map<GoodsModel>(_goodsRepository.UpdateGoods(goods));
+            GoodsModel goodsOutput = new GoodsModel();
         }
 
         public void DeleteGoodsById(int id)
@@ -42,39 +41,13 @@ namespace MegaCity.BLL
 
         public GoodsModel AddGoods(int userId, GoodsModel goodsModel)
         {
-            var goods = _mapper.Map<GoodsDto>(goodsModel);
-            return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(userId, goods));
-        }
-
-        public GoodsModel GetGoodsById(int id)
-        {
-            GoodsModel goods = new GoodsModel()
+            GoodsDto goodsDto = new GoodsDto()
             {
-                Name = "Potato",
-                Price = 17
+                Date = DateTime.Now,
             };
-
-            return goods;
+            var model = _mapper.Map<GoodsDto>(goodsModel);
+            return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(userId, model));
         }
 
-        public void AddGoods(GoodsModel model)
-        {
-            GoodsModel goods = new GoodsModel()
-            {
-                Name = model.Name,
-                Price = model.Price,
-                Count = model.Count
-            };
-        }
-
-        public void UpdateGoodsById(int id, GoodsModel goods)
-        {
-            GoodsModel modelOutput = new GoodsModel()
-            {
-                Name = goods.Name,
-                Price = goods.Price,
-                Count = goods.Count
-            };
-        }
     }
 }
