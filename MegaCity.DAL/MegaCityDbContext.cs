@@ -19,13 +19,7 @@ namespace MegaCity.DAL
 
         public DbSet<ProductDto> Products { get; set; }
 
-        public DbSet<UserDto> Admins { get; set; }
-
         public DbSet<ComponentDto> Components { get; set; }
-
-        public DbSet<OrderDto> Checks { get; set; }
-
-        public DbSet<FilialDto> Filials { get; set; }
 
         public DbSet<StorageChangeDto> StorageChanges { get; set; }
 

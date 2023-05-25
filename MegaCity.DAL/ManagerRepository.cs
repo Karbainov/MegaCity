@@ -19,25 +19,36 @@ namespace MegaCity.DAL
         public void GetAllManagers()
         {
             _context.Users.ToList();
-            _context.SaveChanges();
         }
 
-        public UserDto GetMnagerById(int id)
+        public UserDto GetManagerById(int id)
         {
             return _context.Users.FirstOrDefault(i => i.Id == id);
         }
 
-        public UserDto AddManager(UserDto manager)
+        public UserDto AddManager(int userId,UserDto manager)
         {
-            var managerUser = _context.Users.FirstOrDefault();
-
+            var user = _context.Users.FirstOrDefault(i => i.Id == manager.Id);
+            
             if (manager != null)
             {
-                _context.Users.Add(manager);
+                UserDto newManager = new UserDto()
+                {
+                    FirstName = manager.FirstName,
+                    LastName = manager.LastName,
+                    Email = manager.Email,
+                    Password = manager.Password,
+                    Role = manager.Role
+                };
+                _context.Users.Add(newManager);
                 _context.SaveChanges();
-            }
 
-            return managerUser;
+                return newManager;
+            }
+            else
+            {
+                throw new Exception("Админ не создан!");
+            }
         }
 
         public void DeleteMnaagerById(int id)

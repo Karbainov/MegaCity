@@ -30,58 +30,21 @@ namespace MegaCity.BLL
 
         public List<AdminModel> GetAllAdmins()
         {
-            List<AdminModel> admins = new List<AdminModel>()
-            {
-                new AdminModel()
-                {
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123456
-                },
-
-                new AdminModel()
-                {
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=150,
-                    PhoneNumber=123452
-                },
-
-                new AdminModel()
-                {
-                    FirstName = "FirstName",
-                    LastName = "LastName",
-                    Age=50,
-                    PhoneNumber=123458
-                }
-            };
-
+            List<AdminModel> admins = new List<AdminModel>();
             return admins;
         }
 
         public AdminModel GetAdminById()
         {
-            AdminModel admin = new AdminModel()
-            {
-                FirstName = "FirstName",
-                LastName = "LastName",
-                Age = 35,
-                PhoneNumber = 123451
-            };
+            AdminModel admin = new AdminModel();
 
             return admin;
         }
 
-        public AdminModel AddAdmin(AdminModel admin)
+        public AdminModel AddAdmin(int userId,AdminModel adminModel)
         {
-            AdminModel newAdmin = new AdminModel()
-            {
-                FirstName = admin.FirstName,
-                LastName = admin.LastName
-            };
-
-            return newAdmin;
+            var model = _mapper.Map<UserDto>(adminModel);
+            return _mapper.Map<AdminModel>(_adminRepository.AddAdmin(userId, model));
         }
 
         public void UpdateAdminById(int id, AdminModel admin)

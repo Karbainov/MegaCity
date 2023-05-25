@@ -1,6 +1,6 @@
 ﻿namespace MegaCity.API.Models.RequestModel
 {
-    public class WriteOffRequestModel
+    public class StorageChangeRequestModel
     {
         public string Name { get; set; }
 

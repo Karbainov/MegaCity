@@ -14,76 +14,29 @@ namespace MegaCity.BLL
     public class WriteOffService
     {
         private IMapper _mapper;
-        private SpoiledProductsAndGoodsRepository _spoiledProductsAndGoodsRepository;
+        private WriteOffRepository _writeOffRepository;
 
         public WriteOffService()
         {
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperBLLProfile())));
-            _spoiledProductsAndGoodsRepository = new SpoiledProductsAndGoodsRepository();
+            _writeOffRepository = new WriteOffRepository();
         }
 
-        public List<WriteOffModel> GetAllSpoiledProductsAndGoods()
+        public List<StorageChangeModel> GetAllWriteOff()
         {
-            List<WriteOffModel> spoiled = new List<WriteOffModel>()
-            {
-                new WriteOffModel()
-                {
-                    Name = "productOne",
-                    Price = 100,
-                    Count=150,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
+            List<StorageChangeModel> writeOff = new List<StorageChangeModel>();
 
-                new WriteOffModel()
-                {
-                    Name = "productTwo",
-                    Price = 200,
-                    Count=60,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                },
-
-                new WriteOffModel()
-                {
-                    Name = "productThree",
-                    Price = 300,
-                    Count=50,
-                    DataWriteOff="11/12/12",
-                    ReasonWriteOff="lalala"
-                }
-            };
-
-            return spoiled;
+            return writeOff;
         }
 
-        public void AddSpoiledProductsAndGoods(WriteOffModel spoiled)
+        public void AddWriteOff(StorageChangeModel spoiled)
         {
-            WriteOffModel newspoiledProductAndGoods = new WriteOffModel()
-            {
-                Name = "productTwo",
-                Price = 200,
-                Count = 60,
-                DataWriteOff = "11/12/12",
-                ReasonWriteOff = "lalala"
-            };
+            StorageChangeModel newWriteOff = new StorageChangeModel();
         }
 
-        public void UpdateSpoiledProductAndGoodsById(int id, WriteOffModel spoiled)
+        public void DeleteWriteOffById(int id)
         {
-            WriteOffModel spoiledProductAndGoodsOutput = new WriteOffModel();
-            {
-                string Name = spoiled.Name;
-                double price = spoiled.Price;
-                int Count = spoiled.Count;
-                string DataWriteOff = spoiled.DataWriteOff;
-                string ReasonWriteOff = spoiled.ReasonWriteOff;
-            };
-        }
-
-        public void DeleteById(int id)
-        {
-            _spoiledProductsAndGoodsRepository.DeleteSpoiledProductsAndGoodsById(id);
+            _writeOffRepository.DeleteWriteOffById(id);
         }
     }
 }

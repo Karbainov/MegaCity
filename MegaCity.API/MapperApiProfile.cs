@@ -15,14 +15,6 @@ public class MapperApiProfile : Profile
         CreateMap<AdminModel, AdminResponseModel>();
         CreateMap<AdminRequestModel, AdminModel>();
 
-        CreateMap<CashboxModel, CashboxResponseModel>();
-        CreateMap<CashboxIRequestModel, CashboxModel>();
-
-        CreateMap<CheckModel, CheckResponseModel>();
-
-        CreateMap<FilialModel, FilialResponseModel>();
-        CreateMap<FilialRequestModel, FilialModel>();
-
         CreateMap<GoodsModel, GoodsResponseModel>();
         CreateMap<GoodsRequestModel, GoodsModel>();
 
@@ -32,11 +24,13 @@ public class MapperApiProfile : Profile
         CreateMap<OrderModel, OrderResponseModel>();
         CreateMap<OrderRequestModel, OrderModel>();
 
+        CreateMap<OrderPositionRequestModel, OrderPositionModel>();
+
         CreateMap<ProductModel,ProductResponseModel>();
         CreateMap<ProductRequestModel, ProductModel>();
 
-        CreateMap<WriteOffModel, WriteOffResponseModel>();
-        CreateMap<WriteOffRequestModel, WriteOffModel>();
+        CreateMap<StorageChangeModel, StorageChangeResponseModel>();
+        CreateMap<StorageChangeRequestModel, StorageChangeModel>();
     }
 
 }

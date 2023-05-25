@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MegaCity.BLL.Models
 {
-    public class WriteOffModel
+    public class StorageChangeModel
     {
         public int Id { get; set; }
 
@@ -19,5 +19,12 @@ namespace MegaCity.BLL.Models
         public string DataWriteOff { get; set; }
 
         public string ReasonWriteOff { get; set; }
+
+        public List<StorageChangePositionModel> Positions { get; set; }
+
+        public StorageChangeModel()
+        {
+            Positions = new List<StorageChangePositionModel>();
+        }
     }
 }

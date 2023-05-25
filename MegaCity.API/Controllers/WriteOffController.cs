@@ -8,6 +8,7 @@ using MegaCity.BLL;
 using MegaCity.BLL.Models;
 using AutoMapper;
 using MegaCity.API.Models.RequestModels;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace MegaCity.API.Controllers
 {
@@ -15,12 +16,12 @@ namespace MegaCity.API.Controllers
     [ApiController]
     public class WriteOffController : ControllerBase
     {
-        WriteOffService _spoiledProductsAndGoodsService;
+        WriteOffService _writeOffService;
         Mapper _mapper;
 
         public WriteOffController()
         {
-            _spoiledProductsAndGoodsService = new WriteOffService();
+            _writeOffService = new WriteOffService();
             MapperConfiguration configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MapperApiProfile());
@@ -28,38 +29,28 @@ namespace MegaCity.API.Controllers
             _mapper = new Mapper(configuration);
         }
          [HttpGet]
-        public IActionResult GetAllSpoiledProductsAndGoods()
+        public IActionResult GetAllWriteOff()
         {
-            List<WriteOffModel> spoiledProductsAndGoods = _spoiledProductsAndGoodsService.GetAllSpoiledProductsAndGoods();
-            List<WriteOffResponseModel> SpoiledProductAndGoods = _mapper.Map<List<WriteOffResponseModel>>(spoiledProductsAndGoods);
+            List<StorageChangeModel> writeOff = _writeOffService.GetAllWriteOff();
+            List<StorageChangeResponseModel> newWriteOff = _mapper.Map<List<StorageChangeResponseModel>>(writeOff);
 
-            return Ok(SpoiledProductAndGoods);
+            return Ok(newWriteOff);
         }
 
         [HttpPost]
-        public IActionResult AddSpoiledProductsAndGoods(WriteOffRequestModel spoiled)
+        public IActionResult AddWriteOff(StorageChangeRequestModel writeOff)
         {
-            WriteOffModel spoiledModel = _mapper.Map<WriteOffModel>(spoiled);
-            _spoiledProductsAndGoodsService.AddSpoiledProductsAndGoods(spoiledModel);
-            WriteOffResponseModel newSpoiled = _mapper.Map<WriteOffResponseModel>(spoiledModel);
+            StorageChangeModel writeOffModel = _mapper.Map<StorageChangeModel>(writeOff);
+            _writeOffService.AddWriteOff(writeOffModel);
+            StorageChangeResponseModel result = _mapper.Map<StorageChangeResponseModel>(writeOffModel);
 
-            return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), newSpoiled);
+            return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), result);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteSpoiledProductAndGoodsById(int id)
         {
             return NoContent();
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult UpdateSpoiledProductAndGoodsById(int id, WriteOffRequestModel spoiled)
-        {
-            WriteOffModel spoiledModel = _mapper.Map<WriteOffModel>(spoiled);
-            _spoiledProductsAndGoodsService.UpdateSpoiledProductAndGoodsById(id, spoiledModel);
-            WriteOffResponseModel spoiledOutput = _mapper.Map<WriteOffResponseModel>(spoiledModel);
-
-            return Ok(spoiledOutput);
         }
     }
 }

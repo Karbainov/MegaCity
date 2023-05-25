@@ -17,11 +17,11 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public GoodsDto AddGoods(int productId,GoodsDto Goods)
+        public GoodsDto AddGoods(int usereId, GoodsDto Goods)
         {
-            var model = _context.Products.FirstOrDefault(i => i.Id == productId);
+            var model = _context.Products.FirstOrDefault(i => i.Id == usereId);
 
-            if(model!=null)
+            if(model != null)
             {
                 _context.Goods.Add(Goods);
                 _context.SaveChanges();

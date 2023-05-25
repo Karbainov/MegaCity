@@ -1,6 +1,6 @@
 ﻿namespace MegaCity.API.Models.ResponseModel
 {
-    public class WriteOffResponseModel
+    public class StorageChangeResponseModel
     {
         public int Id { get; set; }
 
