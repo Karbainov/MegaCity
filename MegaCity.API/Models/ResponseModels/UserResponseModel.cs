@@ -1,6 +1,6 @@
 ﻿namespace MegaCity.API.Models.ResponseModel
 {
-    public class AdminResponseModel
+    public class UserResponseModel
     {
         public int Id { get; set; }
 

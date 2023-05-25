@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MegaCity.BLL.Models
 {
-    public class ManagerModel
+    public class UserModel
     {
         public int Id { get; set; }
 

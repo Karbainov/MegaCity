@@ -1,6 +1,6 @@
 ﻿namespace MegaCity.API.Models.RequestModel
 {
-    public class AdminRequestModel
+    public class UserRequestModel
     {
         public string FirstName { get; set; }
 

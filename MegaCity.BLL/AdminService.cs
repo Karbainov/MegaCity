@@ -28,28 +28,28 @@ namespace MegaCity.BLL
         public string admin = "INSERT INTO dbo.SMS_PW(Id, FirstName, LastName, Date, PhoneNumber, Email) VALUES(@id, @firstName, @lastName, @date, @phoneNumber, @email)";
         //SqlCommand command = new SqlCommand(admin, db.Connection);
 
-        public List<AdminModel> GetAllAdmins()
+        public List<UserModel> GetAllAdmins()
         {
-            List<AdminModel> admins = new List<AdminModel>();
+            List<UserModel> admins = new List<UserModel>();
             return admins;
         }
 
-        public AdminModel GetAdminById()
+        public UserModel GetAdminById()
         {
-            AdminModel admin = new AdminModel();
+            UserModel admin = new UserModel();
 
             return admin;
         }
 
-        public AdminModel AddAdmin(int userId,AdminModel adminModel)
+        public UserModel AddAdmin(int userId,UserModel adminModel)
         {
             var model = _mapper.Map<UserDto>(adminModel);
-            return _mapper.Map<AdminModel>(_adminRepository.AddAdmin(userId, model));
+            return _mapper.Map<UserModel>(_adminRepository.AddAdmin(userId, model));
         }
 
-        public void UpdateAdminById(int id, AdminModel admin)
+        public void UpdateAdminById(int id, UserModel admin)
         {
-            AdminModel adminOutput = new AdminModel()
+            UserModel adminOutput = new UserModel()
             {
                 FirstName = admin.FirstName,
                 LastName = admin.LastName

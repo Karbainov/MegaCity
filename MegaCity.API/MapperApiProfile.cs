@@ -12,8 +12,8 @@ public class MapperApiProfile : Profile
 {
     public MapperApiProfile()
     {
-        CreateMap<AdminModel, AdminResponseModel>();
-        CreateMap<AdminRequestModel, AdminModel>();
+        CreateMap<UserModel, UserResponseModel>();
+        CreateMap<UserRequestModel, UserModel>();
 
         CreateMap<GoodsModel, GoodsResponseModel>();
         CreateMap<GoodsRequestModel, GoodsModel>();

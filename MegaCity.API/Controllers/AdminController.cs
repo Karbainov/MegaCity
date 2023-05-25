@@ -25,8 +25,8 @@ namespace MegaCity.API.Controllers
         [HttpGet]
         public IActionResult GetAllAdmins()
         {
-            List<AdminModel> admins = _adminService.GetAllAdmins();
-            List<AdminResponseModel> allAdmins= _mapper.Map<List<AdminResponseModel>>(admins);
+            List<UserModel> admins = _adminService.GetAllAdmins();
+            List<UserResponseModel> allAdmins= _mapper.Map<List<UserResponseModel>>(admins);
 
             return Ok(allAdmins);
         }
@@ -34,18 +34,18 @@ namespace MegaCity.API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAdminById(int id)
         {
-            AdminModel admin = _adminService.GetAdminById();
-            AdminResponseModel adminId = _mapper.Map<AdminResponseModel>(admin);
+            UserModel admin = _adminService.GetAdminById();
+            UserResponseModel adminId = _mapper.Map<UserResponseModel>(admin);
 
             return Ok(adminId);
         }
 
         [HttpPost()]
-        public IActionResult AddAdmin(int userId,AdminRequestModel model)
+        public IActionResult AddAdmin(int userId,UserRequestModel model)
         {
-            AdminModel adminModel = _mapper.Map<AdminModel>(model);
-            AdminModel newAdmin = _adminService.AddAdmin(userId,adminModel);
-            AdminResponseModel result = _mapper.Map<AdminResponseModel>(newAdmin);
+            UserModel adminModel = _mapper.Map<UserModel>(model);
+            UserModel newAdmin = _adminService.AddAdmin(userId,adminModel);
+            UserResponseModel result = _mapper.Map<UserResponseModel>(newAdmin);
 
             return Created(new Uri("Admin", UriKind.Relative), result);
         }
@@ -57,11 +57,11 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateAdminById(int id, AdminRequestModel admin)
+        public IActionResult UpdateAdminById(int id, UserRequestModel admin)
         {
-            AdminModel adminModel = _mapper.Map<AdminModel>(admin);
+            UserModel adminModel = _mapper.Map<UserModel>(admin);
             _adminService.UpdateAdminById(id, adminModel);
-            AdminResponseModel adminOutput = _mapper.Map<AdminResponseModel>(adminModel);
+            UserResponseModel adminOutput = _mapper.Map<UserResponseModel>(adminModel);
 
             return Ok(adminOutput);
         }
