@@ -61,6 +61,13 @@ public class ProductRepository
     {
         var product = _context.Products.FirstOrDefault(i => i.Id == id);
 
+        foreach (var u in _context.OrderPositions.ToList())
+        {
+            if (u.Product.Id == id)
+            {
+                u.Product = null;
+            }
+        }
         if (product != null)
         {
             _context.Products.Remove(product);
@@ -75,9 +82,11 @@ public class ProductRepository
     public ProductDto UpdateProduct(ProductDto model)
     {
         var u = _context.Products.FirstOrDefault(i => i.Id == model.Id);
+
         u.Name = model.Name;
         u.Price = model.Price;
         u.Count = model.Count;
+
         _context.SaveChanges();
         return u;
     }
