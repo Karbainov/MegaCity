@@ -22,7 +22,7 @@ namespace MegaCity.BLL
             _writeOffRepository = new WriteOffRepository();
         }
 
-        public List<StorageChangeModel> GetAllWriteOff()
+        public List<StorageChangeModel> GetAllWriteOffByDate()
         {
             List<StorageChangeModel> writeOff = new List<StorageChangeModel>();
 

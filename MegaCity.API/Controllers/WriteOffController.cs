@@ -29,9 +29,9 @@ namespace MegaCity.API.Controllers
             _mapper = new Mapper(configuration);
         }
          [HttpGet]
-        public IActionResult GetAllWriteOff()
+        public IActionResult GetAllWriteOffByDate()
         {
-            List<StorageChangeModel> writeOff = _writeOffService.GetAllWriteOff();
+            List<StorageChangeModel> writeOff = _writeOffService.GetAllWriteOffByDate();
             List<StorageChangeResponseModel> newWriteOff = _mapper.Map<List<StorageChangeResponseModel>>(writeOff);
 
             return Ok(newWriteOff);

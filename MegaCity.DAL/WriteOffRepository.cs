@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MegaCity.DAL.Dots;
 
 namespace MegaCity.DAL
@@ -16,9 +17,9 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public void GetAllWriteOff()
+        public void GetAllWriteOffByDate(DateTime date)
         {
-            _context.StorageChanges.ToList();
+            _context.StorageChanges.Include(i => i.StorageChangePosition).Where(d => d.Date == date).ToList();
         }
 
         public StorageChangeDto AddWriteOff(StorageChangeDto supply)
