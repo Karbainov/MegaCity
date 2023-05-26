@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MegaCity.DAL.Dots;
 
 namespace MegaCity.DAL
@@ -55,10 +56,18 @@ namespace MegaCity.DAL
 
         public void DeleteUserById(int id)
         {
-            var admin = _context.Users.FirstOrDefault(i => i.Id == id);
-            if (admin != null)
+            var user = _context.Users.FirstOrDefault(i => i.Id == id);
+
+            foreach (var o in _context.Orders.ToList())
             {
-                _context.Users.Remove(admin);
+                if (o.User.Id == id)
+                {
+                    o.User = null;
+                }
+            }
+            if (user != null)
+            {
+                _context.Users.Remove(user);
                 _context.SaveChanges();
             }
         }

@@ -68,12 +68,6 @@ namespace MegaCity.BLL
             }
         }
 
-        public ProductModel GetProductById()
-        {
-            ProductModel product = new ProductModel();
-            return product;
-        }
-
         public void UpdateProductById(int id, ProductModel product)
         {
             ProductModel productOutput = new ProductModel()
