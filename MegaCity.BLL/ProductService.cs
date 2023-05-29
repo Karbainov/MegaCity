@@ -64,24 +64,26 @@ namespace MegaCity.BLL
             }
         }
 
-        public ProductModel UpdateProductById(int id, ProductModel product)
+        public ProductModel UpdateProductById(ProductModel product)
         {
-            ProductDto updateProduct = _mapper.Map<ProductDto>(product);
+            return product;
 
-            if (updateProduct != null)
-            {
-                updateProduct.Name = product.Name;
-                updateProduct.Price = product.Price;
-                updateProduct.Count = product.Count;
+            //ProductDto updateProduct = _mapper.Map<ProductDto>(product);
 
-                ProductModel newUpdate = _mapper.Map<ProductModel>(updateProduct);
+            //if (updateProduct != null)
+            //{
+            //    updateProduct.Name = product.Name;
+            //    updateProduct.Price = product.Price;
+            //    updateProduct.Count = product.Count;
 
-                return newUpdate;
-            }
-            else
-            {
-                throw new Exception("Не удалось изменить!");
-            }
+            //    ProductModel newUpdate = _mapper.Map<ProductModel>(updateProduct);
+
+            //    return newUpdate;
+            //}
+            //else
+            //{
+            //    throw new Exception("Не удалось изменить!");
+            //}
         }
     }
 }

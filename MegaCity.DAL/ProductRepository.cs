@@ -79,10 +79,9 @@ public class ProductRepository
         }
     }
 
-    public ProductDto UpdateProduct(int id, ProductDto product)
+    public ProductDto UpdateProduct(ProductDto product)
     {
         var updateProduct = _context.Products.FirstOrDefault(i => i.Id == product.Id);
-
 
         if (updateProduct != null)
         {
