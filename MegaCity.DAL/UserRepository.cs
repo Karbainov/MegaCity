@@ -31,18 +31,12 @@ namespace MegaCity.DAL
 
         public UserDto AddUser(int userId, UserDto admin)
         {
-            var user = _context.Users.FirstOrDefault(i => i.Id == admin.Id);
-            
             if (admin != null)
             {
-                UserDto newAdmin = new UserDto()
-                {
-                    FirstName = admin.FirstName,
-                    LastName = admin.LastName,
-                    Email = admin.Email,
-                    Password = admin.Password,
-                    Role = admin.Role
-                };
+                UserDto newAdmin = new UserDto();
+                admin.Password = "uguyh";
+                admin.Type = "uguyh";
+
                 _context.Users.Add(newAdmin);
                 _context.SaveChanges();
 

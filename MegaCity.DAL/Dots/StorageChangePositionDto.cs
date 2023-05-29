@@ -14,6 +14,6 @@ namespace MegaCity.DAL.Dots
 
         public GoodsDto Goods { get; set; }
 
-        public StorageChangeDto StorageChange { get; set; }
+        public List<StorageChangeDto> StorageChanges { get; set; }
     }
 }
