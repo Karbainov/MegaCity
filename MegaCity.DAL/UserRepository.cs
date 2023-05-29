@@ -67,6 +67,10 @@ namespace MegaCity.DAL
                 _context.Users.Remove(user);
                 _context.SaveChanges();
             }
+            else
+            {
+                throw new Exception("Не удалось удалить");
+            }
         }
 
         public UserDto UpdateUserById(int id, UserDto user)

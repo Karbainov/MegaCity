@@ -35,11 +35,16 @@ namespace MegaCity.DAL
 
         public void DeleteGoodsById(int id)
         {
-            var Goods = _context.Goods.FirstOrDefault(i => i.Id == id);
-            if(Goods!=null)
+            var goods = _context.Goods.FirstOrDefault(i => i.Id == id);
+
+            if (goods != null)
             {
-                _context.Goods.Remove(Goods);
+                _context.Goods.Remove(goods);
                 _context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Не удалось удалить!");
             }
         }
 
