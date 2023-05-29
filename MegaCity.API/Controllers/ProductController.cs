@@ -56,6 +56,7 @@ namespace MegaCity.API.Controllers
         public IActionResult DeleteProductById(int id)
         {
             _productService.DeleteProductById(id);
+
             return NoContent();
         }
 
