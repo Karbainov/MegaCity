@@ -41,10 +41,10 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult AddUser(int userId, UserRequestModel user)
+        public IActionResult AddUser(UserRequestModel user)
         {
             UserModel userModel = _mapper.Map<UserModel>(user);
-            UserModel newUser = _userService.AddUser(userId, userModel);
+            UserModel newUser = _userService.AddUser(userModel);
             UserResponseModel result = _mapper.Map<UserResponseModel>(newUser);
 
             return Created(new Uri("Admin", UriKind.Relative), result);

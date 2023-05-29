@@ -26,6 +26,7 @@ namespace MegaCity.BLL
         public List<UserModel> GetAllUsersByRole()
         {
             List<UserModel> users = new List<UserModel>();
+
             return users;
         }
 
@@ -36,10 +37,11 @@ namespace MegaCity.BLL
             return user;
         }
 
-        public UserModel AddUser(int userId,UserModel userModel)
+        public UserModel AddUser(UserModel userModel)
         {
             var user = _mapper.Map<UserDto>(userModel);
-            return _mapper.Map<UserModel>(_userRepository.AddUser(userId, user));
+
+            return _mapper.Map<UserModel>(_userRepository.AddUser(user));
         }
 
         public void UpdateUserById(int id, UserModel user)

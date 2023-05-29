@@ -43,6 +43,8 @@ namespace MegaCity.BLL
 
         public ProductModel AddProduct(List<ComponentModel> components)
         {
+            List<ProductDto> productDTO = _mapper.Map<List<ProductDto>>(components);
+
             ProductDto productDto = new ProductDto();
 
             var newProductDto = _productRepository.AddProduct(productDto);

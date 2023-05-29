@@ -35,11 +35,10 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpPost("{Id}")]
-        public IActionResult AddGoods(int userId,GoodsRequestModel model)
+        public IActionResult AddGoods(int userId,GoodsRequestModel goods)
         {
-            
-            GoodsModel goodsModel = _mapper.Map<GoodsModel>(model);
-            GoodsModel newGoods = _goodsService.AddGoods(userId,goodsModel);
+            List<ComponentModel> goodsComponent = _mapper.Map<List<ComponentModel>>(goods);
+            GoodsModel newGoods = _goodsService.AddGoods(goodsComponent);
             GoodsResponseModel result = _mapper.Map<GoodsResponseModel>(newGoods);
 
             return Created(new Uri($"Goods", UriKind.Relative), result);

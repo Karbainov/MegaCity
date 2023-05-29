@@ -17,17 +17,41 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public GoodsDto AddGoods(int usereId, GoodsDto Goods)
+        public GoodsDto AddProduct(GoodsDto goods)
         {
-            var model = _context.Products.FirstOrDefault(i => i.Id == usereId);
-
-            if(model != null)
+            if (goods != null)
             {
-                _context.Goods.Add(Goods);
+                _context.Goods.Add(goods);
+                _context.SaveChanges();
+            }
+
+            return goods;
+        }
+
+        public ComponentDto AddComponent(double count, int goodsId, int productId)
+        {
+            var goods = _context.Goods.FirstOrDefault(i => i.Id == goodsId);
+            var product = _context.Products.FirstOrDefault(i => i.Id == productId);
+
+            if (goods != null && product != null)
+            {
+                ComponentDto newComponent = new ComponentDto()
+                {
+                    Count = count,
+                    Goods = goods,
+                    Product = product
+                };
+                _context.Components.Add(newComponent);
+                goods.Components.Add(newComponent);
+                product.Components.Add(newComponent);
                 _context.SaveChanges();
 
+                return newComponent;
             }
-            return Goods;
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public GoodsDto GetGoodsById(int id)

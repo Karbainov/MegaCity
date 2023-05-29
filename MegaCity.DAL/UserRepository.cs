@@ -29,18 +29,16 @@ namespace MegaCity.DAL
             return _context.Users.FirstOrDefault(i => i.Id == id);
         }
 
-        public UserDto AddUser(int userId, UserDto admin)
+        public UserDto AddUser(UserDto user)
         {
-            if (admin != null)
+            if (user != null)
             {
-                UserDto newAdmin = new UserDto();
-                admin.Password = "uguyh";
-                admin.Type = "uguyh";
+                UserDto newUser = new UserDto();
 
-                _context.Users.Add(newAdmin);
+                _context.Users.Add(newUser);
                 _context.SaveChanges();
 
-                return newAdmin;
+                return newUser;
             }
             else
             {
@@ -57,6 +55,13 @@ namespace MegaCity.DAL
                 if (o.User.Id == id)
                 {
                     o.User = null;
+                }
+            }
+            foreach (var u in _context.StorageChanges.ToList())
+            {
+                if (u.User.Id == id)
+                {
+                    u.User = null;
                 }
             }
             if (user != null)

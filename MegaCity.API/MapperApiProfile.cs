@@ -27,6 +27,9 @@ public class MapperApiProfile : Profile
 
         CreateMap<StorageChangeModel, StorageChangeResponseModel>();
         CreateMap<StorageChangeRequestModel, StorageChangeModel>();
+
+        CreateMap<ProductRequestModel, ComponentModel>();
+        CreateMap<ComponentModel, ProductRequestModel>();
     }
 
 }
