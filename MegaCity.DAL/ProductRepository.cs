@@ -79,15 +79,23 @@ public class ProductRepository
         }
     }
 
-    public ProductDto UpdateProduct(ProductDto model)
+    public ProductDto UpdateProduct(ProductDto product)
     {
-        var u = _context.Products.FirstOrDefault(i => i.Id == model.Id);
+        var updateProduct = _context.Products.FirstOrDefault(i => i.Id == product.Id);
 
-        u.Name = model.Name;
-        u.Price = model.Price;
-        u.Count = model.Count;
+        if (updateProduct != null)
+        {
+            updateProduct.Name = product.Name;
+            updateProduct.Price = product.Price;
+            updateProduct.Count = product.Count;
 
-        _context.SaveChanges();
-        return u;
+            _context.SaveChanges();
+
+            return updateProduct;
+        }
+        else
+        {
+            throw new Exception("Не удалось изменить!");
+        }
     }
 }

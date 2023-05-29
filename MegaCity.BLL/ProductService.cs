@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MegaCity.DAL;
 using MegaCity.DAL.Dots;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 
 namespace MegaCity.BLL
@@ -32,12 +34,6 @@ namespace MegaCity.BLL
         {
             var a = _productRepository.GetProductById(id);
             return _mapper.Map<ProductModel>(a);
-        }
-
-        public ProductModel UpdateProduct(ProductModel productModel)
-        {
-            var model = _mapper.Map<ProductDto>(productModel);
-            return _mapper.Map<ProductModel>(_productRepository.UpdateProduct(model));
         }
 
         public void DeleteProductById(int id)
@@ -68,14 +64,26 @@ namespace MegaCity.BLL
             }
         }
 
-        public void UpdateProductById(int id, ProductModel product)
+        public ProductModel UpdateProductById(ProductModel product)
         {
-            ProductModel productOutput = new ProductModel()
-            {
-                Name = product.Name,
-                Price = product.Price,
-                Count = product.Count
-            };
+            return product;
+
+            //ProductDto updateProduct = _mapper.Map<ProductDto>(product);
+
+            //if (updateProduct != null)
+            //{
+            //    updateProduct.Name = product.Name;
+            //    updateProduct.Price = product.Price;
+            //    updateProduct.Count = product.Count;
+
+            //    ProductModel newUpdate = _mapper.Map<ProductModel>(updateProduct);
+
+            //    return newUpdate;
+            //}
+            //else
+            //{
+            //    throw new Exception("Не удалось изменить!");
+            //}
         }
     }
 }
