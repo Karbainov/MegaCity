@@ -41,17 +41,16 @@ namespace MegaCity.BLL
             _productRepository.DeleteProductById(id);
         }
 
-        public ProductModel AddProduct(List<ComponentModel> components)
+        public ProductModel AddProduct(ProductModel product)
         {
-            List<ProductDto> productDTO = _mapper.Map<List<ProductDto>>(components);
 
-            ProductDto productDto = new ProductDto();
+            ProductDto productDto = _mapper.Map<ProductDto>(product);
 
             var newProductDto = _productRepository.AddProduct(productDto);
 
             if (newProductDto != null)
             {
-                foreach (var component in components)
+                foreach (var component in product.Components)
                 {
                     _productRepository.AddComponent(component.Count, component.GoodsId, component.ProductId);
                 }

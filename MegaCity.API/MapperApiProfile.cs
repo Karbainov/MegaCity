@@ -22,14 +22,13 @@ public class MapperApiProfile : Profile
         CreateMap<OrderRequestModel, OrderModel>();
         CreateMap<OrderPositionRequestModel, OrderPositionModel>();
 
-        CreateMap<ProductModel,ProductResponseModel>();
+        CreateMap<ProductModel, ProductResponseModel>();
         CreateMap<ProductRequestModel, ProductModel>();
 
         CreateMap<StorageChangeModel, StorageChangeResponseModel>();
         CreateMap<StorageChangeRequestModel, StorageChangeModel>();
 
-        CreateMap<ProductRequestModel, ComponentModel>();
-        CreateMap<ComponentModel, ProductRequestModel>();
+        CreateMap<ComponentRequestModel, ComponentModel>();
     }
 
 }

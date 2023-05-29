@@ -1,4 +1,6 @@
-﻿namespace MegaCity.API.Models.RequestModels
+﻿using MegaCity.BLL.Models;
+
+namespace MegaCity.API.Models.RequestModels
 {
     public class ProductRequestModel
     {
@@ -7,5 +9,12 @@
         public double Price { get; set; }
 
         public int Count { get; set; }
+
+        public List<ComponentRequestModel> Components { get; set; }
+
+        public ProductRequestModel()
+        {
+            Components = new List<ComponentRequestModel>();
+        }
     }
 }

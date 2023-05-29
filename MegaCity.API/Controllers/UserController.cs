@@ -23,9 +23,9 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAllUsers(string role)
         {
-            List<UserModel> users = _userService.GetAllUsersByRole();
+            List<UserModel> users = _userService.GetAllUsersByRole(role);
             List<UserResponseModel> allUsers= _mapper.Map<List<UserResponseModel>>(users);
 
             return Ok(allUsers);

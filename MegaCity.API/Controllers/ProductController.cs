@@ -45,8 +45,8 @@ namespace MegaCity.API.Controllers
         [HttpPost]
         public IActionResult AddProduct(ProductRequestModel product)
         {
-            List<ComponentModel> productComponents = _mapper.Map<List<ComponentModel>>(product);
-            ProductModel newProduct = _productService.AddProduct(productComponents);
+            ProductModel productMap = _mapper.Map<ProductModel>(product);
+            var newProduct = _productService.AddProduct(productMap);
             ProductResponseModel result = _mapper.Map<ProductResponseModel>(newProduct);
 
             return Created(new Uri($"product", UriKind.Relative), result);

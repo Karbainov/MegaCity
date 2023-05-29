@@ -17,6 +17,7 @@ namespace MegaCity.BLL
         {
             CreateMap<GoodsModel, GoodsDto>().ReverseMap();
             CreateMap<ProductModel, ProductDto>().ReverseMap();
+            CreateMap<ComponentModel, ComponentDto>().ReverseMap();
             CreateMap<UserModel, UserDto>().ReverseMap();
         }
     }
