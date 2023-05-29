@@ -62,7 +62,8 @@ namespace MegaCity.API.Controllers
         public IActionResult UpdateUserById(int id, UserRequestModel user)
         {
             UserModel userModel = _mapper.Map<UserModel>(user);
-            _userService.UpdateUserById(id, userModel);
+            userModel.Id = id;
+            UserModel newUser = _userService.UpdateUserById(userModel);
             UserResponseModel userOutput = _mapper.Map<UserResponseModel>(userModel);
 
             return Ok(userOutput);

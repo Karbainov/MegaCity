@@ -39,27 +39,9 @@ namespace MegaCity.BLL
             _goodsRepository.DeleteGoodsById(id);
         }
 
-        public GoodsModel AddGoods(List<ComponentModel> components)
+        public GoodsModel AddGoods(GoodsModel goods)
         {
-            GoodsDto goodsDto = new GoodsDto();
-
-            var newGoodsDto = _goodsRepository.AddProduct(goodsDto);
-
-            if (newGoodsDto != null)
-            {
-                foreach (var component in components)
-                {
-                    _goodsRepository.AddComponent(component.Count, component.GoodsId, component.ProductId);
-                }
-
-                GoodsModel newGoods = _mapper.Map<GoodsModel>(newGoodsDto);
-
-                return newGoods;
-            }
-            else
-            {
-                throw new Exception("Продукт не создан!");
-            }
+            return goods;
         }
     }
 }

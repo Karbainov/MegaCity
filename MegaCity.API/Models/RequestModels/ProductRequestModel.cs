@@ -8,8 +8,6 @@ namespace MegaCity.API.Models.RequestModels
 
         public double Price { get; set; }
 
-        public int Count { get; set; }
-
         public List<ComponentRequestModel> Components { get; set; }
 
         public ProductRequestModel()
