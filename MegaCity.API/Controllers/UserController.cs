@@ -53,6 +53,8 @@ namespace MegaCity.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteUserById(int id)
         {
+            _userService.DeleteUserById(id);
+
             return NoContent();
         }
 
