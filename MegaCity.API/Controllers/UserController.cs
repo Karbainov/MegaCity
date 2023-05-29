@@ -47,7 +47,7 @@ namespace MegaCity.API.Controllers
             UserModel newUser = _userService.AddUser(userModel);
             UserResponseModel result = _mapper.Map<UserResponseModel>(newUser);
 
-            return Created(new Uri("Admin", UriKind.Relative), result);
+            return Created(new Uri("User", UriKind.Relative), result);
         }
 
         [HttpDelete("{id}")]

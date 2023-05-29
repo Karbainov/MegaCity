@@ -33,12 +33,10 @@ namespace MegaCity.DAL
         {
             if (user != null)
             {
-                UserDto newUser = new UserDto();
-
-                _context.Users.Add(newUser);
+                _context.Users.Add(user);
                 _context.SaveChanges();
 
-                return newUser;
+                return user;
             }
             else
             {

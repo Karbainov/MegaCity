@@ -37,12 +37,17 @@ namespace MegaCity.BLL
             return user;
         }
 
-        public UserModel AddUser(UserModel userModel)
+        public UserModel AddUser(UserModel user)
         {
-            var user = _mapper.Map<UserDto>(userModel);
-
-            return _mapper.Map<UserModel>(_userRepository.AddUser(user));
+            return user;
         }
+
+        //public UserModel AddUser(UserModel userModel)
+        //{
+        //    var user = _mapper.Map<UserDto>(userModel);
+
+        //    return _mapper.Map<UserModel>(_userRepository.AddUser(user));
+        //}
 
         public void UpdateUserById(int id, UserModel user)
         {
