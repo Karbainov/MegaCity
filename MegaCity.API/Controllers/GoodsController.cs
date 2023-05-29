@@ -55,8 +55,9 @@ namespace MegaCity.API.Controllers
         public IActionResult UpdateGoodsById(int id, GoodsRequestModel goods)
         {
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(goods);
-            _goodsService.UpdateGoodsById(id, goodsModel);
-            GoodsResponseModel goodsOutput = _mapper.Map<GoodsResponseModel>(goodsModel);
+            goodsModel.Id = id;
+            GoodsModel newGoods = _goodsService.UpdateGoodsById(goodsModel);
+            GoodsResponseModel goodsOutput = _mapper.Map<GoodsResponseModel>(newGoods);
 
             return Ok(goods);
         }

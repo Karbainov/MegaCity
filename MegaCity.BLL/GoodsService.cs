@@ -29,9 +29,9 @@ namespace MegaCity.BLL
             return goods;
         }
 
-        public void UpdateGoodsById(int id, GoodsModel goods)
+        public GoodsModel UpdateGoodsById(GoodsModel goods)
         {
-            GoodsModel goodsOutput = new GoodsModel();
+            return goods;
         }
 
         public void DeleteGoodsById(int id)

@@ -43,14 +43,24 @@ namespace MegaCity.DAL
             }
         }
 
-        public GoodsDto UpdateGoods(GoodsDto Goods)
+        public GoodsDto UpdateGoods(int id, GoodsDto goods)
         {
-            var u = _context.Goods.FirstOrDefault(i => i.Id == Goods.Id);
-            u.Name = Goods.Name;
-            u.Cost = Goods.Cost;
-            u.Count = Goods.Count;
-            _context.SaveChanges();
-            return u;
+            var goodsId = _context.Goods.FirstOrDefault(i => i.Id == goods.Id);
+
+            if (goodsId != null)
+            {
+                goodsId.Name = goods.Name;
+                goodsId.Cost = goods.Cost;
+                goodsId.Count = goods.Count;
+
+                _context.SaveChanges();
+
+                return goodsId;
+            }
+            else
+            {
+                throw new Exception("Не удалось изменить!");
+            }
         }
     }
 }
