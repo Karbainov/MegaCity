@@ -19,9 +19,9 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public void GetAllUsers()
+        public void GetAllUsersByRole(string role)
         {
-            _context.Users.ToList();
+            _context.Users.Where(u => u.Role == role).ToList();
         }
 
         public UserDto GetUserById(int id)

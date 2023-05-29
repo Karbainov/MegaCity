@@ -23,7 +23,7 @@ namespace MegaCity.BLL
             _userRepository = new UserRepository();
         }
 
-        public List<UserModel> GetAllUsers()
+        public List<UserModel> GetAllUsersByRole()
         {
             List<UserModel> users = new List<UserModel>();
             return users;
