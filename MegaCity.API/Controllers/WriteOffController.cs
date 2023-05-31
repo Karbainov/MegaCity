@@ -22,11 +22,8 @@ namespace MegaCity.API.Controllers
         public WriteOffController()
         {
             _writeOffService = new WriteOffService();
-            MapperConfiguration configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new MapperApiProfile());
-            });
-            _mapper = new Mapper(configuration);
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
+
         }
          [HttpGet]
         public IActionResult GetAllWriteOff()
@@ -48,8 +45,10 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteSpoiledProductAndGoodsById(int id)
+        public IActionResult DeleteWriteOffById(int id)
         {
+            _writeOffService.DeleteWriteOffById(id);
+            
             return NoContent();
         }
     }

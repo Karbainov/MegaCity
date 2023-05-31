@@ -21,6 +21,11 @@ namespace MegaCity.DAL
             _context.StorageChanges.ToList();
         }
 
+        public StorageChangeDto GetSupplyById(int id)
+        {
+            return _context.StorageChanges.FirstOrDefault(i => i.Id == id);
+        }
+
         public void AddSupply(StorageChangeDto supply)
         {
             _context.StorageChanges.Add(supply);
@@ -34,6 +39,26 @@ namespace MegaCity.DAL
             {
                 _context.StorageChanges.Remove(supply);
                 _context.SaveChanges();
+            }
+        }
+
+        public StorageChangeDto UpdateSupplyById(int id,StorageChangeDto supply)
+        {
+            var supplyId = _context.StorageChanges.FirstOrDefault(i => i.Id == supply.Id);
+
+            if(supplyId!=null)
+            {
+                supplyId.Date = DateTime.Now;
+                supplyId.Type = supply.Type;
+                supplyId.User = supply.User;
+
+                _context.SaveChanges();
+
+                return supplyId;
+            }
+            else
+            {
+                throw new Exception();
             }
         }
     }

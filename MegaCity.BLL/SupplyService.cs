@@ -29,6 +29,13 @@ namespace MegaCity.BLL
             return supply;
         }
 
+        public StorageChangeModel GetSupplyById()
+        {
+            StorageChangeModel storageChange = new StorageChangeModel();
+
+            return storageChange;
+        }
+
         public void AddSupply(StorageChangeModel spoiled)
         {
             StorageChangeModel newSupply = new StorageChangeModel();
@@ -37,6 +44,11 @@ namespace MegaCity.BLL
         public void DeleteSupplyById(int id)
         {
             _supplyRepository.DeleteSupplyById(id);
+        }
+
+        public StorageChangeModel UpdateSupplyById(StorageChangeModel supply)
+        {
+            return (supply);
         }
     }
 }
