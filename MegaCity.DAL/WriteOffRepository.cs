@@ -31,11 +31,16 @@ namespace MegaCity.DAL
 
         public void DeleteWriteOffById(int id)
         {
-            var supply = _context.StorageChanges.FirstOrDefault(i => i.Id == id);
-            if (supply != null)
+            var writeOff = _context.StorageChanges.FirstOrDefault(i => i.Id == id);
+           
+            if (writeOff != null)
             {
-                _context.StorageChanges.Remove(supply);
+                _context.StorageChanges.Remove(writeOff);
                 _context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Не удалось удалить!");
             }
         }
     }

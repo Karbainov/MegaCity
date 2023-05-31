@@ -36,6 +36,15 @@ namespace MegaCity.API.Controllers
             return Ok(newSupply);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetSupplyById(int id)
+        {
+            var a = _supplyService.GetSupplyById();
+            var supply = _mapper.Map<StorageChangeResponseModel>(a);
+
+            return Ok(supply);
+        }
+
         [HttpPost]
         public IActionResult AddSupply(StorageChangeRequestModel spoiled)
         {
@@ -47,9 +56,20 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteSpoiledProductAndGoodsById(int id)
+        public IActionResult DeleteWriteOffById(int id)
         {
             return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateSupplyById(int id, StorageChangeRequestModel supply)
+        {
+            StorageChangeModel storageChangeModel = _mapper.Map<StorageChangeModel>(supply);
+            storageChangeModel.Id = id;
+            StorageChangeModel newSupply = _supplyService.UpdateSupplyById(storageChangeModel);
+            StorageChangeResponseModel supplyOut = _mapper.Map<StorageChangeResponseModel>(newSupply);
+
+            return Ok(supply);
         }
     }
 }
