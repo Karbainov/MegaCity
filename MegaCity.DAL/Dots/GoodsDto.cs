@@ -12,11 +12,13 @@ namespace MegaCity.DAL.Dots
 
         public string Name { get; set; }
 
+        public double Price { get; set; }
+
         public double Cost { get; set; }
 
         public int Count { get; set; }
 
-        public string Unit { get; set; }
+        public int Unit { get; set; }
 
         public DateTime Date { get; set; }
 

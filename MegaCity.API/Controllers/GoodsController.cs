@@ -34,7 +34,7 @@ namespace MegaCity.API.Controllers
             return Ok(goods);
         }
 
-        [HttpPost("{Id}")]
+        [HttpPost]
         public IActionResult AddGoods(GoodsRequestModel goods)
         {
             GoodsModel goodsModel = _mapper.Map<GoodsModel>(goods);

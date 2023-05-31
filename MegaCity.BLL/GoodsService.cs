@@ -41,7 +41,9 @@ namespace MegaCity.BLL
 
         public GoodsModel AddGoods(GoodsModel goods)
         {
-            return goods;
+            var newGoods = _mapper.Map<GoodsDto>(goods);
+
+            return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(newGoods));
         }
     }
 }
