@@ -18,5 +18,7 @@ namespace MegaCity.BLL.Models
         public ProductDto Product { get; set; }
 
         public OrderDto Order { get; set; }
+
+
     }
 }

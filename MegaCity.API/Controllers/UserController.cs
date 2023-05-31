@@ -1,4 +1,4 @@
-﻿using MegaCity.API.Models.RequestModel;
+using MegaCity.API.Models.RequestModel;
 using MegaCity.API.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -70,3 +70,4 @@ namespace MegaCity.API.Controllers
         }
     }
 }
+  

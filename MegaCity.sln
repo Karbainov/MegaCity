@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MegaCity.API", "MegaCity.AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MegaCity.BLL", "MegaCity.BLL\MegaCity.BLL.csproj", "{AF47AF27-1C0A-458A-B417-D2C9D2D54719}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCity.DAL", "MegaCity.DAL\MegaCity.DAL.csproj", "{D7D0E67B-D40C-4102-901F-5E343843A1DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MegaCity.DAL", "MegaCity.DAL\MegaCity.DAL.csproj", "{D7D0E67B-D40C-4102-901F-5E343843A1DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

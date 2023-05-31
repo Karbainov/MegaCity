@@ -28,6 +28,22 @@ namespace MegaCity.DAL
             return goods;
         }
 
+
+
+
+        public void GetGoodsInformationById(int id)
+        {
+            _context.Users.ToList();
+            return;
+        }
+        //public void GetRemainingCountGoodsByEmail(int email)
+        //{
+        //    _context.
+        //}
+
+
+
+
         public GoodsDto GetGoodsById(int id)
         {
             return _context.Goods.FirstOrDefault(i => i.Id == id);
