@@ -25,26 +25,28 @@ namespace MegaCity.BLL
 
         public List<UserModel> GetAllUsersByRole(string role)
         {
-            List<UserModel> users = new List<UserModel>();
-
-            return users;
+            return _mapper.Map<List<UserModel>>(_userRepository.GetAllUsersByRole(role));
         }
 
-        public UserModel GetUserById()
+        public UserModel GetUserById(int id)
         {
-            UserModel user = new UserModel();
+            var user = _userRepository.GetUserById(id);
 
-            return user;
+            return _mapper.Map<UserModel>(user);
         }
 
         public UserModel AddUser(UserModel user)
         {
-            return user;
+            var newUser = _mapper.Map<UserDto>(user);
+
+            return _mapper.Map<UserModel>(_userRepository.AddUser(newUser));
         }
 
-        public UserModel UpdateUserById(UserModel user)
+        public UserModel UpdateUserById(int id, UserModel user)
         {
-            return user;
+            var updateUser = _mapper.Map<UserDto>(user);
+
+            return _mapper.Map<UserModel>(_userRepository.UpdateUserById(id, updateUser));
         }
 
         public void DeleteUserById(int id)

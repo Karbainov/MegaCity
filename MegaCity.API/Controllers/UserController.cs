@@ -25,19 +25,18 @@ namespace MegaCity.API.Controllers
         [HttpGet]
         public IActionResult GetAllUsers(string role)
         {
-            List<UserModel> users = _userService.GetAllUsersByRole(role);
-            List<UserResponseModel> allUsers= _mapper.Map<List<UserResponseModel>>(users);
+            var users = _mapper.Map<List<UserResponseModel>>(_userService.GetAllUsersByRole(role));
 
-            return Ok(allUsers);
+            return Ok(users);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetUserById(int id)
         {
-            UserModel user = _userService.GetUserById();
-            UserResponseModel adminId = _mapper.Map<UserResponseModel>(user);
+            var user = _userService.GetUserById(id);
+            var userId = _mapper.Map<UserResponseModel>(user);
 
-            return Ok(adminId);
+            return Ok(userId);
         }
 
         [HttpPost()]
@@ -63,7 +62,7 @@ namespace MegaCity.API.Controllers
         {
             UserModel userModel = _mapper.Map<UserModel>(user);
             userModel.Id = id;
-            UserModel newUser = _userService.UpdateUserById(userModel);
+            UserModel newUser = _userService.UpdateUserById(id, userModel);
             UserResponseModel userOutput = _mapper.Map<UserResponseModel>(userModel);
 
             return Ok(userOutput);

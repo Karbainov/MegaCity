@@ -19,9 +19,9 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public void GetAllUsersByRole(string role)
+        public List<UserDto> GetAllUsersByRole(string role)
         {
-            _context.Users.Where(u => u.Role == role).ToList();
+            return _context.Users.Where(u => u.Role == role).ToList();
         }
 
         public UserDto GetUserById(int id)
@@ -48,22 +48,23 @@ namespace MegaCity.DAL
         {
             var user = _context.Users.FirstOrDefault(i => i.Id == id);
 
-            foreach (var o in _context.Orders.ToList())
-            {
-                if (o.User.Id == id)
-                {
-                    o.User = null;
-                }
-            }
-            foreach (var u in _context.StorageChanges.ToList())
-            {
-                if (u.User.Id == id)
-                {
-                    u.User = null;
-                }
-            }
             if (user != null)
             {
+                foreach (var o in _context.Orders.ToList())
+                {
+                    if (o.User.Id == id)
+                    {
+                        o.User = null;
+                    }
+                }
+                foreach (var u in _context.StorageChanges.ToList())
+                {
+                    if (u.User.Id == id)
+                    {
+                        u.User = null;
+                    }
+                }
+
                 _context.Users.Remove(user);
                 _context.SaveChanges();
             }
