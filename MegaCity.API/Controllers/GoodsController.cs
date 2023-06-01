@@ -22,13 +22,21 @@ namespace MegaCity.API.Controllers
         {
             _goodsService = new GoodsService();
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
-            
+
         }
-        
+
+        [HttpGet]
+        public IActionResult GetAllGoods()
+        {
+            var goods = _mapper.Map<List<GoodsResponseModel>>(_goodsService.GetAllgoods());
+
+            return Ok(goods);
+        }
+
         [HttpGet("{id}")]
         public IActionResult GetGoodsById(int id)
         {
-            var a = _goodsService.GetGoodsById();
+            var a = _goodsService.GetGoodsById(id);
             var goods = _mapper.Map<GoodsResponseModel>(a);
 
             return Ok(goods);

@@ -28,6 +28,11 @@ namespace MegaCity.DAL
             return goods;
         }
 
+        public List<GoodsDto> GetAllGoods()
+        {
+            return _context.Goods.ToList();
+        }
+
         public GoodsDto GetGoodsById(int id)
         {
             return _context.Goods.FirstOrDefault(i => i.Id == id);
