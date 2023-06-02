@@ -26,10 +26,9 @@ namespace MegaCity.API.Controllers
         [HttpGet]
         public IActionResult GetAllProducts()
         {
-            List<ProductModel> products = _productService.GetAllProducts();
-            List<ProductResponseModel> allProducts = _mapper.Map<List<ProductResponseModel>>(products);
+            var products = _mapper.Map<List<ProductResponseModel>>(_productService.GetAllProducts());
 
-            return Ok(allProducts);
+            return Ok(products);
 
         } 
 
@@ -65,7 +64,7 @@ namespace MegaCity.API.Controllers
         {
             ProductModel productModel = _mapper.Map<ProductModel>(product);
             productModel.Id = id;
-            ProductModel newProduct = _productService.UpdateProductById(productModel);
+            ProductModel newProduct = _productService.UpdateProductById(id, productModel);
             ProductResponseModel productOutput = _mapper.Map<ProductResponseModel>(newProduct);
 
             return Ok(productOutput);

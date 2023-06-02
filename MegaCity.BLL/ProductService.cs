@@ -25,7 +25,7 @@ namespace MegaCity.BLL
             _productRepository = new ProductRepository();
         }
 
-        public List <ProductModel>GetAllProducts()
+        public List<ProductModel> GetAllProducts()
         {
             return _mapper.Map<List<ProductModel>>(_productRepository.GetAllProducts());
         }
@@ -33,6 +33,7 @@ namespace MegaCity.BLL
         public ProductModel GetProductById(int id)
         {
             var a = _productRepository.GetProductById(id);
+
             return _mapper.Map<ProductModel>(a);
         }
 
@@ -52,7 +53,7 @@ namespace MegaCity.BLL
             {
                 foreach (var component in product.Components)
                 {
-                    _productRepository.AddComponent(component.Count, component.GoodsId, component.ProductId);
+                    _productRepository.AddComponent(component.Count, component.GoodsId);
                 }
 
                 ProductModel newProduct = _mapper.Map<ProductModel>(newProductDto);
@@ -65,26 +66,11 @@ namespace MegaCity.BLL
             }
         }
 
-        public ProductModel UpdateProductById(ProductModel product)
+        public ProductModel UpdateProductById(int id, ProductModel product)
         {
-            return product;
+            var updateProduct = _mapper.Map<ProductModel>(product);
 
-            //ProductDto updateProduct = _mapper.Map<ProductDto>(product);
-
-            //if (updateProduct != null)
-            //{
-            //    updateProduct.Name = product.Name;
-            //    updateProduct.Price = product.Price;
-            //    updateProduct.Count = product.Count;
-
-            //    ProductModel newUpdate = _mapper.Map<ProductModel>(updateProduct);
-
-            //    return newUpdate;
-            //}
-            //else
-            //{
-            //    throw new Exception("Не удалось изменить!");
-            //}
+            return updateProduct;
         }
     }
 }

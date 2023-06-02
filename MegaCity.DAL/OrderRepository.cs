@@ -33,7 +33,7 @@ namespace MegaCity.DAL
 
             if (order != null)
             {
-                user.Sum = order.Sum;
+                //user.Sum = order.Sum;
                 user.Positions = order.Positions;
                 user.Date = order.Date;
                 user.User = order.User;

@@ -21,22 +21,20 @@ public class ProductRepository
         return product;
     }
 
-    public ComponentDto AddComponent(double count, int goodsId, int productId)
+    public ComponentDto AddComponent(double count, int goodsId)
     {
         var goods = _context.Goods.FirstOrDefault(i => i.Id == goodsId);
-        var product = _context.Products.FirstOrDefault(i => i.Id == productId);
 
-        if (goods != null && product != null)
+        if (goods != null)
         {
             ComponentDto newComponent = new ComponentDto()
             {
                 Count = count,
-                Goods = goods,
-                Product = product
+                Goods = goods
             };
             _context.Components.Add(newComponent);
             goods.Components.Add(newComponent);
-            product.Components.Add(newComponent);
+            
             _context.SaveChanges();
 
             return newComponent;
@@ -61,15 +59,16 @@ public class ProductRepository
     {
         var product = _context.Products.FirstOrDefault(i => i.Id == id);
 
-        foreach (var u in _context.OrderPositions.ToList())
-        {
-            if (u.Product.Id == id)
-            {
-                u.Product = null;
-            }
-        }
         if (product != null)
         {
+            foreach (var u in _context.OrderPositions.ToList())
+            {
+                if (u.Product.Id == id)
+                {
+                    u.Product = null;
+                }
+            }
+
             _context.Products.Remove(product);
             _context.SaveChanges();
         }
@@ -79,7 +78,7 @@ public class ProductRepository
         }
     }
 
-    public ProductDto UpdateProduct(ProductDto product)
+    public ProductDto UpdateProduct(int id, ProductDto product)
     {
         var updateProduct = _context.Products.FirstOrDefault(i => i.Id == product.Id);
 
