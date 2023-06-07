@@ -27,6 +27,7 @@ namespace MegaCity.API.Controllers
             });
             _mapper = new Mapper(configuration);
         }
+
          [HttpGet]
         public IActionResult GetAllSupply()
         {

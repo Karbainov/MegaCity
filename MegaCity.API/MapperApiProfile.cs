@@ -25,10 +25,10 @@ public class MapperApiProfile : Profile
         CreateMap<ProductModel, ProductResponseModel>();
         CreateMap<ProductRequestModel, ProductModel>();
 
+        CreateMap<ComponentRequestModel, ComponentModel>();
+
         CreateMap<StorageChangeModel, StorageChangeResponseModel>();
         CreateMap<StorageChangeRequestModel, StorageChangeModel>();
-
-        CreateMap<ComponentRequestModel, ComponentModel>();
     }
 
 }

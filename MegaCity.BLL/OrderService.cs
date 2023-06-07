@@ -59,6 +59,11 @@ namespace MegaCity.BLL
             }
         }
 
+        public void DeleteOrderById(int id)
+        {
+            _orderRepository.DeleteOrderById(id);
+        }
+
         public void UpdateOrderById(int id, OrderModel order)
         {
             OrderModel orderOutput = new OrderModel();
@@ -66,11 +71,6 @@ namespace MegaCity.BLL
                 string Name = order.Name;
                 int Number = order.Number;
             };
-        }
-
-        public void DeleteOrderById(int id)
-        {
-            _orderRepository.DeleteOrderById(id);
         }
     }
 }

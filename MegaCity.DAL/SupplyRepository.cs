@@ -16,9 +16,9 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public void GetAllSupply()
+        public List<StorageChangeDto> GetAllSupply()
         {
-            _context.StorageChanges.ToList();
+            return _context.StorageChanges.ToList();
         }
 
         public StorageChangeDto GetSupplyById(int id)
@@ -26,15 +26,28 @@ namespace MegaCity.DAL
             return _context.StorageChanges.FirstOrDefault(i => i.Id == id);
         }
 
-        public void AddSupply(StorageChangeDto supply)
+        public StorageChangeDto AddSupply(int userId, StorageChangeDto supply)
         {
-            _context.StorageChanges.Add(supply);
-            _context.SaveChanges();
+            var user = _context.Users.FirstOrDefault(i => i.Id == userId);
+
+            if (user != null)
+            {
+                _context.StorageChanges.Add(supply);
+                user.StorageChanges.Add(supply);
+                _context.SaveChanges();
+
+                return supply;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public void DeleteSupplyById(int id)
         {
             var supply = _context.StorageChanges.FirstOrDefault(i => i.Id == id);
+
             if (supply != null)
             {
                 _context.StorageChanges.Remove(supply);
@@ -42,11 +55,11 @@ namespace MegaCity.DAL
             }
         }
 
-        public StorageChangeDto UpdateSupplyById(int id,StorageChangeDto supply)
+        public StorageChangeDto UpdateSupplyById(int id, StorageChangeDto supply)
         {
             var supplyId = _context.StorageChanges.FirstOrDefault(i => i.Id == supply.Id);
 
-            if(supplyId!=null)
+            if(supplyId != null)
             {
                 supplyId.Date = DateTime.Now;
                 supplyId.Type = supply.Type;

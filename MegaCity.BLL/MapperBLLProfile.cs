@@ -16,9 +16,17 @@ namespace MegaCity.BLL
         public MapperBLLProfile()
         {
             CreateMap<GoodsModel, GoodsDto>().ReverseMap();
+
             CreateMap<ProductModel, ProductDto>().ReverseMap();
             CreateMap<ComponentModel, ComponentDto>().ReverseMap();
+
             CreateMap<UserModel, UserDto>().ReverseMap();
+
+            CreateMap<OrderModel, OrderDto>().ReverseMap();
+            CreateMap<OrderPositionModel, OrderPositionDto>().ReverseMap();
+
+            CreateMap<StorageChangeModel, StorageChangeDto>().ReverseMap();
+            CreateMap<StorageChangePositionModel, StorageChangePositionDto>().ReverseMap();
         }
     }
 }

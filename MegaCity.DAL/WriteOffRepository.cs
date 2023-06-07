@@ -16,17 +16,26 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
-        public void GetAllWriteOff()
+        public List<StorageChangeDto> GetAllWriteOff()
         {
-            _context.StorageChanges.ToList();
+            return _context.StorageChanges.ToList();
         }
 
-        public StorageChangeDto AddWriteOff(StorageChangeDto supply)
+        public StorageChangeDto AddWriteOff(int userId, StorageChangeDto supply)
         {
-            _context.StorageChanges.Add(supply);
-            _context.SaveChanges();
+            var user = _context.Users.FirstOrDefault(i => i.Id == userId);
 
-            return supply;
+            if (user != null)
+            {
+                _context.StorageChanges.Add(supply);
+                _context.SaveChanges();
+
+                return supply;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public void DeleteWriteOffById(int id)

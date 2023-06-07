@@ -17,6 +17,16 @@ namespace MegaCity.DAL
             _context = new MegaCityDbContext();
         }
 
+        public List<GoodsDto> GetAllGoods()
+        {
+            return _context.Goods.ToList();
+        }
+
+        public GoodsDto GetGoodsById(int id)
+        {
+            return _context.Goods.FirstOrDefault(i => i.Id == id);
+        }
+
         public GoodsDto AddGoods(GoodsDto goods)
         {
             if (goods != null)
@@ -26,16 +36,6 @@ namespace MegaCity.DAL
             }
 
             return goods;
-        }
-
-        public List<GoodsDto> GetAllGoods()
-        {
-            return _context.Goods.ToList();
-        }
-
-        public GoodsDto GetGoodsById(int id)
-        {
-            return _context.Goods.FirstOrDefault(i => i.Id == id);
         }
 
         public void DeleteGoodsById(int id)

@@ -32,7 +32,7 @@ namespace MegaCity.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetOrder(int id)
+        public IActionResult GetOrderById(int id)
         {
             OrderModel order = _orderService.GetOrderById();
             OrderResponseModel orderId = _mapper.Map<OrderResponseModel>(order);

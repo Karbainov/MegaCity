@@ -37,11 +37,6 @@ namespace MegaCity.BLL
             return _mapper.Map<ProductModel>(a);
         }
 
-        public void DeleteProductById(int id)
-        {
-            _productRepository.DeleteProductById(id);
-        }
-
         public ProductModel AddProduct(ProductModel product)
         {
 
@@ -64,6 +59,11 @@ namespace MegaCity.BLL
             {
                 throw new Exception("Продукт не создан!");
             }
+        }
+
+        public void DeleteProductById(int id)
+        {
+            _productRepository.DeleteProductById(id);
         }
 
         public ProductModel UpdateProductById(int id, ProductModel product)

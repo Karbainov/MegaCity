@@ -9,7 +9,18 @@ public class ProductRepository
     {
         _context = new MegaCityDbContext();
     }
-     
+
+
+    public List<ProductDto> GetAllProducts()
+    {
+        return _context.Products.ToList();
+    }
+
+    public ProductDto GetProductById(int id)
+    {
+        return _context.Products.Include(g => g.Components).ThenInclude(k => k.Goods).FirstOrDefault(i => i.Id == id);
+    }
+
     public ProductDto AddProduct(ProductDto product)
     {
         if (product != null)
@@ -43,16 +54,6 @@ public class ProductRepository
         {
             throw new Exception();
         }
-    }
-
-    public List<ProductDto>GetAllProducts()
-    {
-        return _context.Products.ToList();
-    }
-
-    public ProductDto GetProductById(int id)
-    {
-        return _context.Products.Include(g => g.Components).ThenInclude(k => k.Goods).FirstOrDefault(i => i.Id == id);
     }
 
     public void DeleteProductById(int id)

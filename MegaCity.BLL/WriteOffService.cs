@@ -29,9 +29,18 @@ namespace MegaCity.BLL
             return writeOff;
         }
 
-        public void AddWriteOff(StorageChangeModel spoiled)
+        public StorageChangeModel GetWriteOffById()
+        {
+            StorageChangeModel storageChange = new StorageChangeModel();
+
+            return storageChange;
+        }
+
+        public StorageChangeModel AddWriteOff(StorageChangeModel spoiled)
         {
             StorageChangeModel newWriteOff = new StorageChangeModel();
+
+            return newWriteOff;
         }
 
         public void DeleteWriteOffById(int id)

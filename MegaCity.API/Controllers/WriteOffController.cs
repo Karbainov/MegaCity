@@ -25,13 +25,22 @@ namespace MegaCity.API.Controllers
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile(new MapperApiProfile())));
 
         }
-         [HttpGet]
+        [HttpGet]
         public IActionResult GetAllWriteOff()
         {
             List<StorageChangeModel> writeOff = _writeOffService.GetAllWriteOff();
             List<StorageChangeResponseModel> newWriteOff = _mapper.Map<List<StorageChangeResponseModel>>(writeOff);
 
             return Ok(newWriteOff);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetSupplyById(int id)
+        {
+            var a = _writeOffService.GetWriteOffById();
+            var writeOff = _mapper.Map<StorageChangeResponseModel>(a);
+
+            return Ok(writeOff);
         }
 
         [HttpPost]

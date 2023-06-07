@@ -42,16 +42,16 @@ namespace MegaCity.BLL
             return _mapper.Map<UserModel>(_userRepository.AddUser(newUser));
         }
 
+        public void DeleteUserById(int id)
+        {
+            _userRepository.DeleteUserById(id);
+        }
+
         public UserModel UpdateUserById(int id, UserModel user)
         {
             var updateUser = _mapper.Map<UserDto>(user);
 
             return _mapper.Map<UserModel>(_userRepository.UpdateUserById(id, updateUser));
-        }
-
-        public void DeleteUserById(int id)
-        {
-            _userRepository.DeleteUserById(id);
         }
     }
 }

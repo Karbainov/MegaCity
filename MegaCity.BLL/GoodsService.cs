@@ -35,23 +35,23 @@ namespace MegaCity.BLL
             return _mapper.Map<GoodsModel>(getGoods);
         }
 
-        public GoodsModel UpdateGoodsById(int id, GoodsModel goods)
-        {
-            var updateGoods = _mapper.Map<GoodsDto>(goods);
-
-            return _mapper.Map<GoodsModel>(_goodsRepository.UpdateGoods(id, updateGoods));
-        }
-
-    public void DeleteGoodsById(int id)
-        {
-            _goodsRepository.DeleteGoodsById(id);
-        }
-
         public GoodsModel AddGoods(GoodsModel goods)
         {
             var newGoods = _mapper.Map<GoodsDto>(goods);
 
             return _mapper.Map<GoodsModel>(_goodsRepository.AddGoods(newGoods));
+        }
+
+        public void DeleteGoodsById(int id)
+        {
+            _goodsRepository.DeleteGoodsById(id);
+        }
+
+        public GoodsModel UpdateGoodsById(int id, GoodsModel goods)
+        {
+            var updateGoods = _mapper.Map<GoodsDto>(goods);
+
+            return _mapper.Map<GoodsModel>(_goodsRepository.UpdateGoods(id, updateGoods));
         }
     }
 }
