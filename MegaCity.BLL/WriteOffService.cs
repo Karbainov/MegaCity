@@ -24,23 +24,15 @@ namespace MegaCity.BLL
 
         public List<StorageChangeModel> GetAllWriteOff()
         {
-            List<StorageChangeModel> writeOff = new List<StorageChangeModel>();
-
-            return writeOff;
+            return _mapper.Map<List<StorageChangeModel>>(_writeOffRepository.GetAllWriteOff());
         }
 
-        public StorageChangeModel GetWriteOffById()
+
+        public StorageChangeModel AddWriteOff(int userId, StorageChangeModel spoiled)
         {
-            StorageChangeModel storageChange = new StorageChangeModel();
+            var newWriteOff = _mapper.Map<StorageChangeDto>(spoiled);
 
-            return storageChange;
-        }
-
-        public StorageChangeModel AddWriteOff(StorageChangeModel spoiled)
-        {
-            StorageChangeModel newWriteOff = new StorageChangeModel();
-
-            return newWriteOff;
+            return _mapper.Map<StorageChangeModel>(_writeOffRepository.AddWriteOff(userId, newWriteOff));
         }
 
         public void DeleteWriteOffById(int id)

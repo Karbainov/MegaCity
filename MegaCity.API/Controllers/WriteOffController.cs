@@ -28,26 +28,16 @@ namespace MegaCity.API.Controllers
         [HttpGet]
         public IActionResult GetAllWriteOff()
         {
-            List<StorageChangeModel> writeOff = _writeOffService.GetAllWriteOff();
-            List<StorageChangeResponseModel> newWriteOff = _mapper.Map<List<StorageChangeResponseModel>>(writeOff);
-
-            return Ok(newWriteOff);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult GetSupplyById(int id)
-        {
-            var a = _writeOffService.GetWriteOffById();
-            var writeOff = _mapper.Map<StorageChangeResponseModel>(a);
+            var writeOff = _mapper.Map<List<StorageChangeModel>>(_writeOffService.GetAllWriteOff());
 
             return Ok(writeOff);
         }
 
         [HttpPost]
-        public IActionResult AddWriteOff(StorageChangeRequestModel writeOff)
+        public IActionResult AddWriteOff(int userId, StorageChangeRequestModel writeOff)
         {
             StorageChangeModel writeOffModel = _mapper.Map<StorageChangeModel>(writeOff);
-            _writeOffService.AddWriteOff(writeOffModel);
+            StorageChangeModel newWriteOff = _writeOffService.AddWriteOff(userId, writeOffModel);
             StorageChangeResponseModel result = _mapper.Map<StorageChangeResponseModel>(writeOffModel);
 
             return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), result);

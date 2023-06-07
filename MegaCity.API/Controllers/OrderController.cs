@@ -25,26 +25,25 @@ namespace MegaCity.API.Controllers
         [HttpGet("All-Orders")]
         public IActionResult GetAllOrders()
         {
-            List<OrderModel> orders = _orderService.GetAllOrders();
-            List<OrderResponseModel> allOrders = _mapper.Map<List<OrderResponseModel>>(orders);
+            var orders = _mapper.Map<List<OrderResponseModel>>(_orderService.GetAllOrders());
 
-            return Ok(allOrders);
+            return Ok(orders);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetOrderById(int id)
         {
-            OrderModel order = _orderService.GetOrderById();
-            OrderResponseModel orderId = _mapper.Map<OrderResponseModel>(order);
+            var a = _orderService.GetOrderById(id);
+            var order = _mapper.Map<OrderResponseModel>(a);
 
-            return Ok(orderId);
+            return Ok(order);
         }
 
         [HttpPost()]
         public IActionResult AddOrder(OrderRequestModel order)
         {
             List<OrderPositionModel> orderPositions = _mapper.Map<List<OrderPositionModel>>(order.Positions);
-            OrderModel newOrder  = _orderService.AddOrder(order.UserId, orderPositions);
+            var newOrder  = _orderService.AddOrder(order.UserId, orderPositions);
             OrderResponseModel result= _mapper.Map<OrderResponseModel>(newOrder);
 
             return Created(new Uri("Order", UriKind.Relative), result);
@@ -53,6 +52,8 @@ namespace MegaCity.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteOrderById(int id)
         {
+            _orderService.DeleteOrderById(id);
+
             return NoContent();
         }
 
@@ -60,10 +61,11 @@ namespace MegaCity.API.Controllers
         public IActionResult UpdateOrderById(int id,OrderRequestModel order)
         {
             OrderModel orderModel = _mapper.Map<OrderModel>(order);
-            _orderService.UpdateOrderById(id, orderModel);
-            OrderResponseModel orderOutput = _mapper.Map<OrderResponseModel>(orderModel);
+            orderModel.Id = id;
+            OrderModel newOrder = _orderService.UpdateOrderById(id, orderModel);
+            OrderResponseModel orderOutput = _mapper.Map<OrderResponseModel>(newOrder);
 
-            return Ok(order);
+            return Ok(orderOutput);
         }
     }
 }

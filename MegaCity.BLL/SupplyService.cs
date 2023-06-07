@@ -24,23 +24,19 @@ namespace MegaCity.BLL
 
         public List<StorageChangeModel> GetAllSupply()
         {
-            List<StorageChangeModel> supply = new List<StorageChangeModel>();
-
-            return supply;
+            return _mapper.Map<List<StorageChangeModel>>(_supplyRepository.GetAllSupply());
         }
 
-        public StorageChangeModel GetSupplyById()
+        public StorageChangeModel GetSupplyById(int id)
         {
-            StorageChangeModel storageChange = new StorageChangeModel();
-
-            return storageChange;
+            return _mapper.Map<StorageChangeModel>(_supplyRepository.GetSupplyById(id));
         }
 
-        public StorageChangeModel AddSupply(StorageChangeModel spoiled)
+        public StorageChangeModel AddSupply(int userId, StorageChangeModel spoiled)
         {
-            StorageChangeModel newSupply = new StorageChangeModel();
+            var newSupply = _mapper.Map<StorageChangeDto>(spoiled);
 
-            return newSupply;
+            return _mapper.Map<StorageChangeModel>(_supplyRepository.AddSupply(userId, newSupply));
         }
 
         public void DeleteSupplyById(int id)
@@ -48,9 +44,11 @@ namespace MegaCity.BLL
             _supplyRepository.DeleteSupplyById(id);
         }
 
-        public StorageChangeModel UpdateSupplyById(StorageChangeModel supply)
+        public StorageChangeModel UpdateSupplyById(int id, StorageChangeModel supply)
         {
-            return (supply);
+            var updateSupply = _mapper.Map<StorageChangeDto>(supply);
+
+            return _mapper.Map<StorageChangeModel>(_supplyRepository.UpdateSupplyById(id, updateSupply));
         }
     }
 }

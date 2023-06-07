@@ -23,14 +23,14 @@ namespace MegaCity.BLL
 
         public List<OrderModel> GetAllOrders()
         {
-            List<OrderModel> orders = new List<OrderModel>();
-            return orders;
+            return _mapper.Map<List<OrderModel>>(_orderRepository.GetAllOrders());
         }
 
-        public OrderModel GetOrderById()
+        public OrderModel GetOrderById(int id)
         {
-            OrderModel order = new OrderModel();
-            return order;
+            var a = _orderRepository.GetOrderById(id);
+
+            return _mapper.Map<OrderModel>(a);
         }
 
         public OrderModel AddOrder(int userId, List<OrderPositionModel> orderPositions)
@@ -64,13 +64,11 @@ namespace MegaCity.BLL
             _orderRepository.DeleteOrderById(id);
         }
 
-        public void UpdateOrderById(int id, OrderModel order)
+        public OrderModel UpdateOrderById(int id, OrderModel order)
         {
-            OrderModel orderOutput = new OrderModel();
-            {
-                string Name = order.Name;
-                int Number = order.Number;
-            };
+            var updateOrder = _mapper.Map<OrderModel>(order);
+
+            return updateOrder;
         }
     }
 }

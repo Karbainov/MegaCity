@@ -31,26 +31,25 @@ namespace MegaCity.API.Controllers
          [HttpGet]
         public IActionResult GetAllSupply()
         {
-            List<StorageChangeModel> supply = _supplyService.GetAllSupply();
-            List<StorageChangeResponseModel> newSupply = _mapper.Map<List<StorageChangeResponseModel>>(supply);
+            var supply = _mapper.Map<List<StorageChangeResponseModel>>(_supplyService.GetAllSupply());
 
-            return Ok(newSupply);
+            return Ok(supply);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetSupplyById(int id)
         {
-            var a = _supplyService.GetSupplyById();
+            var a = _supplyService.GetSupplyById(id);
             var supply = _mapper.Map<StorageChangeResponseModel>(a);
 
             return Ok(supply);
         }
 
         [HttpPost]
-        public IActionResult AddSupply(StorageChangeRequestModel spoiled)
+        public IActionResult AddSupply(int userid, StorageChangeRequestModel spoiled)
         {
             StorageChangeModel spoiledModel = _mapper.Map<StorageChangeModel>(spoiled);
-            _supplyService.AddSupply(spoiledModel);
+            StorageChangeModel newModel = _supplyService.AddSupply(userid, spoiledModel);
             StorageChangeResponseModel newSpoiled = _mapper.Map<StorageChangeResponseModel>(spoiledModel);
 
             return Created(new Uri("SpoiledProductAndGoods", UriKind.Relative), newSpoiled);
@@ -59,6 +58,8 @@ namespace MegaCity.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteWriteOffById(int id)
         {
+            _supplyService.DeleteSupplyById(id);
+
             return NoContent();
         }
 
@@ -67,7 +68,7 @@ namespace MegaCity.API.Controllers
         {
             StorageChangeModel storageChangeModel = _mapper.Map<StorageChangeModel>(supply);
             storageChangeModel.Id = id;
-            StorageChangeModel newSupply = _supplyService.UpdateSupplyById(storageChangeModel);
+            StorageChangeModel newSupply = _supplyService.UpdateSupplyById(id, storageChangeModel);
             StorageChangeResponseModel supplyOut = _mapper.Map<StorageChangeResponseModel>(newSupply);
 
             return Ok(supply);
